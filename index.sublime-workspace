@@ -1,0 +1,1268 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"max",
+				"maxlength\tAttr"
+			],
+			[
+				"min",
+				"minlength\tAttr"
+			],
+			[
+				"text",
+				"text-white"
+			],
+			[
+				"preg",
+				"preg_match"
+			],
+			[
+				"if",
+				"ifelse\tif … else …"
+			],
+			[
+				"numero",
+				"numeroModulo"
+			],
+			[
+				"FILTER_",
+				"FILTER_VALIDATE_INT〔constant〕"
+			],
+			[
+				"filter",
+				"filter_var"
+			],
+			[
+				"nombre",
+				"nombreUsuario"
+			],
+			[
+				"st",
+				"style\tAttr"
+			],
+			[
+				"styles",
+				"stylesheet"
+			],
+			[
+				"In",
+				"Inventario"
+			],
+			[
+				"col",
+				"col-md-4"
+			],
+			[
+				"btn-",
+				"btn-info"
+			],
+			[
+				"inpu",
+				"input-group-text"
+			],
+			[
+				"input",
+				"input-group-prepend"
+			],
+			[
+				"Ga",
+				"GalponModelo〔class〕"
+			],
+			[
+				"Fe",
+				"FechaMortalidad"
+			],
+			[
+				"in",
+				"input-group"
+			],
+			[
+				"jus",
+				"justify-content-center"
+			],
+			[
+				"co",
+				"cover\tbackground-size"
+			],
+			[
+				"bg",
+				"bg-orange"
+			],
+			[
+				"Nombre",
+				"NombreModulo"
+			],
+			[
+				"inpur",
+				"input-group-addon"
+			],
+			[
+				"form",
+				"form-control"
+			],
+			[
+				"s",
+				"style\tAttr"
+			],
+			[
+				"backgro",
+				"background-color\tproperty"
+			],
+			[
+				"tex",
+				"text-center"
+			],
+			[
+				"background-si",
+				"background-size\tproperty"
+			],
+			[
+				"he",
+				"height\tproperty"
+			],
+			[
+				"fon",
+				"font-size\tproperty"
+			],
+			[
+				"background-",
+				"background-size\tproperty"
+			],
+			[
+				"bak",
+				"background-image\tproperty"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"i",
+				"if?\t$… = ( … ) ? … : …"
+			],
+			[
+				"Re",
+				"Recogida"
+			],
+			[
+				"ca",
+				"$categoria〔variable〕"
+			],
+			[
+				"insert",
+				"insertValores〔function〕"
+			],
+			[
+				"re",
+				"RecogidaModelo〔variable〕"
+			],
+			[
+				"Recogida",
+				"RecogidaModelo"
+			],
+			[
+				"isset",
+				"isset〔function〕"
+			],
+			[
+				"va",
+				"valores"
+			],
+			[
+				"res",
+				"respuesta"
+			],
+			[
+				"json_",
+				"json_encode"
+			],
+			[
+				"id",
+				"idCategoria"
+			],
+			[
+				"idR",
+				"idRecogida"
+			],
+			[
+				"nom",
+				"nombreResponsable"
+			],
+			[
+				"Saca",
+				"SacarLote"
+			],
+			[
+				"sele",
+				"selectById〔function〕"
+			],
+			[
+				"galpo",
+				"galponEnLoteModelo"
+			],
+			[
+				"_",
+				"$_REQUEST〔variable〕"
+			],
+			[
+				"arra",
+				"array"
+			],
+			[
+				"gal",
+				"galponEnLoteModelo〔variable〕"
+			],
+			[
+				"array_",
+				"array_push"
+			],
+			[
+				"inp",
+				"input\tTag"
+			],
+			[
+				"selec",
+				"selected"
+			],
+			[
+				"unse",
+				"unset"
+			],
+			[
+				"nu",
+				"numeroGalpon"
+			],
+			[
+				"wid",
+				"width\tproperty"
+			],
+			[
+				"nomber",
+				"nombreGalpon"
+			],
+			[
+				"spl",
+				"spl_autoload_register〔function〕"
+			],
+			[
+				"dro",
+				"dropdown-item"
+			],
+			[
+				"drop",
+				"dropdown-menu"
+			],
+			[
+				"aria",
+				"aria-haspopup=〔attribute〕"
+			],
+			[
+				"whi",
+				"width\tproperty"
+			],
+			[
+				"cla",
+				"claveUsuario"
+			],
+			[
+				"input-group",
+				"input-group-addon"
+			],
+			[
+				"fomr",
+				"form-control"
+			],
+			[
+				"nav",
+				"nav-link"
+			],
+			[
+				"stat",
+				"static"
+			],
+			[
+				"AG",
+				"Agregar"
+			],
+			[
+				"border",
+				"border-radius\tproperty"
+			],
+			[
+				"bac",
+				"background-color\tproperty"
+			],
+			[
+				"_se",
+				"$_SESSION〔variable〕"
+			],
+			[
+				"session",
+				"session_destroy"
+			],
+			[
+				"_S",
+				"$_SESSION〔variable〕"
+			],
+			[
+				"meto",
+				"method_exists〔function〕"
+			],
+			[
+				"wi",
+				"width\tproperty"
+			],
+			[
+				"border-s",
+				"border-style\tproperty"
+			],
+			[
+				"align-self",
+				"align-self-start"
+			],
+			[
+				"align-sel",
+				"align-self-end"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"me",
+				"$metodo〔variable〕"
+			],
+			[
+				"require_once",
+				"require_once〔keyword〕"
+			],
+			[
+				"require",
+				"require_once〔keyword〕"
+			],
+			[
+				"B",
+				"Buscar"
+			],
+			[
+				"array",
+				"array_push"
+			],
+			[
+				"pos",
+				"post〔function〕"
+			],
+			[
+				"a",
+				"array"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"cam",
+				"$campo〔variable〕"
+			],
+			[
+				"lista",
+				"$listaCampos〔variable〕"
+			],
+			[
+				"ERROR",
+				"ERROR3〔variable〕"
+			],
+			[
+				"sql",
+				"sqlActu"
+			],
+			[
+				"col-",
+				"col-12"
+			],
+			[
+				"strto",
+				"strtoupper〔function〕"
+			],
+			[
+				"empty",
+				"empty〔function〕"
+			],
+			[
+				"is",
+				"isset"
+			],
+			[
+				"equipos",
+				"equipos_participantes"
+			],
+			[
+				"btn",
+				"btn-block"
+			],
+			[
+				"con",
+				"consultar"
+			],
+			[
+				"equ",
+				"$equipos〔variable〕"
+			],
+			[
+				"cat",
+				"$categoria〔variable〕"
+			],
+			[
+				"listar",
+				"listarPorCategoria〔function〕"
+			],
+			[
+				"b1-",
+				"b1-primary"
+			],
+			[
+				"op",
+				"option\tTag"
+			],
+			[
+				"cals",
+				"class=〔attribute〕"
+			],
+			[
+				"table-",
+				"table-primary"
+			],
+			[
+				"temp",
+				"temporada"
+			],
+			[
+				"h",
+				"h5\tTag"
+			],
+			[
+				"mt-",
+				"mt-3"
+			],
+			[
+				"equip",
+				"equipos"
+			],
+			[
+				"idE",
+				"idEquipo"
+			],
+			[
+				"obte",
+				"obtenerEquipo〔function〕"
+			],
+			[
+				"inclu",
+				"include_once"
+			],
+			[
+				"end",
+				"endif"
+			],
+			[
+				"Na",
+				"Nacionalidad"
+			],
+			[
+				"Dire",
+				"Direccion"
+			],
+			[
+				"uc",
+				"ucwords"
+			],
+			[
+				"Ape",
+				"Apellido"
+			],
+			[
+				"sel",
+				"selected"
+			],
+			[
+				"campo",
+				"campox"
+			],
+			[
+				"H",
+				"Hometec.png\tw:697 h:607"
+			],
+			[
+				"datos",
+				"datos2"
+			],
+			[
+				"idj",
+				"idJugador"
+			],
+			[
+				"array_s",
+				"array_slice"
+			],
+			[
+				"est",
+				"$est〔variable〕"
+			],
+			[
+				"val",
+				"value"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"php",
+				"PHPCompanion:Import Namespace"
+			],
+			[
+				"alignment",
+				"Preferences: Alignment Key Bindings – Default"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"Pa",
+				"Package Control: List Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pakege",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Activate Materialize Theme"
+			],
+			[
+				"pakage",
+				"Package Control: Install Package"
+			],
+			[
+				"LiveReload: Enable/disable plugins",
+				"LiveReload: Enable/disable plug-ins"
+			],
+			[
+				"Package Control: li",
+				"Package Control: List Packages"
+			],
+			[
+				"Package Control: insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Ale/Desktop/Calculadora-Javascript-master/js/calculadora.js",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/assets/css/main.css",
+		"/C/Users/Ale/Desktop/javascript-products-app-oop-master/src/Product.js",
+		"/C/Users/Ale/Desktop/javascript-products-app-oop-master/src/UI.js",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/galpon/InicioGalpon.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/includes/footer.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/AgregarRecogida.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/GalponControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/galpon/AgregarGalpon.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/DetallesRecogida.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/galpon/DetalleGalpon.php",
+		"/C/Users/Ale/Desktop/javascript-products-app-oop-master/src/App.js",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/Integrantes.txt",
+		"/C/Users/Ale/Desktop/javascript-tasks-app-master/src/app.js",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/LoginVista.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/RecogidaControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/includes/menu.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/LoginControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/InicioRecogida.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/ReportesControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/ControlAves/InicioControlAves.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/galpon/AgregarSector.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/includes/header.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/reportes/CierreMes.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/reportes/producciondiaria.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/ControlAvesControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/assets/css/bootstrap.css",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/galpon/Modulo.php",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/css/bootstrap.css",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/AjaxControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/helper.php",
+		"/D/Tarea t.t/PROYECTOS/libs/Plantillas/sidebar/index.html",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/flexbox.html",
+		"/D/Tarea t.t/PROYECTOS/libs/Plantillas/sidebar/style.css",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/MortalidadModelo.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/controlaves/agregarmortalidad.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/ajax/consultas.js",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/cards.html",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/tablas.html",
+		"/D/Tarea t.t/5to Semestre/Sistemas Operativos II/tema2/Contenidos de la semana.txt",
+		"/C/Users/Ale/Desktop/evaluacionTema3.txt",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/GalponEnLoteModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/MortalidadModelo",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/AgregarResponsable.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/controlador/recogidacontrolador.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/controlador/ajaxcontrolador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/RecogidaModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/Conexion.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/RegistroModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/SectorModelo.php",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/php-ajax-master-FAST/todo-app/app.js",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/selects/index.php",
+		"/C/xampp/htdocs/Proyectos/baseball/Vista/Partido.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/recogida/agregarresponsable.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/GalponModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/LoteModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/sql/GranjaAvicolaLasTunasSQL.sql",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/dropdown.html",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/ResponsablesDeRegistroModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/ResponsableModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/galpon/AgregarGalponLote.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/UsuariosModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/galpon/SacarLote.php",
+		"/C/xampp/htdocs/Proyectos/baseball/Modelo/Anotador.php",
+		"/C/xampp/htdocs/Proyectos/baseball/Modelo/Jugador.php",
+		"/C/xampp/htdocs/Proyectos/baseball/Controlador/Table.php",
+		"/C/xampp/htdocs/Proyectos/baseball/Controlador/Partido.controlador.php",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/System_School-CODIGO GRATIS/core/controller/Form.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/InicioControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/index.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/galpon/agregargalpon.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/EditarRecogida.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/EliminarRecogida.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/galpon/agregarlote.php",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/alertas.html",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/modelo/usuariosmodelo.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/galpones/iniciogalpones.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/recogida/agregarrecogida.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/recogida/editarrecogida.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/controlador/galponcontrolador.php",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/navbar.html",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/recogida/detallesrecogida.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/recogida/eliminarrecogida.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/controlador/iniciocontrolador.php",
+		"/c/xampp/htdocs/proyectos/granjaavicolalastunas/vista/recogida/inicio.recogida.vista.php",
+		"/D/Tarea t.t/PROYECTOS/libs/Plantillas/MDB Admin/css/mdb.css",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/Agregar.vista.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/Detalles.vista.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/recogida/Editar.vista.php",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/modal.html",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/Inicio.controlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/modelo/Usuarios.modelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/Login.vista.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/controlador/Login.controlador.php",
+		"/D/Tarea t.t/PROYECTOS/libs/Plantillas/MDB Admin/css/addons/datatables-select.css",
+		"/C/xampp/htdocs/Proyectos/baseball/Modelo/conexionA.php",
+		"/C/Users/Ale/AppData/Roaming/Sublime Text 3/Packages/User/PHP Companion.sublime-settings",
+		"/C/Users/Ale/AppData/Roaming/Sublime Text 3/Packages/PHP Companion/PHP Companion.sublime-settings",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicolaLasTunas/vista/Inicio.vista.php",
+		"/C/xampp/htdocs/Proyectos/baseball/Sql/Baseball.sql",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/formularios/formularios_grid.html",
+		"/C/Users/Ale/AppData/Roaming/Sublime Text 3/Packages/Alignment/Default (Windows).sublime-keymap",
+		"/C/Users/Ale/AppData/Roaming/Sublime Text 3/Installed Packages/SwapStrings.sublime-package",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/formularios/input_group.html",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/formularios/inline_forms.html",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/grupos_botones.html",
+		"/D/Tarea t.t/PROYECTOS/libs/Plantillas/MDB Admin/dashboard.html",
+		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/flexbox2.html",
+		"/D/Tarea t.t/PROYECTOS/libs/MDB-Free_4.19.1/css/mdb.css",
+		"/D/Tarea t.t/PROYECTOS/Proyecto Granja/GranjaAvicolaLasTunasSQL.sql",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/Login.vista.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/controlador/Inicio.controlador.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/index.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/includes/header.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/Controlador/Login.controlador.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/assets/css/main.css",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/includes/menu.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/Inicio.vista.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/includes/footer.php",
+		"/D/Tarea t.t/PROYECTOS/libs/MDB-Free_4.19.1/index.html",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/modelo/Conexion.php",
+		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/modelo/Usuarios.modelo.php",
+		"/D/Cursos/SISTEMA POS DE INVENTARIOS Y VENTAS ADMINISTRABLE/09 Impresora de Tickets Cajon Monedero Lector de Codigo y Facturas Electronicas/08.Hardware-y-Factura-Electronica/index.php",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/bitacoraPHP-master/clases/usuario.class.php",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/bitacoraPHP-master/clases/checada.class.php",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/bitacoraPHP-master/index.php",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/bitacoraPHP-master/lib/functions.php",
+		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/bitacoraPHP-master/clases/PasswordHash.class.php"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 67.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.SublimeLinter":
+	{
+		"height": 0.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "index.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"integ",
+				"GranjaAvicolaLasTunas\\Integrantes.txt"
+			],
+			[
+				"inicio",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
+			],
+			[
+				"detalle",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\DetalleGalpon.php"
+			],
+			[
+				"detalles",
+				"GranjaAvicolaLasTunas\\vista\\recogida\\DetallesRecogida.php"
+			],
+			[
+				"agregar",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\AgregarGalpon.php"
+			],
+			[
+				"login",
+				"GranjaAvicolaLasTunas\\vista\\LoginVista.php"
+			],
+			[
+				"footr",
+				"GranjaAvicolaLasTunas\\vista\\includes\\footer.php"
+			],
+			[
+				"agregarga",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\AgregarGalpon.php"
+			],
+			[
+				"galponcontro",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"controlador",
+				"GranjaAvicolaLasTunas\\controlador\\RecogidaControlador.php"
+			],
+			[
+				"main.css",
+				"GranjaAvicolaLasTunas\\assets\\css\\main.css"
+			],
+			[
+				"galpon",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"recogida",
+				"GranjaAvicolaLasTunas\\controlador\\RecogidaControlador.php"
+			],
+			[
+				"menu",
+				"GranjaAvicolaLasTunas\\vista\\includes\\menu.php"
+			],
+			[
+				"incio",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
+			],
+			[
+				"incii",
+				"GranjaAvicolaLasTunas\\vista\\recogida\\InicioRecogida.php"
+			],
+			[
+				"header",
+				"GranjaAvicolaLasTunas\\vista\\includes\\header.php"
+			],
+			[
+				"main",
+				"GranjaAvicolaLasTunas\\assets\\css\\main.css"
+			],
+			[
+				"foo",
+				"GranjaAvicolaLasTunas\\vista\\includes\\footer.php"
+			],
+			[
+				"inici",
+				"GranjaAvicolaLasTunas\\vista\\recogida\\InicioRecogida.php"
+			],
+			[
+				"control",
+				"GranjaAvicolaLasTunas\\controlador\\ControlAvesControlador.php"
+			],
+			[
+				"ma",
+				"GranjaAvicolaLasTunas\\assets\\css\\main.css"
+			],
+			[
+				"gal",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"deta",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\DetalleGalpon.php"
+			],
+			[
+				"boots",
+				"GranjaAvicolaLasTunas\\assets\\css\\bootstrap.css"
+			],
+			[
+				"contro",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"hea",
+				"GranjaAvicolaLasTunas\\vista\\includes\\header.php"
+			],
+			[
+				"inicioRe",
+				"GranjaAvicolaLasTunas\\vista\\recogida\\InicioRecogida.php"
+			],
+			[
+				"boot",
+				"Ejemplos Bootstrap\\css\\bootstrap.css"
+			],
+			[
+				"he",
+				"GranjaAvicolaLasTunas\\helper.php"
+			],
+			[
+				"flex",
+				"Ejemplos Bootstrap\\flexbox.html"
+			],
+			[
+				"footer",
+				"GranjaAvicolaLasTunas\\vista\\includes\\footer.php"
+			],
+			[
+				"galponini",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
+			],
+			[
+				"calponcontro",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"agregarG",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\AgregarGalpon.php"
+			],
+			[
+				"galpo",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"consula",
+				"GranjaAvicolaLasTunas\\ajax\\consultas.js"
+			],
+			[
+				"",
+				"GranjaAvicolaLasTunas\\vista\\includes\\menu.php"
+			],
+			[
+				"mani",
+				"GranjaAvicolaLasTunas\\assets\\css\\main.css"
+			],
+			[
+				"cons",
+				"GranjaAvicolaLasTunas\\ajax\\consultas.js"
+			],
+			[
+				"card",
+				"Ejemplos Bootstrap\\cards.html"
+			],
+			[
+				"bootsa",
+				"Ejemplos Bootstrap\\css\\bootstrap.css"
+			],
+			[
+				"tab",
+				"Ejemplos Bootstrap\\tablas.html"
+			],
+			[
+				"ControlA",
+				"GranjaAvicolaLasTunas\\controlador\\ControlAvesControlador.php"
+			],
+			[
+				"GalponEn",
+				"GranjaAvicolaLasTunas\\modelo\\GalponEnLoteModelo.php"
+			],
+			[
+				"agregarRe",
+				"GranjaAvicolaLasTunas\\vista\\recogida\\AgregarRecogida.php"
+			],
+			[
+				"men",
+				"GranjaAvicolaLasTunas\\vista\\includes\\menu.php"
+			],
+			[
+				"agregarR",
+				"GranjaAvicolaLasTunas\\vista\\recogida\\AgregarResponsable.php"
+			],
+			[
+				"ini",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
+			],
+			[
+				"regis",
+				"GranjaAvicolaLasTunas\\modelo\\RegistroModelo.php"
+			],
+			[
+				"conexio",
+				"GranjaAvicolaLasTunas\\modelo\\Conexion.php"
+			],
+			[
+				"modeloRe",
+				"GranjaAvicolaLasTunas\\modelo\\RegistroModelo.php"
+			],
+			[
+				"hel",
+				"GranjaAvicolaLasTunas\\helper.php"
+			],
+			[
+				"hep",
+				"GranjaAvicolaLasTunas\\helper.php"
+			],
+			[
+				"sec",
+				"GranjaAvicolaLasTunas\\modelo\\SectorModelo.php"
+			],
+			[
+				"helper",
+				"GranjaAvicolaLasTunas\\helper.php"
+			],
+			[
+				"sector",
+				"GranjaAvicolaLasTunas\\modelo\\SectorModelo.php"
+			],
+			[
+				"contgrolado",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"lote",
+				"GranjaAvicolaLasTunas\\modelo\\LoteModelo.php"
+			],
+			[
+				"sql",
+				"GranjaAvicolaLasTunas\\sql\\GranjaAvicolaLasTunasSQL.sql"
+			],
+			[
+				"resp",
+				"GranjaAvicolaLasTunas\\modelo\\ResponsableModelo.php"
+			],
+			[
+				"responsa",
+				"GranjaAvicolaLasTunas\\modelo\\ResponsableModelo.php"
+			],
+			[
+				"agregr",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\AgregarGalponLote.php"
+			],
+			[
+				"ontorla",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"drop",
+				"Ejemplos Bootstrap\\dropdown.html"
+			],
+			[
+				"modelo",
+				"GranjaAvicolaLasTunas\\modelo\\LoteModelo.php"
+			],
+			[
+				"conexion",
+				"GranjaAvicolaLasTunas\\modelo\\Conexion.php"
+			],
+			[
+				"sacar",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\SacarLote.php"
+			],
+			[
+				"inic",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
+			],
+			[
+				"saca",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\SacarLote.php"
+			],
+			[
+				"Lo",
+				"GranjaAvicolaLasTunas\\vista\\LoginVista.php"
+			],
+			[
+				"iniio",
+				"GranjaAvicolaLasTunas\\controlador\\InicioControlador.php"
+			],
+			[
+				"iniicio",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
+			],
+			[
+				"inico",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
+			],
+			[
+				"ontrola",
+				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
+			],
+			[
+				"agrega",
+				"GranjaAvicolaLasTunas\\vista\\galpon\\AgregarSector.php"
+			],
+			[
+				"form",
+				"System_School-CODIGO GRATIS\\core\\controller\\Form.php"
+			],
+			[
+				"boo",
+				"Ejemplos Bootstrap\\css\\bootstrap.css"
+			],
+			[
+				"cone",
+				"GranjaAvicolaLasTunas\\modelo\\Conexion.php"
+			],
+			[
+				"mai",
+				"GranjaAvicolaLasTunas\\assets\\css\\main.css"
+			],
+			[
+				"fle",
+				"Ejemplos Bootstrap\\flexbox.html"
+			],
+			[
+				"alert",
+				"Ejemplos Bootstrap\\alertas.html"
+			],
+			[
+				"nav",
+				"Ejemplos Bootstrap\\navbar.html"
+			],
+			[
+				"mbd",
+				"MDB Admin\\css\\mdb.css"
+			],
+			[
+				"editar",
+				"GranjaAvicolaLasTunas\\vista\\recogida\\Editar.vista.php"
+			],
+			[
+				"moda",
+				"Ejemplos Bootstrap\\modal.html"
+			],
+			[
+				"modal",
+				"MDB Admin\\css\\addons\\datatables-select.css"
+			],
+			[
+				"modales",
+				"MDB Admin\\css\\addons\\datatables-select.css"
+			],
+			[
+				"lo",
+				"GranjaAvicolaLasTunas\\vista\\Login.vista.php"
+			],
+			[
+				"conex",
+				"GranjaAvicolaLasTunas\\modelo\\Conexion.php"
+			],
+			[
+				"usu",
+				"GranjaAvicolaLasTunas\\modelo\\Usuarios.modelo.php"
+			],
+			[
+				"logon contr",
+				"GranjaAvicolaLasTunas\\controlador\\Login.controlador.php"
+			],
+			[
+				"input",
+				"Ejemplos Bootstrap\\formularios\\input_group.html"
+			],
+			[
+				"formularios inl",
+				"Ejemplos Bootstrap\\formularios\\inline_forms.html"
+			],
+			[
+				"das",
+				"MDB Admin\\dashboard.html"
+			],
+			[
+				"botones",
+				"Ejemplos Bootstrap\\grupos_botones.html"
+			],
+			[
+				"tablas",
+				"Ejemplos Bootstrap\\tablas.html"
+			],
+			[
+				"navba",
+				"Ejemplos Bootstrap\\navbar.html"
+			],
+			[
+				"auto",
+				"proyecto-php-poo\\autoload.php"
+			],
+			[
+				"ontrolador",
+				"baseball\\Controlador\\Jugador.controlador.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 237.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

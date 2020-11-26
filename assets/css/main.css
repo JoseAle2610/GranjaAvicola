@@ -1,0 +1,203 @@
+/* ---------------------------------------------------
+    FONDO STYLE
+----------------------------------------------------- */
+.f {
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.fondoLogin {
+	background-image: url(../img/fondoLoginA.png);
+    background-size: cover;
+    width: 100vw;
+position: fixed;
+min-height: 100vh;
+}
+.fondo {
+	background-image:url(../img/2902348.jpg);
+	background-size: 1000px;
+width: 100vw;
+position: fixed;
+    min-height: 100vh;
+    opacity: .8;
+}
+.bg-orange{
+	background: #f0ad4e;
+	color: white;
+}
+/* ---------------------------------------------------
+    BUTTONS STYLE
+----------------------------------------------------- */
+.btn-group .btn {
+	padding: 0 .4em;
+}
+.btn-danger {
+	color: white !important;
+}
+/* ---------------------------------------------------
+    MODAL STYLE
+----------------------------------------------------- */
+.modal .modal-fluid {
+	width: 90%;
+	max-width: 90%; 
+}
+.modal .modal-fluid .modal-content {
+	width: 100%; 
+}
+.modal-dialog .bg-danger .lead{
+	color:white !important;
+}
+.modal.modal-dialog{
+	width: 1000px;
+} 
+
+/* ---------------------------------------------------
+    ALERTBOX STYLE
+----------------------------------------------------- */
+.alertBox {
+	position: absolute;
+	max-width: 40%;
+	bottom: 0;
+	right: 0;
+	bottom:0;
+}
+.alertBox .alert {
+    margin: 1em 2em;
+}
+/* ---------------------------------------------------
+    CARD DARK STYLE
+----------------------------------------------------- */
+.card-dark {
+  background-color: rgba(0,0,0,.5);
+  border-color: #000000;
+}
+.card-dark .card-header {
+  background-color: rgba(0,0,0,.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-dark .card-header:first-child {
+  border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+  color: white;
+}
+/* ---------------------------------------------------
+    TABLE STYLE
+----------------------------------------------------- */
+thead{
+	border-top: transparent;
+	background-color: transparent;
+}
+tbody tr td {
+    /*width: 20%;*/
+	padding: 0;
+	margin: 0;
+}
+tbody tr td .btn-group {
+	margin-top:10px;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #c4c4c4 ;
+}
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #eeeeee ;
+}
+tr td input {
+	min-width: 5em;
+}
+.table th,
+.table td {
+  vertical-align: center;
+  border-top: 1px solid transparent;
+}
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+#sidebar {
+    background: rgba(0,0,0,.7);
+    color: #fff;
+    height: 100vh;
+    transition: all 0.3s;
+}
+#sidebar.active {
+    margin-left: -250px;
+}
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: rgba(0,0,0,.5);
+}
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    color: white;
+}
+#sidebar ul li a:hover {
+    background: rgba(0,0,0,.3);
+}
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+    color: #fff;
+    background: #f0ad4e;
+}
+/*a[data-toggle="collapse"] {
+    position: relative;
+}
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}*/
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #f0ad4ecc;
+}
+ul.CTAs {
+    padding: 20px;
+}
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+a.download {
+    background: #fff;
+    color: #7386D5;
+}
+a.article,
+a.article:hover {
+    background: #6d7fcc !important;
+    color: #fff !important;
+}
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    width: 100%;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+    #sidebar.active {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
