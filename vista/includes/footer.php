@@ -38,7 +38,7 @@
 			unset($_SESSION['alerta']);
 		}
 
-		 ?>
+		?>
 		</div>
 		<?php require_once 'vista/responsable.php' ?>
 		<?php require_once "vista/usuario.php" ?>

@@ -17,7 +17,7 @@
 			<form method="post" action="?c=Galpon&m=AgregarGalpon">
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-12 col-md-6 mb-4">
+						<div class="col-12 col-md-6 mb-4 align-self-start" style="position: sticky;top:100px">
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">Número de Galpón</span>
@@ -55,23 +55,17 @@
 								</div>
 									
 								<input class="form-control" type="number" name="numeroModulo" id="numeroModulo" min="1" max="100" required>
-								<button class="btn btn-warning ml-2">Agregar</button>
+								<button type="button" id="agregarGalpon" class="btn btn-warning ml-2">Agregar</button>
 							</div>
 							<div class="row">
 								<div class="col-12">
-									<table class="table  table-striped w-100">
+									<table id="tablaModulos" class="table  table-striped w-100">
 										<thead class="bg-info">
 											<th>Nombre Modulo</th>
 											<th>Acción</th>
 										</thead>
 										<tbody>
-											<tr>
-<td>M-1</td>
-<td class="btn-group justify-content-center d-flex">
-<button type="button" class="btn btn-info form-control" data-toggle="modal" data-target="#DetalleGalpon"><i class="fas fa-search-plus"></i></button>
-<button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#Alerta"><i class="fas fa-trash-alt"></i></button>
-</td>
-											</tr>
+											
 										</tbody>
 									</table>
 								</div>

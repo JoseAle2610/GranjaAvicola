@@ -25,22 +25,25 @@ class GalponControlador{
 	}
 
 	public function agregarGalpon (){
-		if (isset($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
-					$_REQUEST['InicioLote'], $_REQUEST['numeroModulo'] )) {
+		// foreach ($_REQUEST['modulos'] as $key => $value) {
+		// 	echo $value;
+		// }
+		// if (isset($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
+		// 			$_REQUEST['InicioLote'], $_REQUEST['numeroModulo'] )) {
 			
-			if (!filter_var($_REQUEST['numeroGalpon'],FILTER_VALIDATE_INT)){
-				alerta('danger', "El numero del galpón debe ser un numero entero");
-			}else if(!filter_var($_REQUEST['NumeroGallinas'],FILTER_VALIDATE_INT)) {
-				alerta('danger', "El numero de Gallinas deber ser un numero entero");
-			}else if (!filter_var($_REQUEST['numeroModulo'],FILTER_VALIDATE_INT)) {
-				alerta('danger', "El nombre del sector debe ser un numero entero");
-			}else {
-				alerta('success', 'El Galpón se ha agregardo correctamente');
-			}
-		}else{
-			alerta('danger', 'Introduzca los datos para poder agregar un Galpon');
-		}
-		header('location:?c=Galpon');
+		// 	if (!filter_var($_REQUEST['numeroGalpon'],FILTER_VALIDATE_INT)){
+		// 		alerta('danger', "El numero del galpón debe ser un numero entero");
+		// 	}else if(!filter_var($_REQUEST['NumeroGallinas'],FILTER_VALIDATE_INT)) {
+		// 		alerta('danger', "El numero de Gallinas deber ser un numero entero");
+		// 	}else if (!filter_var($_REQUEST['numeroModulo'],FILTER_VALIDATE_INT)) {
+		// 		alerta('danger', "El nombre del sector debe ser un numero entero");
+		// 	}else {
+		// 		alerta('success', 'El Galpón se ha agregardo correctamente');
+		// 	}
+		// }else{
+		// 	alerta('danger', 'Introduzca los datos para poder agregar un Galpon');
+		// }
+		// header('location:?c=Galpon');
 	}
 
 	public function agregarGalponLote(){
@@ -76,6 +79,7 @@ class GalponControlador{
 	}
 
 	public function sacarLote(){
+		
 		if (isset($_REQUEST['idLote'], $_REQUEST['idGalpon'])) 
 		{
 			$galpon = $this->galponEnLoteModelo->selectById($_REQUEST['idGalpon'], $_REQUEST['idLote']);
