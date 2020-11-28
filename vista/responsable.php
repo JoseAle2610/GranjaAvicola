@@ -12,7 +12,7 @@
 				</button>
 			</div>
 			<!--Body-->
-			<form method="post" action="">
+			<form method="post" action="?c=recogida&m=agregarResponsable">
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-6">
@@ -37,7 +37,7 @@
 								</div>
 								<input type="text" name="ApellidoResponsable" id="ApellidoResponsable" class="form-control" pattern="[a-zA-Z ]+" minlength="3" maxlength="40">
 							</div>
-							
+							<input type="hidden" name="pagina" value="<?=$nombre?>">
 						</div>
 						<div class="col-md-6">
 							<table class="table table-striped table-responsive-sm">
@@ -48,16 +48,20 @@
 									<th>Acción</th>
 								</thead>	
 								<tbody>
+								<?php 
+								$responsableModelo = new ResponsableModelo();
+								foreach ($responsableModelo->select() as $key => $value): ?>
 									<tr>
-										<td>29587834</td>
-										<td>Jose</td>
-										<td>Suarez</td>
+										<td><?=$value->ci?></td>
+										<td><?=$value->nombreResponsable?></td>
+										<td><?=$value->apellidoResponsable?></td>
 										<td class="btn-group justify-content-center d-flex">
 											<button type="button" data-toggle="modal" data-target="#Alerta" class="btn btn-info"><i class="fas fa-search-plus"></i></button>
 											<button type="button" data-toggle="modal" data-target="#Alerta" class="btn btn-warning"><i class="fas fa-pen-fancy"></i></button>
 											<button type="button" data-toggle="modal" data-target="#Alerta" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
 										</td>
 									</tr>
+								<?php endforeach ?>
 								</tbody>			
 							</table>
 						</div>

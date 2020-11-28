@@ -13,7 +13,6 @@ class AjaxControlador{
 			$SectorModelo = json_encode($SectorModelo);
 			echo $SectorModelo;
 		}
-
 	}
 
 	public function infoGalpon(){
@@ -21,7 +20,7 @@ class AjaxControlador{
 			$consultasModelo = new ConsultasModelo();
 			$condicion = 'WHERE g.idGalpon = ?';
 			$datos = array ($_REQUEST['idGalpon']);
-			$consultasModelo = $consultasModelo->infoGalpon($condicion, $datos);
+			$consultasModelo = $consultasModelo->infoGalpon('', '', $condicion, $datos);
 			$consultasModelo = json_encode($consultasModelo);
 			echo $consultasModelo;
 		}

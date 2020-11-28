@@ -14,38 +14,64 @@
 				</button>
 			</div>
 			<!--Body-->
-			<form method="post" action="?c=Galpon" id="formularioEditarGalpon">
+			<form method="post" action="?c=Galpon&m=editarGalpon" id="formularioEditarGalpon">
 				<div class="modal-body">
 					<div class="row">
 						<!-- -------------------------------------------------------- -->
 						<!-- AGREGAR style="position: sticky;top:100px" y Media query -->
 						<!-- -------------------------------------------------------- -->
 						<div class="col-12 col-md-6 mb-4 align-self-start">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Número de Galpón</span>
-								</div>
-								<input type="number" name="editarNumeroGalpon" id="editarNumeroGalpon" class="form-control" min="1" max="100" required>
-							</div>
 							<div class="row">
-								<div class="col-4"><hr class="bg-warning"></div>
-								<div class="col-4 text-center"><h6>Datos del Lote N°<span>1</span></h6></div>
-								<div class="col-4"><hr class="bg-warning"></div>
-							</div>
-							
-							<div class="input-group mb-4">
-								<div class="input-group-prepend">
-									<label for="editarInicioLote" class="input-group-text">Inicio</label>
+								<div class="input-group col-9">
+									<div class="input-group-prepend">
+										<span class="input-group-text">Número de Galpón</span>
+									</div>
+									<input type="number" name="editarNumeroGalpon" id="editarNumeroGalpon" class="form-control" min="1" max="100" required>
 								</div>
+								<div class="col-3 align-self-center">
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" id="activo" name="activo">
+										<label class="custom-control-label" for="activo">Activo</label>
+									</div>
+								</div>		
+							</div>
+							<hr>
+							<h6>Lote Actual: L-<span id="loteActual"></span></h6>
+							<!-- ----------------------------------------------- -->
+							<!-- AQUI COLOCAREMOS LOS DATOS DEL LOTE ACTUAL      -->
+							<!-- ----------------------------------------------- -->
+							<div id="loteActualDatos">
+								<div class="input-group form-group">
+									<div class="input-group-prepend">
+										<label for="editarInicioLote" class="input-group-text">Inicio</label>
+									</div>
 									<input type="date" name="editarInicioLote" id="editarInicioLote" class="form-control" min="2000-01-01" max="2020-12-31" required>
-								
-							</div>
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">N° Gallinas</span>
 								</div>
-								<input type="number" name="editarNumeroGallinas" id="editarNumeroGallinas" class="form-control" min="1" max="9000" required>
+								<div class="input-group form-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">N° Gallinas</span>
+									</div>
+									<input type="number" name="editarNumeroGallinas" id="editarNumeroGallinas" class="form-control" min="1" max="9000" required>
+								</div>
 							</div>
+							<!-- <button type="button" class="btn btn-info btn-block" id="agregarLote">Agregar Nuevo Lote</button> -->
+							<!-- ----------------------------------------------- -->
+							<!-- AQUI COLOCAREMOS LOS DATOS DEL NUEVO LOTE       -->
+							<!-- ----------------------------------------------- -->
+							<!-- <div id="loteNuevoDatos" class="mt-2">
+								<div class="input-group form-group">
+									<div class="input-group-prepend">
+										<label for="editarInicioLote" class="input-group-text">Inicio</label>
+									</div>
+									<input type="date" name="nuevoInicioLote" id="nuevoInicioLote" class="form-control" min="2000-01-01" max="2020-12-31" required>
+								</div>
+								<div class="input-group form-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">N° Gallinas</span>
+									</div>
+									<input type="number" name="nuevoNumeroGallinas" id="nuevoNumeroGallinas" class="form-control" min="1" max="9000" required>
+								</div>
+							</div> -->
 						</div>
 						<div class="col-12 col-md-6">
 							<div class="d-flex">
@@ -67,7 +93,6 @@
 											<th>Acción</th>
 										</thead>
 										<tbody>
-											
 										</tbody>
 									</table>
 								</div>

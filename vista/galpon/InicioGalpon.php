@@ -31,6 +31,7 @@
 						<div class="col">
 							<table class="table table-striped table-responsive-md p-0 tablas">
 								<thead class="bg-orange text-dark" >
+									<th>Estado</th>
 									<th>Nombre</th>
 									<th>N° gallinas actuales</th>
 									<th>Lote Activo</th>
@@ -40,8 +41,13 @@
 								</thead>
 								<tbody>
 									<?php foreach ($this->galpones as $key => $value): ?>
-									<tr id="<?=$value->id?>">
-										<td><?=$value->nombreGalpon?></td>
+									<tr id="<?=$value->idGalpon?>">
+										<td>
+											<span class="badge badge-<?=$value->activo ? 'info' : 'danger' ;?>">
+												<?=$value->activo ? 'Activo' : 'Inactivo' ;?>
+											</span>
+										</td>
+										<td>G-<?=$value->nombreGalpon?></td>
 										<td><?=$value->gallinas?></td>
 										<td><?=$value->numeroLote?></td>
 										<td><?=cambiarFormatoFecha($value->inicio)?></td>
@@ -49,8 +55,7 @@
 										<!-- BUTTONS / MOSTRAR-EDITAR-ELIMINAR -->
 										<td class="btn-group justify-content-center d-flex">
 											<button type="button" class="btn btn-info" data-toggle="modal" data-target="#DetalleGalpon"><i class="fas fa-search-plus"></i></button>
-											<button idGalpon='<?=$value->id?>' class="btn btn-warning editarGalpon" data-toggle="modal" data-target='#editarGalpon'><i class="fas fa-pen-fancy"></i></button>
-											<button class="btn btn-danger text-dark"data-toggle="modal" data-target="#Alerta"><i class="fas fa-trash-alt text-dark"></i></button>
+											<button idGalpon='<?=$value->idGalpon?>' class="btn btn-warning editarGalpon" data-toggle="modal" data-target='#editarGalpon'><i class="fas fa-pen-fancy"></i></button>
 										</td>
 									</tr>
 									<?php endforeach ?>

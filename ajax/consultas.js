@@ -1,4 +1,6 @@
 $(document).ready(function (){
+    let loteDatosHide= false;
+    $('#loteNuevoDatos').hide();
 	
     $('#agregarGalpon').click(function (){
 
@@ -55,11 +57,15 @@ $(document).ready(function (){
                 $('#editarNumeroGalpon').val(datos[0]['nombreGalpon']);
                 $('#editarInicioLote').val(datos[0]['inicio']);
                 $('#editarNumeroGallinas').val(datos[0]['gallinas']);
+                $('#loteActual').html(datos[0]['numeroLote'])
+                $('#activo').prop('checked', datos[0]['activo']);
+
                 $('#editarTablaModulos tbody').html('');
                 datos.forEach(dato => {
                     let elementoTabla = $('#editarTablaModulos tbody').html();
-                    elementoTabla += elemetoTablaModulo(dato.nombreSector, dato.idSector)
+                    elementoTabla += elemetoTablaModulo(dato.nombreSector, dato.idSector, true)
                     $('#editarTablaModulos tbody').html(elementoTabla);
+                    $('#'+dato.idSector).prop('checked', dato.sectorActivo);
                 });
             }
         }
@@ -94,16 +100,23 @@ $(document).ready(function (){
 	// })
 })
 
-function elemetoTablaModulo (numeroModulo, idModulo = '') {
+function elemetoTablaModulo (numeroModulo, idModulo = '', editar = false) {
+    let button =    `<button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
+                        <i class="fas fa-trash-alt"></i>
+                    </button>`;
     if (idModulo.length == 0) {
         idModulo = numeroModulo;
     }
-    let elemento = `<tr>
+    if (editar == true) {
+        button = `  <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="${idModulo}" name="activo">
+                        <label class="custom-control-label" for="${idModulo}">Activo</label>
+                    </div>`;
+    }
+    let elemento = `<tr class=' p-0 '>
                         <td>M-${numeroModulo}</td>
                         <td class="justify-content-center d-flex">
-                          <button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
-                            <i class="fas fa-trash-alt"></i>
-                          </button>
+                            ${button}
                           <input type="hidden" name="modulos[]" value="${idModulo}" class="puntero">
                         </td>
                     </tr>`;

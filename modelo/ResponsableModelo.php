@@ -6,14 +6,13 @@ class ResponsableModelo{
 	}
 
 	public function insert($datos){
-		$sql = 'INSERT INTO Responsables (nombreResponsable, apellidoResponsable) VALUES (?, ?)';
-		return $this->pdo->consulta($sql, $datos);
+		$sql = 'INSERT INTO Responsables (ci, nombreResponsable, apellidoResponsable) VALUES (?, ?, ?)';
+		return $this->pdo->insertGetId($sql, $datos);
 	}
 
 	public function select(){
-		$sql = 'SELECT idResponsable as id, concat(nombreResponsable," ",apellidoResponsable) as nombre
-				FROM Responsables';
-		return $this->pdo->obtenerTodos($sql, array(''));
+		$sql = 'SELECT * FROM Responsables';
+		return $this->pdo->obtenerTodos($sql);
 	}
 
 	public function selectById($idResponsable){

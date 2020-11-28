@@ -12,7 +12,9 @@ class GalponControlador{
 
 	public function index(){
 		loged();
-		$this->galpones = $this->consultasModelo->tablaGalponInicio();
+		$group = 'GROUP BY g.nombreGalpon';
+		$count = 'COUNT(s.idSector) as cantModulos';
+		$this->galpones = $this->consultasModelo->infoGalpon($group, $count);
 		require_once 'vista/includes/header.php';
 		require_once 'vista/includes/menu.php';
 		
@@ -55,6 +57,15 @@ class GalponControlador{
 			alerta('danger', 'Introduzca los datos para poder agregar un Galpón');
 		}
 		header('location:?c=Galpon');
+	}
+
+	public function editarGalpon (){
+		if (isset($_REQUEST['editarNumeroGalpon'], $_REQUEST['editarNumeroGallinas'], 
+					$_REQUEST['editarInicioLote'], $_REQUEST['modulos'], $_REQUEST['idGalpon'])){
+
+		}else {
+			alerta('danger', 'Introduzca los datos para poder agregar un Galpón');
+		}
 	}
 
 	public function agregarGalponLote(){
