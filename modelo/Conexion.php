@@ -23,7 +23,7 @@ class Conexion{
 		$gsent = null;
 	}
 
-	public function obtener($sql, array $datos){
+	public function obtener($sql, $datos = array('')){
 		try {
 			$pdo = $this->conectar();
 			$gsent = $pdo->prepare($sql);
@@ -36,7 +36,7 @@ class Conexion{
 		}
 	}
 
-	public function obtenerTodos($sql, array $datos){
+	public function obtenerTodos($sql, $datos = array('')){
 		try {
 			$pdo = $this->conectar();
 			$gsent = $pdo->prepare($sql);
@@ -49,7 +49,7 @@ class Conexion{
 		}
 	}
 
-	public function consulta($sql, array $datos){
+	public function consulta($sql, $datos = array('')){
 		try {
 			$pdo = $this->conectar();
 			$gsent = $pdo->prepare($sql);

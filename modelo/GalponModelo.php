@@ -7,7 +7,7 @@ class GalponModelo{
 
 	public function insert($nombreGalpon){
 		$sql = 'INSERT INTO Galpones (nombreGalpon) Values(?)';
-		return $this->pdo->consulta($sql, array(	$nombreGalpon));
+		return $this->pdo->insertGetId($sql, array(	$nombreGalpon));
 	}
 
 	public function selectByName($nombreGalpon){

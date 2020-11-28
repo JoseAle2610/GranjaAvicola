@@ -10,7 +10,7 @@ class SectorModelo
 
 	public function insert(array $datos){
 		$sql = 'INSERT INTO Sectores (idGalpon, nombreSector) VALUES (?,?)';
-		return $this->pdo->consulta($sql, $datos);
+		return $this->pdo->insertGetId($sql, $datos);
 	}
 
 	public function selectById($idSector){

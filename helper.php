@@ -43,7 +43,12 @@ function loged(){
 		die();
 	}
 }
-
+function cambiarFormatoFecha($fecha){
+	list($yy,$mm,$dd)=explode("-",$fecha);
+	$fecha = new DateTime();
+	$fecha->setDate($yy, $mm, $dd); 
+	return $fecha->format('d-m-Y');
+}
 // function table($datos, $cabeza){
 
 // }

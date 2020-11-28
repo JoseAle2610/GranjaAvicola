@@ -1,30 +1,71 @@
-
-
-
 $(document).ready(function (){
 	
-  // numeroModulo
-  // agregarGalpon
-  $('#agregarGalpon').click(function (){
-    var numeroModulo = $('#numeroModulo').val();
-    var elementoTabla = $('#tablaModulos tbody').html();
-        elementoTabla += `<tr>
-                            <td>M-${numeroModulo}</td>
-                            <td class="btn-group justify-content-center d-flex">
-                              <button type="button" class="btn btn-danger form-control" data-toggle="modal" data-target="#Alerta">
-                                <i class="fas fa-trash-alt"></i>
-                              </button>
-                              <input type="hidden" name="modulos[]" value="${numeroModulo}">
-                            </td>
-                      </tr>`;
-    
-    $('#tablaModulos tbody').html(elementoTabla);
-    console.log('hola ', numeroModulo);
-  });
+    $('#agregarGalpon').click(function (){
 
+        let numeroModulo = $('#numeroModulo').val();
+        let datosModulo = document.getElementsByClassName('puntero');
+        let repetido = false;
+        // ASEGURARSE DE QUE NO SE REPITA 
+        // EL NOMBRE DEL MODULO
+        if (datosModulo.length != 0) {
+          let arreglo = [];
+          for (let i = 0; i < datosModulo.length; i++) {
+            if (datosModulo[i].value == numeroModulo) {
+              repetido = true;
+            }
+          }
+        }
+        // SI NO ESTA VACIO NI ESTA REPETIDO LO AGREGAMOS
+        if (numeroModulo != '' && repetido == false) {
+            let elementoTabla = $('#tablaModulos tbody').html();
+                elementoTabla += elemetoTablaModulo(numeroModulo);
+            $('#tablaModulos tbody').html(elementoTabla);
+        } else {
+          alert('El número del modulo no puede estar vacío ni repetido');
+        }
+    });
 
+    $(document).on('click', '.eliminarModuloTabla', (e) => {
+        $(this)[0].activeElement.parentElement.parentElement.remove();
+    });
 
+  // VALIDAMOS QUE EXISTA POR LO MENOS UN MODULO
+    $('#formularioAgregarGalpon').submit(e => {
 
+        let datosModulo = document.getElementsByClassName('puntero');
+        if (datosModulo.length == 0) {
+          e.preventDefault();
+          alert('Debe existir por lo menos un modulo');
+        }
+
+    });
+
+  // OBTENEMOS TODOS LOS DATOS PARA PODER EDITAR GRACIAS NELLA
+    $(".editarGalpon").click(function(){
+        let idGalpon = $(this).attr("idGalpon");
+        console.log(idGalpon);
+        $.ajax({
+            url:  "?c=ajax&m=infoGalpon",
+            data: 'idGalpon='+idGalpon,
+            type: 'GET',
+            success: function(respuesta){
+            if (!respuesta.error) {
+                let datos = JSON.parse(respuesta);
+                console.log(datos);
+                $('#editarNumeroGalpon').val(datos[0]['nombreGalpon']);
+                $('#editarInicioLote').val(datos[0]['inicio']);
+                $('#editarNumeroGallinas').val(datos[0]['gallinas']);
+                $('#editarTablaModulos tbody').html('');
+                datos.forEach(dato => {
+                    let elementoTabla = $('#editarTablaModulos tbody').html();
+                    elementoTabla += elemetoTablaModulo(dato.nombreSector, dato.idSector)
+                    $('#editarTablaModulos tbody').html(elementoTabla);
+                });
+            }
+        }
+    });
+
+})
 
 
 
@@ -52,3 +93,19 @@ $(document).ready(function (){
  //      })
 	// })
 })
+
+function elemetoTablaModulo (numeroModulo, idModulo = '') {
+    if (idModulo.length == 0) {
+        idModulo = numeroModulo;
+    }
+    let elemento = `<tr>
+                        <td>M-${numeroModulo}</td>
+                        <td class="justify-content-center d-flex">
+                          <button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
+                            <i class="fas fa-trash-alt"></i>
+                          </button>
+                          <input type="hidden" name="modulos[]" value="${idModulo}" class="puntero">
+                        </td>
+                    </tr>`;
+    return elemento;
+}

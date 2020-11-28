@@ -235,7 +235,7 @@ CREATE TABLE `usuarios` (
 
 
 INSERT INTO `usuarios` (`idUsuarios`, `nombreUsuario`, `claveUsuario`, `fechaCreacion`, `activo`, `pregunta`, `respuesta`, `ci`) 
-VALUES (NULL, 'Admin', '123456', '2020-11-26', '1', '¿Sakura o Hinata?', 'Sakura', '27554995');
+VALUES (1, 'Admin', '123456', '2020-11-26', '1', '¿Sakura o Hinata?', 'Sakura', '27554995');
 -- --------------------------------------------------------
 
 --

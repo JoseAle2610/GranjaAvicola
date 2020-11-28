@@ -16,4 +16,15 @@ class AjaxControlador{
 
 	}
 
+	public function infoGalpon(){
+		if (isset($_REQUEST['idGalpon'])) {
+			$consultasModelo = new ConsultasModelo();
+			$condicion = 'WHERE g.idGalpon = ?';
+			$datos = array ($_REQUEST['idGalpon']);
+			$consultasModelo = $consultasModelo->infoGalpon($condicion, $datos);
+			$consultasModelo = json_encode($consultasModelo);
+			echo $consultasModelo;
+		}
+	}
+
 }

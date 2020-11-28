@@ -1,49 +1,60 @@
 <?php 
 
 class GalponControlador{
-	
+
 	function __construct(){
 		$this->galponEnLoteModelo = new GalponEnLoteModelo();
 		$this->galponModelo  = new GalponModelo();
 		$this->loteModelo = new LoteModelo();
-		$this->SectorModelo = new SectorModelo();
+		$this->sectorModelo = new SectorModelo();
+		$this->consultasModelo = new ConsultasModelo();
 	}
 
 	public function index(){
 		loged();
+		$this->galpones = $this->consultasModelo->tablaGalponInicio();
 		require_once 'vista/includes/header.php';
 		require_once 'vista/includes/menu.php';
 		
-		require_once (isset($_REQUEST['p'])) ? 'vista/galpon/Modulo.php' : 'vista/galpon/InicioGalpon.php' ;
+		require_once 'vista/galpon/InicioGalpon.php' ;
 		
 		require_once 'vista/galpon/AgregarGalpon.php';
-		require_once 'vista/galpon/AgregarGalponLote.php';
-		require_once 'vista/galpon/AgregarSector.php';
-		require_once 'vista/galpon/SacarLote.php';
 		require_once 'vista/galpon/DetalleGalpon.php';
+		require_once 'vista/galpon/EditarGalpon.php';
 		require_once 'vista/includes/footer.php';
 	}
 
 	public function agregarGalpon (){
-		// foreach ($_REQUEST['modulos'] as $key => $value) {
-		// 	echo $value;
-		// }
-		// if (isset($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
-		// 			$_REQUEST['InicioLote'], $_REQUEST['numeroModulo'] )) {
-			
-		// 	if (!filter_var($_REQUEST['numeroGalpon'],FILTER_VALIDATE_INT)){
-		// 		alerta('danger', "El numero del galpón debe ser un numero entero");
-		// 	}else if(!filter_var($_REQUEST['NumeroGallinas'],FILTER_VALIDATE_INT)) {
-		// 		alerta('danger', "El numero de Gallinas deber ser un numero entero");
-		// 	}else if (!filter_var($_REQUEST['numeroModulo'],FILTER_VALIDATE_INT)) {
-		// 		alerta('danger', "El nombre del sector debe ser un numero entero");
-		// 	}else {
-		// 		alerta('success', 'El Galpón se ha agregardo correctamente');
-		// 	}
-		// }else{
-		// 	alerta('danger', 'Introduzca los datos para poder agregar un Galpon');
-		// }
-		// header('location:?c=Galpon');
+
+		if (isset($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
+					$_REQUEST['inicioLote'], $_REQUEST['modulos'])) {
+			$idGalpon = 0;
+			$idModulos = array();
+			try {
+				# INSERTAMOS EL GALPON Y CAPTURAMOS SU ID
+				$idGalpon = $this->galponModelo->insert($_REQUEST['numeroGalpon']);
+				# AGREGAMOS EL LOTE AL GALPON
+				$datosGalponEnLote = array(	$idGalpon, 1, $_REQUEST['NumeroGallinas'], $_REQUEST['inicioLote']);
+				$this->galponEnLoteModelo->insert($datosGalponEnLote);
+				# AGREGAR LOS MODULOS
+				foreach ($_REQUEST['modulos'] as $key => $valor) {
+					$datosModulo = array($idGalpon, $valor);
+					$this->sectorModelo->insert($datosModulo);
+				}
+				# ALERTA DE QUE TODO ESTA BIEN
+				alerta('success', 'El Galpón, el lote y los sectores se han agregardo correctamente');
+			} catch (PDOException $e) {
+				if ($idgalpon != 0) {
+					$this->galponModelo->delete($idGalpon);
+					$this->galponEnLoteModelo->delete($idGalpon, 1);
+				}
+				alerta('danger', 'Ha ocurrido un problema al insertar los datos, por favor intente nuevamente');
+				alerta('danger', $e->getMessage());
+			}
+		} else {
+			alerta('danger', 'Introduzca los datos para poder agregar un Galpón');
+		}
+		header('location:?c=Galpon');
 	}
 
 	public function agregarGalponLote(){
