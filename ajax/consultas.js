@@ -65,7 +65,11 @@ $(document).ready(function (){
                         let elementoTabla = $('#editarTablaModulos tbody').html();
                         elementoTabla += elemetoTablaModulo(dato.nombreSector, dato.idSector, true)
                         $('#editarTablaModulos tbody').html(elementoTabla);
-                        $('#'+dato.idSector).prop('checked', dato.sectorActivo);
+                        if (dato.sectorActivo == 0) {
+                        $('#'+dato.idSector).prop('checked', false);
+                        }else{
+                        $('#'+dato.idSector).prop('checked', true);
+                    }
                     });
                 }
             }
@@ -93,6 +97,8 @@ $(document).ready(function (){
                     }else{
                         $('#activoResponsable').prop('checked', true);
                     }
+                    $('#Nacionalidad').val(datos.ci.substring(0,1));
+                    $('#Cedula').val(datos.ci.substring(1)); 
                     // $('#Cedula').val(datos.ci);
                     // document.getElementById("activoResponsable").checked = datos.activo;
                     $('#editar').val(true);
