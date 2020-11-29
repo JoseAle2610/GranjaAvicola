@@ -50,15 +50,11 @@ class Conexion{
 	}
 
 	public function consulta($sql, $datos = array('')){
-		try {
-			$pdo = $this->conectar();
-			$gsent = $pdo->prepare($sql);
-			$resultado = $gsent->execute($datos);
-			$this->desconectar($pdo, $gsent);
-			return $resultado;
-		} catch (PDOException $e) {
-			die($e->getMessage());
-		}
+		$pdo = $this->conectar();
+		$gsent = $pdo->prepare($sql);
+		$resultado = $gsent->execute($datos);
+		$this->desconectar($pdo, $gsent);
+		return $resultado;
 	}
 
 	public function insertGetId($sql, $datos = array('') ){

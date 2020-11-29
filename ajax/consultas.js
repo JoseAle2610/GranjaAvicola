@@ -51,29 +51,66 @@ $(document).ready(function (){
             data: 'idGalpon='+idGalpon,
             type: 'GET',
             success: function(respuesta){
-            if (!respuesta.error) {
-                let datos = JSON.parse(respuesta);
-                console.log(datos);
-                $('#editarNumeroGalpon').val(datos[0]['nombreGalpon']);
-                $('#editarInicioLote').val(datos[0]['inicio']);
-                $('#editarNumeroGallinas').val(datos[0]['gallinas']);
-                $('#loteActual').html(datos[0]['numeroLote'])
-                $('#activo').prop('checked', datos[0]['activo']);
+                if (!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                    console.log(datos);
+                    $('#editarNumeroGalpon').val(datos[0]['nombreGalpon']);
+                    $('#editarInicioLote').val(datos[0]['inicio']);
+                    $('#editarNumeroGallinas').val(datos[0]['gallinas']);
+                    $('#loteActual').html(datos[0]['numeroLote'])
+                    $('#activo').prop('checked', datos[0]['activo']);
 
-                $('#editarTablaModulos tbody').html('');
-                datos.forEach(dato => {
-                    let elementoTabla = $('#editarTablaModulos tbody').html();
-                    elementoTabla += elemetoTablaModulo(dato.nombreSector, dato.idSector, true)
-                    $('#editarTablaModulos tbody').html(elementoTabla);
-                    $('#'+dato.idSector).prop('checked', dato.sectorActivo);
-                });
+                    $('#editarTablaModulos tbody').html('');
+                    datos.forEach(dato => {
+                        let elementoTabla = $('#editarTablaModulos tbody').html();
+                        elementoTabla += elemetoTablaModulo(dato.nombreSector, dato.idSector, true)
+                        $('#editarTablaModulos tbody').html(elementoTabla);
+                        $('#'+dato.idSector).prop('checked', dato.sectorActivo);
+                    });
+                }
             }
-        }
+        });
     });
 
-})
 
 
+
+    $('.editarResponsable').click(function(){
+        let ci = $(this).attr("ci");
+        console.log(ci);
+        $.ajax({
+            url:  "?c=ajax&m=infoResponsable",
+            data: 'ci='+ci,
+            type: 'GET',
+            success: function(respuesta){
+                if (!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                    console.log(datos.activo);
+                    $('#NombreResponsable').val(datos.nombreResponsable);
+                    $('#ApellidoResponsable').val(datos.apellidoResponsable);
+                    if (datos.activo == 0) {
+                        $('#activoResponsable').prop('checked', false);
+                    }else{
+                        $('#activoResponsable').prop('checked', true);
+                    }
+                    // $('#Cedula').val(datos.ci);
+                    // document.getElementById("activoResponsable").checked = datos.activo;
+                    $('#editar').val(true);
+                    // $('#Nacionalidad').prop('selected', true);
+
+                }
+            }
+        });
+    })
+
+    $('.eliminarResponsable').click(function(){
+        let mensaje = `¿Estas seguro de que quieres eliminar a este Responsable?\n`;
+        mensaje += `Recuerda que no se puede restaurar esta accion`;
+        if (confirm(mensaje)) {
+            let ci = $(this).attr("ci");
+            window.location.assign('?c=responsable&m=eliminarResponsable&ci='+ci);
+        }
+    })
 
 
 	// $('.idGalpon').val(4);

@@ -26,4 +26,12 @@ class AjaxControlador{
 		}
 	}
 
+	public function infoResponsable(){
+		if (isset($_REQUEST['ci'])) {
+			$responsableModelo = new ResponsableModelo();
+			$responsableModelo = $responsableModelo->selectById($_REQUEST['ci']);
+			$responsableModelo = json_encode($responsableModelo);
+			echo $responsableModelo;
+		}
+	}
 }

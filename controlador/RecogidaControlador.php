@@ -25,38 +25,6 @@ class RecogidaControlador
 		require_once 'vista/includes/footer.php';
 	}
 
-	public function agregarResponsable(){
-		if (isset($_REQUEST['NombreResponsable'], $_REQUEST['ApellidoResponsable']
-					, $_REQUEST['Cedula'], $_REQUEST['Nacionalidad'])) 
-		{  
-			if (preg_match('[a-zA-Z ]+', $_REQUEST['NombreResponsable'])) {
-
-				alerta('danger', 'El nombre del responsable no puede contener caracteres especiales');
-
-			} else if(preg_match('[a-zA-Z ]+', $_REQUEST['ApellidoResponsable'])){
-
-				alerta('danger', 'Al apellido del responsable no debe ontener caracteres especiales');
-
-			} else if(!filter_var($_REQUEST['Cedula'],FILTER_VALIDATE_INT)){
-				alerta('danger', 'La cedula debe ser un numero entero');
-			}else {
-				try {
-					$datos = array(	$_REQUEST['Nacionalidad'].$_REQUEST['Cedula'],
-									$_REQUEST['NombreResponsable'],
-									$_REQUEST['ApellidoResponsable']);
-					$this->ResponsableModelo->insert($datos);
-					alerta('success', 'Se agregó al Responsable '.$_REQUEST['nombreResponsable'].' Correctamente');
-				} catch (PDOException $e) {
-					alerta('danger', 'Ha ocurrido un error al agregar al Responsable');
-				}
-			}			
-		}else {
-			alerta('danger', 'Introduzca los datos para poder agregar a un Responsable');
-		}
-		$pagina = isset($_REQUEST['pagina']) ? $_REQUEST['pagina'] : 'recogida' ;
-		header('location:?c='.$pagina);
-	}
-
 	public function agregarRegistro(){
 		if (isset($_REQUEST['idSector'], $_REQUEST['semana'], 
 			$_REQUEST['fecha'])) 
