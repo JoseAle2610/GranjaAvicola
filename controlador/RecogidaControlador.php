@@ -10,10 +10,12 @@ class RecogidaControlador
 		$this->RegistroModelo = new RegistroModelo();
 		$this->RecogidaModelo = new RecogidaModelo();
 		$this->UsuarioModelo = new UsuarioModelo();
+		$this->ConsultasModelo = new ConsultasModelo();
 	}
 
 	public function index(){
 		loged();
+		$recogidas = $this->ConsultasModelo->infoRecogida();
 		require_once 'vista/includes/header.php';
 		require_once 'vista/includes/menu.php';
 		require_once 'vista/recogida/InicioRecogida.php';
