@@ -1,7 +1,7 @@
 <!-- MODAL RESPONSABLE -->
 <div class="modal fade " id="Usuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 	aria-hidden="true" >
-	<div class="modal-dialog" role="document">
+	<div class="modal-dialog  modal-fluid" role="document">
 		<!--Content-->
 		<div class="modal-content">
 			<!--Header-->
@@ -12,29 +12,102 @@
 				</button>
 			</div>
 			<!--Body-->
-			<form method="post" action="?c=recogida&m=agregarUsuario">
+			<form method="post" action="?c=usuario&m=guardarUsuario">
+				<?php 
+				if (isset($_REQUEST['Cedula'])) {
+					var_dump($_REQUEST['Cedula']);
+				} else echo "noup AQUITOY";
+				 ?>
 				<div class="modal-body">
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text text-white bg-dark">Nombre</span>
+					<div class="row justify-content-center">
+						<div class="col-12 col-md-6">
+							<div class="row">
+								<div class="col-9">
+									<div class="input-group form-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text text-white bg-dark">Cédula</span>
+										</div>
+										<?php
+										$ResponsableModel = new ResponsableModelo();
+										$select = "<select class='form-control' name='Cedula' id='Cedula'>";
+											foreach ($ResponsableModel->select() as $key => $registro) {
+											$select .= "<option value='$registro->ci'>$registro->ci</option>";
+											}
+										$select .= '</select>';
+										echo $select;
+										
+										?>
+									</div>
+								</div>
+								<div class="col-3">
+									<div class="custom-control custom-checkbox">
+										<input type="checkbox" class="custom-control-input" id="activoUsuario" name="activoUsuario" checked="">
+										<label class="custom-control-label" for="activoUsuario">Activo</label>
+									</div>
+								</div>
+								<div class="col-9">
+									<div class="input-group form-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text text-white bg-dark">Usuario</span>
+										</div>
+										<input type="text" name="nombreUsuarioAgregar" id="nombreUsuarioAgregar" class="form-control" required minlength="4" maxlength="20">
+									</div>
+								</div>
+								<div class="col-9">
+									<div class="input-group form-group">
+										<div class="input-group-prepend">
+											<span class="input-group-text text-white  bg-dark">Clave</span>
+										</div>
+										<input type="password" name="claveUsuarioAgregar" id="claveUsuarioAgregar" class="form-control" required minlength="4" maxlength="20">
+									</div>
+								</div>
+							</div>
 						</div>
-						<input type="text" name="nombreUsuarioAgregar" id="nombreUsuarioAgregar" class="form-control" pattern="[a-zA-Z ]+" maxlength="4" maxlength="20" required>
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text text-white  bg-dark">Clave</span>
+						<div class="col-12 col-md-6 mt-4">
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text text-white bg-dark">Pregunta</span>
+								</div>
+								<select class='form-control' name='preguntaUsuarioAgregar' id='preguntaUsuarioAgregar'>
+									<option value="Nombre de tu mejor amigo">Nombre de tu mejor amigo</option>
+									<option value="Nombre de tu mama">Nombre de tu mamá</option>
+									<option value="Fecha de nacimiento de tu abuela">Fecha de nacimiento de tu abuela</option>
+									<option value="Videojuego Favorito">Videojuego Favorito</option>
+								</select>
+										
+							</div>
+							<div class="input-group form-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text text-white bg-dark">Respuesta</span>
+								</div>
+								<input type="text" name="RespuestaUsuarioAgregar" id="RespuestaUsuarioAgregar" class="form-control" required minlength="4" maxlength="20">
+							</div>
+							<!-- EDITAR -->
+							<input type="hidden" id="editar" name="editar" value="0">
 						</div>
-						<input type="password" name="claveUsuarioAgregar" id="claveUsuarioAgregar" class="form-control" required minlength="4" maxlength="20">
-					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text text-white bg-dark">Rol</span>
+						
+						
+						<div class="col-12">
+							<!-- -------------------------------------- -->
+							<!-- CONSULTA Usuario                      -->
+							<!-- -------------------------------------- -->
+							<table class="table table-striped table-responsive-md">
+								<thead class="bg-info text-dark">
+									<th>Estado</th>
+									<th>Cédula</th>
+									<th>Nombre Usuario</th>
+									<th>Clave</th>
+									<th>Pregunta</th>
+									<th>Respuesta</th>
+									<th>Acción</th>
+								</thead>
+								<tbody>
+									
+								</tbody>
+							</table>
 						</div>
-						<select name="RolAgregar" id="RolAgregar" class="form-control">
-							<option value="1">Admin</option>
-							<option value="1">Responsable</option>
-						</select>
 					</div>
+					
 				</div>
 				<!--Footer-->
 				<div class="modal-footer">
