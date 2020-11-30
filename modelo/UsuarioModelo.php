@@ -5,10 +5,9 @@ class UsuarioModelo{
 		$this->pdo = new Conexion();
 	}
 
-	public function incertar($nombreUsuario, $claveUsuario){
-		$sql = 'INSERT INTO `usuarios` (`nombreUsuario`, `claveUsuario`, `fechaCreacion`)
-		 						VALUES (?, ?, CURRENT_DATE());';
-		$datos = array($nombreUsuario, $claveUsuario);
+	public function insertar(array $datos){
+		$sql = 'INSERT INTO `usuarios` (nombreUsuario, claveUsuario, fechaCreacion, activo, pregunta, respuesta, ci)
+		 						VALUES (?, ?, CURRENT_DATE(), ?, ?, ?, ?);';
 		return $this->pdo->insertGetId($sql, $datos);
 	}
 
