@@ -32,4 +32,8 @@ class ResponsableModelo{
 		return $this->pdo->consulta($sql, $datos);
 	}
 
+	public function insertResponsableRecogida($idRegistro, $ci){
+		$sql = 'INSERT INTO responsablesderegistro (idRegistro, ci) VALUES (?,?)';
+		return $this->pdo->insertGetId($sql, array($idRegistro, $ci));
+	}
 }

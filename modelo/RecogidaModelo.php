@@ -36,7 +36,7 @@ class RecogidaModelo{
 
 	public function insertValores($idRecogida, $idCategoria, $valor){
 		$sql = 'INSERT INTO Valores(idRecogida, idCategoria, valor) VALUES (?, ?, ?)';
-		return $this->pdo->consulta($sql, array($idRecogida, $idCategoria, $valor) );
+		return $this->pdo->insertGetId($sql, array($idRecogida, $idCategoria, $valor) );
 	}
 
 	public function updateValores($idRecogida, $idCategoria, $valor){

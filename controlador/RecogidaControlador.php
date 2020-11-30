@@ -25,31 +25,29 @@ class RecogidaControlador
 		require_once 'vista/includes/footer.php';
 	}
 
-	public function agregarRegistro(){
-		if (isset($_REQUEST['idSector'], $_REQUEST['semana'], 
-			$_REQUEST['fecha'])) 
+	public function agregarRecogida(){
+		if (isset($_REQUEST['idSector'], $_REQUEST['responsable'], 
+			$_REQUEST['fecha'], $_REQUEST['recogida'])) 
 		{
-			if (!filter_var($_REQUEST['idSector'],FILTER_VALIDATE_INT)) {
-				alerta('danger', '¡El id del Sector debe se un numero entero!');
-			} else if (!filter_var($_REQUEST['semana'],FILTER_VALIDATE_INT)) {
-				alerta('danger', 'El numero de la Semana debe ser un numero entero');
-			} else {
+			#AGREGAR REGISTRO
+			#AGREGAR LAS RESPECTIVAS VALIDAIONES
+			try {
+				$idRegistro = $this->RegistroModelo->insert($_REQUEST['idSector'],
+															$_REQUEST['fecha']	  );
+				$this->ResponsableModelo->insertResponsableRecogida($idRegistro, $_REQUEST['responsable']);
+				#AGREGAR RECOGIDAS
+				foreach ($_REQUEST['recogida'] as $recogida) {
+					$idRecogida = $this->RecogidaModelo->insert($idRegistro, $recogida['hora']);
+					foreach ($recogida as $key => $valor) {
+						if ($key !== 'hora' && !empty($valor)) {
+							$this->RecogidaModelo->insertValores($idRecogida, $key, $valor);
+						}
+					}
+				}
 				alerta('success', 'Se agregó la recogida Correctamente');
+			} catch (PDOException $e) {
+				alerta('success', 'Ocurrio un error al agregar la recogida');
 			}
-			// #AGREGAR REGISTRO
-			// #AGREGAR LAS RESPECTIVAS VALIDAIONES
-			// $idRegistro = $this->RegistroModelo->insert($_REQUEST['idSector'],
-			// 											$_REQUEST['semana'],
-			// 											$_REQUEST['fecha']	  );
-			// #AGREGAR RECOGIDAS
-			// foreach ($_REQUEST['recogida'] as $recogida) {
-			// 	$idRecogida = $this->RecogidaModelo->insert($idRegistro, $recogida['hora']);
-			// 	foreach ($recogida as $key => $valor) {
-			// 		if ($key !== 'hora' && !empty($valor)) {
-			// 			$this->RecogidaModelo->insertValores($idRecogida, $key, $valor);
-			// 		}
-			// 	}
-			// }
 
 		}else {
 			alerta('danger', 'Introduzca los datos para poder agregar una Recogida');

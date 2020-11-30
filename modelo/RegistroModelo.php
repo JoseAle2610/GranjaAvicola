@@ -5,9 +5,9 @@ class RegistroModelo{
 		$this->pdo = new Conexion();
 	}
 
-	public function insert($idSector, $semana, $fecha){
-		$sql = 'INSERT INTO Registros (idSector, semana, fecha) VALUES (?, ?, ?)';
-		return $this->pdo->insertGetId($sql, array($idSector, $semana, $fecha));
+	public function insert($idSector, $fecha){
+		$sql = 'INSERT INTO Registros (idSector, fecha) VALUES (?, ?)';
+		return $this->pdo->insertGetId($sql, array($idSector, $fecha));
 	}
 
 	public function selectById($idRegistro){

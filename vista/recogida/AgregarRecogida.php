@@ -16,7 +16,7 @@
 				</button>
 			</div>
 			<!--Body-->
-			<form method="post" action="?c=recogida&m=agregarRegistro">
+			<form method="post" action="?c=recogida&m=agregarRecogida">
 				<div class="modal-body">
 					
 					<div class="form-group row">
@@ -25,16 +25,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-dark text-white">Galpón</span>
 								</div>
-								<select class="form-control" name="idGalpon">
-									<option value="1">G-1</option>
-									<option value="2">G-2</option>
-									<option value="3">G-3</option>
-									<option value="4">G-4</option>
-									<option value="5">G-5</option>
-									<option value="6">G-6</option>
-									<option value="7">G-7</option>
-									<option value="8">G-8</option>
-								</select>
+								<?=select($this->GalponModelo->select(), 'idGalpon')?>
 							</div>
 						</div>
 						<div class="col-6 col-md-3">
@@ -42,23 +33,30 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-dark text-white">Modulo</span>
 								</div>
-								<select class="form-control" name="idSector">
-									<option value="1">M-1</option>
-									<option value="2">M-2</option>
-									<option value="3">M-3</option>
+								<select class="form-control idSector" name="idSector">
 								</select>
-								
 							</div>
 						</div>
-						<div class="col-6 col-md-3 mb-2">
+						<div class="col-6 col-md-3 mb-2 input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text bg-dark text-white">Fecha</span>
+							</div>
 							<input type="date" name="fecha" id="Fecha" class="form-control" min="2000-01-01" max="2020-12-31" value="2020-10-23" required>
 						</div>
 						<div class="col-6 col-md-3 mb-2">
 							<div class="input-group">
 								<div class="input-group-prepend">
-								<span class="input-group-text bg-dark text-white">Semana</span>
+								<span class="input-group-text bg-dark text-white">Responsable</span>
 								</div>
-								<input type="number" name="semana" id="Semana" class="form-control" min="1" max="90" required>
+								<?php 
+									$responsables = $this->ResponsableModelo->select();
+									$select = "<select class='form-control' name='responsable' id='responsable'>";
+									foreach ($responsables as $key => $registro) {
+										$select .= "<option value='$registro->ci'>$registro->ci</option>";
+									}
+									$select .= '</select>';
+									echo $select;
+								?>
 							</div>
 						</div>
 					</div>
@@ -80,54 +78,18 @@
 							<th>Pool</th>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td><input type="time" class="form-control" value="09:00" min="09:00" max="11:59" required></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td><input type="time" class="form-control" value="14:00" min="12:00" max="15:59" required></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td><input type="time" class="form-control" value="18:00" min="16:00" max="18:00" required></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-								<td><input type="number" name="" class="form-control"></td>
-							</tr>
 						<?php 
-							// $categorias = $this->RecogidaModelo->selectCategorias();
-							// $horas = array('09:00','14:00','18:00');
-							// for ($i=0; $i < 3 ; $i++) {
-							// 	echo "<tr>
-							// 			<td>".($i + 1)."</td>
-							// 			<td><input type='time' class='form-control' name='recogida[$i][hora]' value='$horas[$i]'></td>";
-							// 	foreach ($categorias as $key => $categoria) {
-							// 		echo "<td><input type='number' class='form-control' name='recogida[$i][$categoria->idCategoria]'></td>";
-							// 	}
-							// 	echo "</tr>";
-							// }
+							$categorias = $this->RecogidaModelo->selectCategorias();
+							$horas = array('09:00','14:00','18:00');
+							for ($i=0; $i < 3 ; $i++) {
+								echo "<tr>
+										<td>".($i + 1)."</td>
+										<td><input type='time' class='form-control' name='recogida[$i][hora]' value='$horas[$i]'></td>";
+								foreach ($categorias as $key => $categoria) {
+									echo "<td><input type='number' class='form-control' name='recogida[$i][$categoria->idCategoria]'></td>";
+								}
+								echo "</tr>";
+							}
 						 ?>
 						</tbody>
 					</table>

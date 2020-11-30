@@ -12,12 +12,13 @@ spl_autoload_register('autoload');
 
 function select(array $datos, $name, $value=''){
 	$select = "<select class='form-control $name' name='$name' id='$name'>";
+	$select .= "<option>-Seleccione-</option>";
 	foreach ($datos as $key => $registro) {
 		$selected = ($registro->id == $value) ? 'selected': '' ;
 		$select .= "<option value='$registro->id' $selected>$registro->nombre</option>";
 	}
 	$select .= '</select>';
-	echo $select;
+	return $select;
 }
 
 function verDatos($algo){
