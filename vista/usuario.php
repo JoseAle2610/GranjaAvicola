@@ -24,7 +24,7 @@
 										</div>
 										<?php
 										$ResponsableModel = new ResponsableModelo();
-										$select = "<select class='form-control' name='Cedula' id='Cedula'>";
+										$select = "<select class='form-control' name='Cedula_Usuario' id='Cedula_Usuario'>";
 												foreach ($ResponsableModel->select() as $key => $registro) {
 												$select .= "<option value='$registro->ci'>$registro->ci</option>";
 												}
@@ -78,7 +78,8 @@
 								<input type="text" name="RespuestaUsuarioAgregar" id="RespuestaUsuarioAgregar" class="form-control" required minlength="4" maxlength="20">
 							</div>
 							<!-- EDITAR -->
-							<input type="hidden" id="editar" name="editar" value="0">
+							<input type="hidden" id="editarUsuario" name="editarUsuario" value="0">
+							<input type="hidden" name="idUsuarios" id="idUsuarios">
 						</div>
 						
 						
@@ -114,9 +115,8 @@
 										<td><?=$value->pregunta?></td>
 										<td><?=$value->respuesta?></td>
 										<td class="btn-group justify-content-center d-flex">
-											<button type="button" data-toggle="modal" data-target="#Alerta" class="btn btn-info"><i class="fas fa-search-plus"></i></button>
-											<button type="button"class="btn btn-danger editarResponsable"
-											ci='<?=$value->ci?>'>
+											<button type="button"class="btn btn-danger editarUsuario"
+											idUsuarios ='<?=$value->idUsuarios?>'>
 											<i class="fas fa-pen-fancy"></i>
 											</button>
 										</td>

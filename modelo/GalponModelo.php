@@ -11,7 +11,7 @@ class GalponModelo{
 	}
 
 	public function selectByName($nombreGalpon){
-		$sql = 'SELECT idGalpon as id, nombreGalpon as nombre FROM Galpones WHERE nombreGalpon = ?';
+		$sql = "SELECT idGalpon as id, nombreGalpon as nombre FROM Galpones WHERE nombreGalpon = ?";
 		return $this->pdo->obtener($sql, array($nombreGalpon)	);
 	}
 

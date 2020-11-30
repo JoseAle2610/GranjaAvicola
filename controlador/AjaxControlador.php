@@ -34,4 +34,21 @@ class AjaxControlador{
 			echo $responsableModelo;
 		}
 	}
+	public function infoUsuario(){
+		if (isset($_REQUEST['idUsuarios'])) {
+			$UsuarioModelo = new UsuarioModelo();
+			
+			$UsuarioModelo = $UsuarioModelo->select("where idGalpon = ?", array($_REQUEST['idUsuarios']));
+			$UsuarioModelo = json_encode($UsuarioModelo);
+			echo $UsuarioModelo;
+		}
+	}
+	public function infoNombreGalponLote(){
+		if (isset($_REQUEST['Nombre_Galpon'])) {
+			$GalponEnLoteModelo = new GalponEnLoteModelo();
+			$GalponEnLoteModelo = $GalponEnLoteModelo->select("where idGalpon = ?", array($_REQUEST['Nombre_Galpon']));
+			$GalponEnLoteModelo = json_encode($GalponEnLoteModelo);
+			echo $GalponEnLoteModelo;
+		}
+	}
 }

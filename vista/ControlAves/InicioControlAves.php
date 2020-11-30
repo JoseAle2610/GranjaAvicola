@@ -15,57 +15,66 @@
 				</div>
 				<div class="card-body">
 					<form method="POST">
-					<div class="row justify-content-between ">
-						<div class="col-4">
-							<div class="input-group mb-3">
-							  <div class="input-group-prepend">
-							    <span class="input-group-text" id="basic-addon1">Galpón</span>
-							  </div>
-							  <select class="form-control">
-							  	<option value="1" selected>1</option>
-							  	<option value="1">2</option>
-							  	<option value="1">3</option>
-							  </select>
-								<?php 
-									// $this->GalponModelo = new GalponModelo();
-									// select($this->GalponModelo->select(),'idGalpon'); 
-								?>
-
-							</div>
-						</div>
-						<div class="col-4">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<sapn class="input-group-text">N° Gallinas</sapn>
+						<div class="row justify-content-between ">
+							<div class="col-8 col-md-4">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text">Galpón</span>
+									</div>
+									<?php
+												$GalponModelo = new GalponModelo();
+												$select = "<select class='form-control' name='Nombre_Galpon' id='Nombre_Galpon'>";
+																				foreach ($GalponModelo->select() as $key => $registro) {
+																				$select .= "<option value='$registro->id'>$registro->nombre</option>";
+																				}
+												$select .= '</select>';
+												echo $select;
+												
+									?>
+									<?php
+										// $this->GalponModelo = new GalponModelo();
+										// select($this->GalponModelo->select(),'idGalpon');
+									?>
 								</div>
-								<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control" value="800" readonly>
 							</div>
-						</div>					
-					</div>
-					<div class="row mb-1 justify-content-center">
-						<div class="col-5">
-							<div class="input-group mb-3">
-							  <div class="input-group-prepend">
-							    <span class="input-group-text" id="basic-addon1">Mortalidad</span>
-							  </div>
-							  <input type="number" class="form-control" min="1" max="800" required> 
+							<div class="col-2 mt-4 mt-md-0">
+								<button type="button" class="btn btn-info btn-block BuscarGalpon"><i class="fas fa-search"></i></button>
 							</div>
-						</div>
-						<div class="col-5">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Fecha</span>
+							
+							<div class="col-8 col-md-4 mb-3">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<sapn class="input-group-text">N° Gallinas</sapn>
+									</div>
+									<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control" value="800" readonly>
 								</div>
-								<input type="date" class="form-control" name="FechaMortalidad" id="FechaMortalidad" min="2000-01-01" max="2020-12-31" value="2020-10-23" required>
+							</div>
+							
+						</div>
+						<div class="row mb-1 justify-content-center">
+							<div class="col-8 col-md-5">
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">Mortalidad</span>
+									</div>
+									<input type="number" class="form-control" min="1" max="90000" required>
+								</div>
+							</div>
+							<div class="col-8 col-md-5">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text">Fecha</span>
+									</div>
+									<input type="date" class="form-control" name="FechaMortalidad" id="FechaMortalidad" min="2000-01-01" max="2020-12-31" value="2020-10-23" required>
+								</div>
+							</div>
+							
+						</div>
+						<div class="row justify-content-center mb-2">
+							<div class="col-5">
+								<button class="btn btn-warning btn-block">Agregar</button>
 							</div>
 						</div>
-						
-					</div>
-					<div class="row justify-content-center mb-2">
-						<div class="col-5">
-							<button class="btn btn-warning btn-block">Agregar</button>
-						</div>
-					</div>
 					</form>
 					<div class="row justify-content-center">
 						<div class="col-3">

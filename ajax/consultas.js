@@ -118,6 +118,84 @@ $(document).ready(function (){
         }
     })
 
+    // ----------------------------------------------
+    // EDITANDO USUARIO
+    //----------------------------------------------
+    $('.editarUsuario').click(function(){
+        let idUsuarios = $(this).attr("idUsuarios");
+        console.log(idUsuarios);
+        $.ajax({
+            url:  "?c=ajax&m=infoUsuario",
+            data: 'idUsuarios='+idUsuarios,
+            type: 'GET',
+            success: function(respuesta){
+                if (!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                    console.log(datos[0].activo);
+                    $('#claveUsuarioAgregar').val(datos[0].claveUsuario);
+                    $('#nombreUsuarioAgregar').val(datos[0].nombreUsuario);
+                    $('#RespuestaUsuarioAgregar').val(datos[0].respuesta);
+                    if (datos[0].activo == 0) {
+                        $('#activoUsuario').prop('checked', false);
+                    }else{
+                        $('#activoUsuario').prop('checked', true);
+                    }
+                    $('#Cedula_Usuario').val(datos[0].ci);
+                    $('#preguntaUsuarioAgregar').val(datos[0].pregunta);
+                    $('#idUsuarios').val(datos[0].idUsuarios);
+                    // $('#Cedula').val(datos.ci);
+                    // document.getElementById("activoResponsable").checked = datos.activo;
+                    $('#editarUsuario').val(true);
+                    // $('#Nacionalidad').prop('selected', true);
+
+                }
+            }
+        });
+    })
+
+    $('.BuscarGalpon').click(function(){
+        let Nombre_Galpon = $('#Nombre_Galpon').val();
+        console.log(Nombre_Galpon);
+         $.ajax({
+            url:  "?c=ajax&m=infoNombreGalponLote",
+            data: 'Nombre_Galpon='+Nombre_Galpon,
+            type: 'GET',
+            success: function(respuesta){
+                console.log(respuesta);
+                if(!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                     console.log(datos);
+                    $('#NumeroGallinas').val(datos[0].gallinas);
+
+                }
+            }
+        });
+    })
+
+    // $('.BuscarGalpon').change(function(){
+    //     let idGalpon = $('.idGalpon').val();         idGalpon
+    //     console.log(idGalpon);
+    //     $.ajax({
+    //     url: '?c=Ajax&m=infoGalponLote',
+    //     data: 'idGalpon='+idGalpon,
+    //     type: 'GET',
+    //     success: function (respuesta) {
+    //       if(!respuesta.error) {
+    //         let datos = JSON.parse(respuesta);
+    //         let html = '';
+    //         datos.forEach(dato => {
+    //           html += `<option value='${dato.id}'> ${dato.nombre}`;
+    //         });
+    //         $('.idSector').html(html);
+    //         console.log(datos, html);
+    //       }
+    //     } 
+    //   })
+    // })
+
+
+
+
 	$('.idGalpon').change(function(){
 		let idGalpon = $('.idGalpon').val();
 		console.log(idGalpon);

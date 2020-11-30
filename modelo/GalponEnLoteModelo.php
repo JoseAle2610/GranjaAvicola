@@ -16,10 +16,10 @@ class GalponEnLoteModelo{
 		return $this->pdo->obtener($sql, array($idLote, $idGalpon)	);
 	}
 
-	public function select(){
-		$sql = 'SELECT idGalpon, idLote, inicio, gallinas, terminado 
-				FROM GalponesEnLote';
-		return $this->pdo->obtenerTodos($sql, array('')	);
+	public function select($condicion='', $datos=array('')){
+		$sql = "SELECT idGalpon, idLote, inicio, gallinas, terminado 
+				FROM GalponesEnLote $condicion";
+		return $this->pdo->obtenerTodos($sql, $datos);
 	}
 
 	public function delete($idGalpon, $idLote){
