@@ -58,64 +58,53 @@
 							<table class="table table-striped table-hover table-responsive-xl p-0 ">
 
 								<thead class="bg-orange text-dark text-center" >
-									<th>Fecha</th>
+									<th>Fecha Recogida</th>
+									<th>Galpón</th>
+									<th>Lote</th>
+									<th>Modulo</th>
+									<th>Responsable</th>
 									<th>Grandes</th>
 									<th>Medianos</th>
 									<th>Pequeños</th>
 									<th class="bg-info">Huevos Producidos</th>
-									<th>Picados</th>
-									<th>Débiles</th>
-									<th>Derramados</th>
-									<th>Rústicos</th>
-									<th>Pool</th>
-									<th class="bg-info">Total</th>
 								</thead>
 								<tbody>
+								<?php foreach ($recogidas as $recogida): ?>
 									<tr>
-										<td>1</td>
-										<td>2</td>
-										<td>3</td>
-										<td>4</td>
-										<td>5</td>
-										<td>6</td>
-										<td>7</td>
-										<td>8</td>
-										<td>9</td>
-										<td>9</td>
-										<td>9</td>
+										<td><?=cambiarFormatoFecha($recogida->fecha)?></td>
+										<td>G-<?=$recogida->nombreGalpon?></td>
+										<td>L-<?=$recogida->numeroLote?></td>
+										<td>M-<?=$recogida->nombreSector?></td>
+										<td><?=$recogida->ci?></td>
+										<?php 
+										$grandes = 0;
+										$medianos = 0;
+										$pequeños = 0;
+										foreach ($recogida->valores as $valores) {
+											foreach ($valores as $key => $valor) {
+												if ($key == 1) {
+													$grandes += $valor;
+												}elseif ($key == 2) {
+													$medianos += $valor;
+												}elseif ($key == 3) {
+													$pequeños += $valor;
+												}
+											}
+										}
+										echo "<td>$grandes</td>";
+										echo "<td>$medianos</td>";
+										echo "<td>$pequeños</td>";
+										$suma = $grandes + $pequeños + $medianos;
+										echo "<td>$suma</td>";
+										?>
+									</tr>
+								<?php endforeach ?>
 										<!-- BUTTONS / MOSTRAR-EDITAR-ELIMINAR -->
 										<!-- <td class="btn-group p-0">
 											<button class="btn btn-info" data-toggle="modal" data-target="#DetallesRecogida"></button>
 											<button class="btn btn-warning" data-toggle="modal" data-target="#EditarRecogida"></button>
 											<button class="btn btn-danger"data-toggle="modal" data-target="#EliminarRecogida"></button>
 										</td> -->
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>2</td>
-										<td>3</td>
-										<td>4</td>
-										<td>5</td>
-										<td>6</td>
-										<td>7</td>
-										<td>8</td>
-										<td>9</td>
-										<td>9</td>
-										<td>9</td>
-									</tr>
-									<tr>
-										<td>1</td>
-										<td>2</td>
-										<td>3</td>
-										<td>4</td>
-										<td>5</td>
-										<td>6</td>
-										<td>7</td>
-										<td>8</td>
-										<td>9</td>
-										<td>9</td>
-										<td>9</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>
