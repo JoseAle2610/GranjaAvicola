@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2020 a las 16:34:38
+-- Tiempo de generación: 30-11-2020 a las 03:17:00
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -55,22 +55,18 @@ INSERT INTO `categorias` (`idCategoria`, `NombreCategoria`) VALUES
 
 CREATE TABLE `galpones` (
   `idGalpon` int(11) NOT NULL,
-  `nombreGalpon` varchar(20) COLLATE utf8_spanish_ci NOT NULL
+  `nombreGalpon` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `activo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `galpones`
 --
 
-INSERT INTO `galpones` (`idGalpon`, `nombreGalpon`) VALUES
-(4, '1'),
-(5, '2'),
-(11, '3'),
-(1, '4'),
-(10, '5'),
-(12, '6'),
-(13, '7'),
-(14, '8');
+INSERT INTO `galpones` (`idGalpon`, `nombreGalpon`, `activo`) VALUES
+(17, '1', 1),
+(18, '2', 1),
+(20, '3', 1);
 
 -- --------------------------------------------------------
 
@@ -91,9 +87,9 @@ CREATE TABLE `galponesenlote` (
 --
 
 INSERT INTO `galponesenlote` (`idGalpon`, `idLote`, `terminado`, `gallinas`, `inicio`) VALUES
-(1, 2, 0, 10, '2020-09-18'),
-(4, 1, 1, 10, '2020-09-18'),
-(11, 1, 0, 100, '2020-09-28');
+(17, 1, 0, 1325, '2020-10-23'),
+(18, 1, 0, 1854, '2020-10-23'),
+(20, 1, 0, 2345, '2020-10-23');
 
 -- --------------------------------------------------------
 
@@ -111,10 +107,7 @@ CREATE TABLE `lotes` (
 --
 
 INSERT INTO `lotes` (`idLote`, `numeroLote`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4);
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -129,15 +122,6 @@ CREATE TABLE `mortalidad` (
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `mortalidad`
---
-
-INSERT INTO `mortalidad` (`idGalpon`, `idLote`, `numeroMuertes`, `fecha`) VALUES
-(1, 2, 3, '2020-09-30'),
-(4, 1, 2, '2020-09-30'),
-(11, 1, 2, '2020-09-30');
-
 -- --------------------------------------------------------
 
 --
@@ -150,6 +134,15 @@ CREATE TABLE `recogidas` (
   `hora` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `recogidas`
+--
+
+INSERT INTO `recogidas` (`idRecogida`, `idRegistro`, `hora`) VALUES
+(7, 3, '09:00:00'),
+(8, 3, '14:00:00'),
+(9, 3, '18:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -159,9 +152,15 @@ CREATE TABLE `recogidas` (
 CREATE TABLE `registros` (
   `idRegistro` int(11) NOT NULL,
   `idSector` int(11) NOT NULL,
-  `semana` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `registros`
+--
+
+INSERT INTO `registros` (`idRegistro`, `idSector`, `fecha`) VALUES
+(3, 5, '2020-10-23');
 
 -- --------------------------------------------------------
 
@@ -172,17 +171,20 @@ CREATE TABLE `registros` (
 CREATE TABLE `responsables` (
   `nombreResponsable` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `apellidoResponsable` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
-  `activo`               tinyint(1) not null DEFAULT 1,
-  `ci`               varchar(10) not null
+  `activo` tinyint(1) NOT NULL DEFAULT '1',
+  `ci` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `responsables`
 --
 
-INSERT INTO `responsables` (`ci`, `nombreResponsable`, `apellidoResponsable`) VALUES
-("29587834", 'Jose Alexander', 'Suarez Gervazzi'),
-("27554995", 'Antonella', 'Mujica');
+INSERT INTO `responsables` (`nombreResponsable`, `apellidoResponsable`, `activo`, `ci`) VALUES
+('Paola', 'Gervazzi', 1, 'v12688737'),
+('mark', 'Suarez', 1, 'v12944385'),
+('Jose', 'Suarez', 1, 'v29587834'),
+('Edith', 'Navarro', 0, 'v7427156'),
+('Enrique', 'Nutria', 1, 'v9998999');
 
 -- --------------------------------------------------------
 
@@ -192,8 +194,15 @@ INSERT INTO `responsables` (`ci`, `nombreResponsable`, `apellidoResponsable`) VA
 
 CREATE TABLE `responsablesderegistro` (
   `idRegistro` int(11) NOT NULL,
-  `ci` varchar(10) NOT NULL
+  `ci` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `responsablesderegistro`
+--
+
+INSERT INTO `responsablesderegistro` (`idRegistro`, `ci`) VALUES
+(3, 'v7427156');
 
 -- --------------------------------------------------------
 
@@ -204,17 +213,22 @@ CREATE TABLE `responsablesderegistro` (
 CREATE TABLE `sectores` (
   `idSector` int(11) NOT NULL,
   `idGalpon` int(11) NOT NULL,
-  `nombreSector` varchar(45) COLLATE utf8_spanish_ci NOT NULL
+  `nombreSector` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
+  `activo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `sectores`
 --
 
-INSERT INTO `sectores` (`idSector`, `idGalpon`, `nombreSector`) VALUES
-(1, 4, 'M-1'),
-(3, 4, 'M-2'),
-(2, 5, 'M-1');
+INSERT INTO `sectores` (`idSector`, `idGalpon`, `nombreSector`, `activo`) VALUES
+(4, 17, '2', 1),
+(5, 18, '1', 1),
+(6, 18, '2', 1),
+(7, 20, '1', 1),
+(8, 20, '2', 1),
+(9, 20, '3', 1),
+(10, 20, '4', 1);
 
 -- --------------------------------------------------------
 
@@ -228,14 +242,11 @@ CREATE TABLE `usuarios` (
   `claveUsuario` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `fechaCreacion` date NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1',
-  `pregunta`         varchar(30) NOT NULL,
-  `respuesta`        varchar(30) NOT NULL,
-  `ci`               varchar(10) not null
+  `pregunta` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `respuesta` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `ci` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-
-INSERT INTO `usuarios` (`idUsuarios`, `nombreUsuario`, `claveUsuario`, `fechaCreacion`, `activo`, `pregunta`, `respuesta`, `ci`) 
-VALUES (1, 'Admin', '123456', '2020-11-26', '1', '¿Sakura o Hinata?', 'Sakura', '27554995');
 -- --------------------------------------------------------
 
 --
@@ -247,6 +258,21 @@ CREATE TABLE `valores` (
   `idCategoria` int(11) NOT NULL,
   `valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `valores`
+--
+
+INSERT INTO `valores` (`idRecogida`, `idCategoria`, `valor`) VALUES
+(7, 1, 100),
+(7, 2, 40),
+(7, 3, 10),
+(8, 1, 34),
+(8, 6, 734),
+(9, 1, 12),
+(9, 2, 24),
+(9, 3, 54),
+(9, 4, 63);
 
 --
 -- Índices para tablas volcadas
@@ -306,7 +332,6 @@ ALTER TABLE `registros`
 ALTER TABLE `responsables`
   ADD PRIMARY KEY (`ci`);
 
-
 --
 -- Indices de la tabla `responsablesderegistro`
 --
@@ -346,32 +371,31 @@ ALTER TABLE `valores`
 -- AUTO_INCREMENT de la tabla `galpones`
 --
 ALTER TABLE `galpones`
-  MODIFY `idGalpon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idGalpon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `idLote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idLote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `recogidas`
 --
 ALTER TABLE `recogidas`
-  MODIFY `idRecogida` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRecogida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT;
-
+  MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores`
 --
 ALTER TABLE `sectores`
-  MODIFY `idSector` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idSector` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
@@ -387,51 +411,53 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `galponesenlote`
 --
 ALTER TABLE `galponesenlote`
-  ADD CONSTRAINT `fk_Galpones_has_Lotes_Galpones` FOREIGN KEY (`idGalpon`) REFERENCES `galpones` (`idGalpon`) ON DELETE cascade ON UPDATE cascade,
-  ADD CONSTRAINT `fk_Galpones_has_Lotes_Lotes1` FOREIGN KEY (`idLote`) REFERENCES `lotes` (`idLote`) ON DELETE cascade ON UPDATE cascade;
+  ADD CONSTRAINT `fk_Galpones_has_Lotes_Galpones` FOREIGN KEY (`idGalpon`) REFERENCES `galpones` (`idGalpon`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Galpones_has_Lotes_Lotes1` FOREIGN KEY (`idLote`) REFERENCES `lotes` (`idLote`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `mortalidad`
 --
 ALTER TABLE `mortalidad`
-  ADD CONSTRAINT `fk_Mortalidad_Galpones_has_Lotes1` FOREIGN KEY (`idGalpon`,`idLote`) REFERENCES `galponesenlote` (`idGalpon`, `idLote`) ON DELETE cascade ON UPDATE cascade;
+  ADD CONSTRAINT `fk_Mortalidad_Galpones_has_Lotes1` FOREIGN KEY (`idGalpon`,`idLote`) REFERENCES `galponesenlote` (`idGalpon`, `idLote`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `recogidas`
 --
 ALTER TABLE `recogidas`
-  ADD CONSTRAINT `fk_Recogidas_Registro1` FOREIGN KEY (`idRegistro`) REFERENCES `registros` (`idRegistro`) ON DELETE cascade ON UPDATE cascade;
+  ADD CONSTRAINT `fk_Recogidas_Registro1` FOREIGN KEY (`idRegistro`) REFERENCES `registros` (`idRegistro`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `registros`
 --
 ALTER TABLE `registros`
-  ADD CONSTRAINT `fk_Registro_Sectores1` FOREIGN KEY (`idSector`) REFERENCES `sectores` (`idSector`) ON DELETE cascade ON UPDATE cascade;
+  ADD CONSTRAINT `fk_Registro_Sectores1` FOREIGN KEY (`idSector`) REFERENCES `sectores` (`idSector`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `responsablesderegistro`
 --
 ALTER TABLE `responsablesderegistro`
-  ADD CONSTRAINT `fk_Registro_has_Responsables_Registro1` FOREIGN KEY (`idRegistro`) REFERENCES `registros` (`idRegistro`) ON DELETE cascade ON UPDATE cascade,
-  ADD CONSTRAINT `fk_Registro_has_Responsables_Responsables1` FOREIGN KEY (`ci`) REFERENCES `responsables` (`ci`) ON DELETE cascade ON UPDATE cascade;
+  ADD CONSTRAINT `fk_Registro_has_Responsables_Registro1` FOREIGN KEY (`idRegistro`) REFERENCES `registros` (`idRegistro`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Registro_has_Responsables_Responsables1` FOREIGN KEY (`ci`) REFERENCES `responsables` (`ci`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `sectores`
 --
 ALTER TABLE `sectores`
-  ADD CONSTRAINT `fk_Sectores_Galpones1` FOREIGN KEY (`idGalpon`) REFERENCES `galpones` (`idGalpon`) ON DELETE cascade ON UPDATE cascade;
+  ADD CONSTRAINT `fk_Sectores_Galpones1` FOREIGN KEY (`idGalpon`) REFERENCES `galpones` (`idGalpon`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD CONSTRAINT `fk_Usuarios_has_Responsables_Usuarios1` FOREIGN KEY (`ci`) REFERENCES `responsables` (`ci`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `valores`
 --
 ALTER TABLE `valores`
-  ADD CONSTRAINT `fk_Recogidas_has_Categorias_Categorias1` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`idCategoria`) ON DELETE cascade ON UPDATE cascade,
-  ADD CONSTRAINT `fk_Recogidas_has_Categorias_Recogidas1` FOREIGN KEY (`idRecogida`) REFERENCES `recogidas` (`idRecogida`) ON DELETE cascade ON UPDATE cascade;
+  ADD CONSTRAINT `fk_Recogidas_has_Categorias_Categorias1` FOREIGN KEY (`idCategoria`) REFERENCES `categorias` (`idCategoria`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Recogidas_has_Categorias_Recogidas1` FOREIGN KEY (`idRecogida`) REFERENCES `recogidas` (`idRecogida`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_Usuarios_has_Responsables_Usuarios1` FOREIGN KEY (`ci`) REFERENCES `responsables` (`ci`) ON DELETE cascade ON UPDATE cascade;
-
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
