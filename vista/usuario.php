@@ -13,11 +13,6 @@
 			</div>
 			<!--Body-->
 			<form method="post" action="?c=usuario&m=guardarUsuario">
-				<?php 
-				if (isset($_REQUEST['Cedula'])) {
-					var_dump($_REQUEST['Cedula']);
-				} else echo "noup AQUITOY";
-				 ?>
 				<div class="modal-body">
 					<div class="row justify-content-center">
 						<div class="col-12 col-md-6">
@@ -30,16 +25,16 @@
 										<?php
 										$ResponsableModel = new ResponsableModelo();
 										$select = "<select class='form-control' name='Cedula' id='Cedula'>";
-											foreach ($ResponsableModel->select() as $key => $registro) {
-											$select .= "<option value='$registro->ci'>$registro->ci</option>";
-											}
+												foreach ($ResponsableModel->select() as $key => $registro) {
+												$select .= "<option value='$registro->ci'>$registro->ci</option>";
+												}
 										$select .= '</select>';
 										echo $select;
 										
 										?>
 									</div>
 								</div>
-								<div class="col-3">
+								<div class="col-3 mt-2">
 									<div class="custom-control custom-checkbox">
 										<input type="checkbox" class="custom-control-input" id="activoUsuario" name="activoUsuario" checked="">
 										<label class="custom-control-label" for="activoUsuario">Activo</label>
@@ -74,7 +69,7 @@
 									<option value="Fecha de nacimiento de tu abuela">Fecha de nacimiento de tu abuela</option>
 									<option value="Videojuego Favorito">Videojuego Favorito</option>
 								</select>
-										
+								
 							</div>
 							<div class="input-group form-group">
 								<div class="input-group-prepend">
@@ -97,12 +92,36 @@
 									<th>Cédula</th>
 									<th>Nombre Usuario</th>
 									<th>Clave</th>
+									<th>Fecha Creación</th>
 									<th>Pregunta</th>
 									<th>Respuesta</th>
 									<th>Acción</th>
 								</thead>
 								<tbody>
-									
+									<?php
+									$UsuarioModelo = new UsuarioModelo();
+									foreach ($UsuarioModelo->select() as $key => $value): ?>
+									<tr>
+										<td>
+											<span class="badge badge-<?=$value->activo ? 'info' : 'danger' ;?>">
+												<?=$value->activo ? 'Activo' : 'Inactivo' ;?>
+											</span>
+										</td>
+										<td><?=$value->ci?></td>
+										<td><?=$value->nombreUsuario?></td>
+										<td><?=$value->claveUsuario?></td>
+										<td><?=cambiarFormatoFecha($value->fechaCreacion)?></td>
+										<td><?=$value->pregunta?></td>
+										<td><?=$value->respuesta?></td>
+										<td class="btn-group justify-content-center d-flex">
+											<button type="button" data-toggle="modal" data-target="#Alerta" class="btn btn-info"><i class="fas fa-search-plus"></i></button>
+											<button type="button"class="btn btn-danger editarResponsable"
+											ci='<?=$value->ci?>'>
+											<i class="fas fa-pen-fancy"></i>
+											</button>
+										</td>
+									</tr>
+									<?php endforeach ?>
 								</tbody>
 							</table>
 						</div>

@@ -25,13 +25,21 @@ class UsuarioControlador
 							$_REQUEST['preguntaUsuarioAgregar'],
 							$_REQUEST['RespuestaUsuarioAgregar'],
 							$_REQUEST['Cedula']);
-			if (strlen($datos[0]) > 20) {
-				alerta('danger', 'El nombre del usuario esta muy largo');
-			} else if(!is_string($datos[0])){
-				alerta('danger', 'El nombre del usuario no debe contener números ni caracteres especiales');
-			}else if(!preg_match('[a-zA-Z ]+',$datos[1])){
-				alerta('danger', 'La respuesta de seguridad del usuario no debe contener números ni caracteres especiales');
-			}else {
+			if (strlen($datos[0]) > 20 || strlen($datos[0]) < 4) {
+				alerta('danger', 'El nombre del usuario es muy largo o corto');
+			} else if(preg_match('/\s/',$datos[0])){
+				alerta('danger', 'El nombre del usuario no debe contener espacios');
+				// El nombbre no debe contener signo de puntuacion  ni nada
+			} else if(preg_match('/[\W]/',$datos[0])){
+				alerta('danger', 'El nombre del usuario no debe contener caracteres especiales');
+				// El nombbre no debe contener signo de puntuacion  ni nada
+			}else if(strlen($datos[1]) > 20 || strlen($datos[1]) < 4){
+				alerta('danger', 'La contraseña es muy larga');
+			} else if(preg_match('/\s/',$datos[0])){
+				alerta('danger', 'La contraseña no debe contener espacios');
+			} else if(strlen($datos[4]) > 30 || strlen($datos[4]) < 4){
+				alerta('danger', 'La respuesta es muy larga o corta');
+			} else {
 				try {
 					if ($_REQUEST['editar'] == false) {
 						$this->UsuarioModelo->insertar($datos);

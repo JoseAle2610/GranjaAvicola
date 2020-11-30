@@ -16,5 +16,9 @@ class UsuarioModelo{
 		return $this->pdo->obtener($sql, array($nombreUsuario, $claveUsuario)	);
 	}
 
+	public function select($condicion='', $datos=array('')){
+		$sql = "SELECT * FROM Usuarios $condicion";
+		return $this->pdo->obtenerTodos($sql, $datos);
+	}
 
 }
