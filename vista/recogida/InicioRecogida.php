@@ -14,7 +14,7 @@
 						</h5>
 					</div>
 					
-					<button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarRecogida">Recogida de hoy<i class="fas fa-plus ml-2"></i></button>
+					<button class="btn btn-warning text-dark agregarRecogida" data-toggle="modal" data-target="#guardarRecogida">Recogida de hoy<i class="fas fa-plus ml-2"></i></button>
 
 					<!-- <button class="btn btn-info text-dark" data-toggle="modal" data-target="#AgregarResponsable">Agregar Responsable</button> -->
 				</div>
@@ -67,6 +67,7 @@
 									<th>Medianos</th>
 									<th>Pequeños</th>
 									<th class="bg-info">Huevos Producidos</th>
+									<th>Accion</th>
 								</thead>
 								<tbody>
 								<?php foreach ($recogidas as $recogida): ?>
@@ -97,14 +98,17 @@
 										$suma = $grandes + $pequeños + $medianos;
 										echo "<td>$suma</td>";
 										?>
+										<td class="btn-group">
+											<button class="btn btn-info" data-toggle="modal" data-target="#DetallesRecogida" idRegistro='<?= $recogida->idRegistro?>'>
+												<i class="fas fa-search-plus"></i>
+											</button>
+											<button class="btn btn-warning infoRecogida" data-toggle="modal" data-target="#guardarRecogida" idRegistro='<?= $recogida->idRegistro?>'>
+												<i class="fas fa-pen-fancy"></i>
+											</button>
+										</td>
 									</tr>
 								<?php endforeach ?>
 										<!-- BUTTONS / MOSTRAR-EDITAR-ELIMINAR -->
-										<!-- <td class="btn-group p-0">
-											<button class="btn btn-info" data-toggle="modal" data-target="#DetallesRecogida"></button>
-											<button class="btn btn-warning" data-toggle="modal" data-target="#EditarRecogida"></button>
-											<button class="btn btn-danger"data-toggle="modal" data-target="#EliminarRecogida"></button>
-										</td> -->
 								</tbody>
 							</table>
 						</div>

@@ -1,4 +1,4 @@
-<div class="modal fade " id="AgregarRecogida" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade " id="guardarRecogida" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 	aria-hidden="true" >
 	<div class="modal-dialog modal-fluid" role="document">
 		<!--Content-->
@@ -33,7 +33,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text bg-dark text-white">Modulo</span>
 								</div>
-								<select class="form-control idSector" name="idSector">
+								<select class="form-control idSector" name="idSector" id="idSector">
 								</select>
 							</div>
 						</div>
@@ -41,7 +41,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text bg-dark text-white">Fecha</span>
 							</div>
-							<input type="date" name="fecha" id="Fecha" class="form-control" min="2000-01-01" max="2020-12-31" value="2020-10-23" required>
+							<input type="date" name="fecha" id="secha" class="form-control" min="2000-01-01" max="2020-12-31" value="2020-10-23" required>
 						</div>
 						<div class="col-6 col-md-3 mb-2">
 							<div class="input-group">
@@ -59,6 +59,8 @@
 								?>
 							</div>
 						</div>
+						<!-- EDITAR -->
+						<input type="hidden" name="editarRecogida" id="editarRecogida" value="0">
 					</div>
 					<div class="d-flex justify-content-between">
 						<h5 class="col-1">Recogidas</h5>
@@ -84,9 +86,12 @@
 							for ($i=0; $i < 3 ; $i++) {
 								echo "<tr>
 										<td>".($i + 1)."</td>
-										<td><input type='time' class='form-control' name='recogida[$i][hora]' value='$horas[$i]'></td>";
+										<td><input type='time' class='form-control' name='recogida[$i][hora]' value='$horas[$i]' readonly></td>";
 								foreach ($categorias as $key => $categoria) {
-									echo "<td><input type='number' class='form-control' name='recogida[$i][$categoria->idCategoria]'></td>";
+									echo "<td class='categoria$categoria->idCategoria'>
+											<input type='number' class='form-control limpiar fila$i' 
+										name='recogida[$i][$categoria->idCategoria]'>
+										</td>";
 								}
 								echo "</tr>";
 							}
