@@ -17,14 +17,14 @@ class UsuarioControlador
 
 	public function guardarUsuario() {
 		$activoUsuario= isset($_REQUEST['activoUsuario']) ? 1 : 0 ;
-		if (isset($_REQUEST['nombreUsuarioAgregar'], $_REQUEST['claveUsuarioAgregar'], $_REQUEST['preguntaUsuarioAgregar'], $_REQUEST['RespuestaUsuarioAgregar'], $_REQUEST['editar'])) 
+		if (isset($_REQUEST['nombreUsuarioAgregar'], $_REQUEST['claveUsuarioAgregar'], $_REQUEST['preguntaUsuarioAgregar'], $_REQUEST['RespuestaUsuarioAgregar'], $_REQUEST['editarUsuario'])) 
 		{
 			$datos = array(	$_REQUEST['nombreUsuarioAgregar'],
 							$_REQUEST['claveUsuarioAgregar'],
 							$activoUsuario,
 							$_REQUEST['preguntaUsuarioAgregar'],
 							$_REQUEST['RespuestaUsuarioAgregar'],
-							$_REQUEST['Cedula']);
+							$_REQUEST['Cedula_Usuario']);
 			if (strlen($datos[0]) > 20 || strlen($datos[0]) < 4) {
 				alerta('danger', 'El nombre del usuario es muy largo o corto');
 			} else if(preg_match('/\s/',$datos[0])){
@@ -41,14 +41,16 @@ class UsuarioControlador
 				alerta('danger', 'La respuesta es muy larga o corta');
 			} else {
 				try {
-					if ($_REQUEST['editar'] == false) {
+					if ($_REQUEST['editarUsuario'] == false) {
 						$this->UsuarioModelo->insertar($datos);
-					 } else if ($_REQUEST['editar'] == true) {
-						$this->responsableModelo->update($datos);
+					 } else if ($_REQUEST['editarUsuario'] == true) {
+					 	$datos[6] = $_REQUEST['idUsuarios'];
+						$this->UsuarioModelo->update($datos);
 					}
-					alerta('success', 'Se agregó al Responsable '.$_REQUEST['nombreResponsable'].' Correctamente');
+					alerta('success', 'Se agregó al Responsable Correctamente');
 				} catch (PDOException $e) {
-					alerta('danger', 'Ha ocurrido un error al agregar al Responsable');
+					alerta('danger', 'Ha ocurrido un error al agregar al Usuario, no se pueden repetir NOMBRES o CÉDULAS');
+					die($e->getMessage());
 					alerta('danger', $e->getMessage());
 				}
 			}

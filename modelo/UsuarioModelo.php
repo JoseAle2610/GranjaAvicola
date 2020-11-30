@@ -16,6 +16,12 @@ class UsuarioModelo{
 		return $this->pdo->obtener($sql, array($nombreUsuario, $claveUsuario)	);
 	}
 
+	public function update($datos){
+		$sql = 'UPDATE Usuarios SET nombreUsuario = ?, claveUsuario = ?, activo = ?, pregunta = ?, respuesta = ?, ci = ?
+				WHERE idUsuarios = ?';
+		return $this->pdo->consulta($sql, $datos);
+	}
+
 	public function select($condicion='', $datos=array('')){
 		$sql = "SELECT * FROM Usuarios $condicion";
 		return $this->pdo->obtenerTodos($sql, $datos);

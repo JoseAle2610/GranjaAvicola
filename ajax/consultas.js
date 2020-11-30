@@ -118,6 +118,41 @@ $(document).ready(function (){
         }
     })
 
+    // ----------------------------------------------
+    // EDITANDO USUARIO
+    //----------------------------------------------
+    $('.editarUsuario').click(function(){
+        let idUsuarios = $(this).attr("idUsuarios");
+        console.log(idUsuarios);
+        $.ajax({
+            url:  "?c=ajax&m=infoUsuario",
+            data: 'idUsuarios='+idUsuarios,
+            type: 'GET',
+            success: function(respuesta){
+                if (!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                    console.log(datos[0].activo);
+                    $('#claveUsuarioAgregar').val(datos[0].claveUsuario);
+                    $('#nombreUsuarioAgregar').val(datos[0].nombreUsuario);
+                    $('#RespuestaUsuarioAgregar').val(datos[0].respuesta);
+                    if (datos[0].activo == 0) {
+                        $('#activoUsuario').prop('checked', false);
+                    }else{
+                        $('#activoUsuario').prop('checked', true);
+                    }
+                    $('#Cedula_Usuario').val(datos[0].ci);
+                    $('#preguntaUsuarioAgregar').val(datos[0].pregunta);
+                    $('#idUsuarios').val(datos[0].idUsuarios);
+                    // $('#Cedula').val(datos.ci);
+                    // document.getElementById("activoResponsable").checked = datos.activo;
+                    $('#editarUsuario').val(true);
+                    // $('#Nacionalidad').prop('selected', true);
+
+                }
+            }
+        });
+    })
+
 	$('.idGalpon').change(function(){
 		let idGalpon = $('.idGalpon').val();
 		console.log(idGalpon);
