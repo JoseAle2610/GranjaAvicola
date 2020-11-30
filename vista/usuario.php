@@ -115,7 +115,6 @@
 										<td><?=$value->pregunta?></td>
 										<td><?=$value->respuesta?></td>
 										<td class="btn-group justify-content-center d-flex">
-											<button type="button" data-toggle="modal" data-target="#Alerta" class="btn btn-info"><i class="fas fa-search-plus"></i></button>
 											<button type="button"class="btn btn-danger editarUsuario"
 											idUsuarios ='<?=$value->idUsuarios?>'>
 											<i class="fas fa-pen-fancy"></i>

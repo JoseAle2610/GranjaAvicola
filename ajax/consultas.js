@@ -153,6 +153,49 @@ $(document).ready(function (){
         });
     })
 
+    $('.BuscarGalpon').click(function(){
+        let Nombre_Galpon = $('#Nombre_Galpon').val();
+        console.log(Nombre_Galpon);
+         $.ajax({
+            url:  "?c=ajax&m=infoNombreGalponLote",
+            data: 'Nombre_Galpon='+Nombre_Galpon,
+            type: 'GET',
+            success: function(respuesta){
+                console.log(respuesta);
+                if(!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                     console.log(datos);
+                    $('#NumeroGallinas').val(datos[0].gallinas);
+
+                }
+            }
+        });
+    })
+
+    // $('.BuscarGalpon').change(function(){
+    //     let idGalpon = $('.idGalpon').val();         idGalpon
+    //     console.log(idGalpon);
+    //     $.ajax({
+    //     url: '?c=Ajax&m=infoGalponLote',
+    //     data: 'idGalpon='+idGalpon,
+    //     type: 'GET',
+    //     success: function (respuesta) {
+    //       if(!respuesta.error) {
+    //         let datos = JSON.parse(respuesta);
+    //         let html = '';
+    //         datos.forEach(dato => {
+    //           html += `<option value='${dato.id}'> ${dato.nombre}`;
+    //         });
+    //         $('.idSector').html(html);
+    //         console.log(datos, html);
+    //       }
+    //     } 
+    //   })
+    // })
+
+
+
+
 	$('.idGalpon').change(function(){
 		let idGalpon = $('.idGalpon').val();
 		console.log(idGalpon);
