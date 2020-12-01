@@ -23,7 +23,7 @@ class ConsultasModelo
 
 	}
 
-	public function tablaRecogidas(){
+	public function tablaRecogidas($condicion = ''){
 		$sql = "SELECT l.numeroLote, g.nombreGalpon, g.idGalpon, s.idSector, s.nombreSector, r.idRegistro, r.fecha, rr.ci
 					FROM lotes l 
 					INNER JOIN galponesenlote gl ON l.idLote = gl.idLote
@@ -31,19 +31,19 @@ class ConsultasModelo
 				    INNER JOIN sectores s ON s.idGalpon = g.idGalpon
 				    INNER JOIN registros r ON r.idSector = s.idSector
 				    INNER JOIN responsablesderegistro rr ON rr.idRegistro = r.idRegistro
-				    GROUP BY s.idSector";
+				    $condicion GROUP BY s.idSector ";
 		return $this->pdo->obtenerTodos($sql);
 	}
 
-	public function recogidaValores (){
+	public function recogidaValores ($condicion = ''){
 		$sql = "SELECT r.*, v.valor, v.idCategoria
-					FROM recogidas r INNER JOIN valores v ON r.idRecogida = v.idRecogida";
+					FROM recogidas r INNER JOIN valores v ON r.idRecogida = v.idRecogida $condicion";
 		return $this->pdo->obtenerTodos($sql);
 	}
 
-	public function infoRecogida (){
-		$recogidas = $this->tablaRecogidas();
-		$valores = $this->recogidaValores();
+	public function infoRecogida ($condicion = ''){
+		$recogidas = $this->tablaRecogidas($condicion);
+		$valores = $this->recogidaValores($condicion);
 		$valores1 = array();
 		$recogidas1 = array();
 		foreach ($valores as $key => $valor) {
