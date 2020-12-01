@@ -22,6 +22,11 @@ class GalponEnLoteModelo{
 		return $this->pdo->obtenerTodos($sql, $datos);
 	}
 
+	public function seleccionando($datos){
+		$sql = "SELECT * FROM galponesenlote WHERE idGalpon = ? AND terminado = 0";
+		return $this->pdo->obtener($sql, $datos);
+	}
+
 	public function delete($idGalpon, $idLote){
 		$sql = 'DELETE FROM GalponesEnLote WHERE idGalpon = ? AND idLote = ?';
 		return $this->pdo->consulta($sql, array($idGalpon, $idLote) );

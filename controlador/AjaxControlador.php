@@ -51,4 +51,12 @@ class AjaxControlador{
 			echo $GalponEnLoteModelo;
 		}
 	}
+	public function tabla(){
+		if (isset($_REQUEST['Nombre_Galpon'])) {
+			$MortalidadModelo = new MortalidadModelo();
+			$MortalidadModelo = $MortalidadModelo->select("where idGalpon = ?", array($_REQUEST['Nombre_Galpon']));
+			$MortalidadModelo = json_encode($MortalidadModelo);
+			echo $MortalidadModelo;
+		} else echo "ERROR";
+	}
 }

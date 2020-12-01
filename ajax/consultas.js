@@ -152,7 +152,9 @@ $(document).ready(function (){
             }
         });
     })
-
+    //------------------
+    //CONTROL DE AVES 
+    //------------------
     $('.BuscarGalpon').click(function(){
         let Nombre_Galpon = $('#Nombre_Galpon').val();
         console.log(Nombre_Galpon);
@@ -165,36 +167,33 @@ $(document).ready(function (){
                 if(!respuesta.error) {
                     let datos = JSON.parse(respuesta);
                      console.log(datos);
+                     // $('#NumeroGallinas').val(datos[datos.length-1].gallinas);
                     $('#NumeroGallinas').val(datos[0].gallinas);
-
+                    // $.ajax({
+                    //     url:  "?c=ajax&m=tabla",
+                    //     data: 'Nombre_Galpon='+Nombre_Galpon,
+                    //     type: 'GET',
+                    //     success: function(respuesta){
+                    //         if(!respuesta.error) {
+                    //             let datos1 = JSON.parse(respuesta);
+                    //             if (datos1 == false) {
+                    //                 console.log("Está vacío");
+                    //             }else{
+                    //                let html = '';
+                    //                 datos1.forEach(dato => {
+                    //                   html += `<td>dato</td>`;
+                    //                 });
+                    //                 $('.idSector').html(html);
+                    //                 console.log(datos, html); 
+                    //             }
+                            
+                    //         }   
+                    //     }
+                    // });
                 }
             }
         });
     })
-
-    // $('.BuscarGalpon').change(function(){
-    //     let idGalpon = $('.idGalpon').val();         idGalpon
-    //     console.log(idGalpon);
-    //     $.ajax({
-    //     url: '?c=Ajax&m=infoGalponLote',
-    //     data: 'idGalpon='+idGalpon,
-    //     type: 'GET',
-    //     success: function (respuesta) {
-    //       if(!respuesta.error) {
-    //         let datos = JSON.parse(respuesta);
-    //         let html = '';
-    //         datos.forEach(dato => {
-    //           html += `<option value='${dato.id}'> ${dato.nombre}`;
-    //         });
-    //         $('.idSector').html(html);
-    //         console.log(datos, html);
-    //       }
-    //     } 
-    //   })
-    // })
-
-
-
 
 	$('.idGalpon').change(function(){
 		let idGalpon = $('.idGalpon').val();

@@ -12,14 +12,14 @@ class MortalidadModelo
 		$this->pdo = new Conexion();
 	}
 
-	public function insert($idGalpon, $idLote, $numeroMuertes, $fecha){
+	public function insert($datos){
 		$sql = 'INSERT INTO Mortalidad (idGalpon, idLote, numeroMuertes, fecha) VALUES (?,?,?,?)';
-		return $this->pdo->consulta($sql, array($idGalpon, $idLote, $numeroMuertes, $fecha));
+		return $this->pdo->insertGetId($sql, $datos);
 	}
 
-	public function select(){
-		$sql = 'SELECT idGalpon, idLote, numeroMuertes, fecha FROM Mortalidad';
-		return $this->pdo->obtenerTodos($sql, array('')	);
+	public function select($condicion='', $datos = array('')){
+		$sql = "SELECT idGalpon, idLote, numeroMuertes, fecha FROM Mortalidad $condicion";
+		return $this->pdo->obtener($sql, $datos);
 	}
 
 	public function delete($idGalpon, $idLote){

@@ -14,7 +14,7 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<form method="POST">
+					<form method="POST" action="?c=controlAves&m=AgregarMortalidad">
 						<div class="row justify-content-between ">
 							<div class="col-8 col-md-4">
 								<div class="input-group mb-3">
@@ -24,9 +24,9 @@
 									<?php
 												$GalponModelo = new GalponModelo();
 												$select = "<select class='form-control' name='Nombre_Galpon' id='Nombre_Galpon'>";
-																				foreach ($GalponModelo->select() as $key => $registro) {
-																				$select .= "<option value='$registro->id'>$registro->nombre</option>";
-																				}
+												foreach ($GalponModelo->select() as $key => $registro) {
+												$select .= "<option value='$registro->id'>$registro->nombre</option>";
+												}
 												$select .= '</select>';
 												echo $select;
 												
@@ -57,7 +57,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text" id="basic-addon1">Mortalidad</span>
 									</div>
-									<input type="number" class="form-control" min="1" max="90000" required>
+									<input type="number" class="form-control" min="1" max="90000" required id="Mortalidad" name="Mortalidad">
 								</div>
 							</div>
 							<div class="col-8 col-md-5">
@@ -87,7 +87,7 @@
 									<th>Fecha</th>
 									<th>Gallina restantes</th>
 								</thead>
-								<tbody>
+								<tbody id="Hola">
 									<tr>
 										<td>10</td>
 										<td>10/10/2020</td>
