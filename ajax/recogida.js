@@ -53,7 +53,7 @@ $(document).ready( function (){
     	$('#fecha').val('2020-10-23');
     	limpiarName();
     	$('#idSector').html('');
-    	$('#editarRecogida').val(0);
+    	$('#editRecogida').val(0);
         $('#idGalpon').prop('disabled', false);
         $('#idSector').prop('disabled', false);
         // inutilizamos el input hidden para solventar el problema del select desavilitado
