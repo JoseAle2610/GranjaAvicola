@@ -38,7 +38,7 @@ class AjaxControlador{
 		if (isset($_REQUEST['idUsuarios'])) {
 			$UsuarioModelo = new UsuarioModelo();
 			
-			$UsuarioModelo = $UsuarioModelo->select("where idGalpon = ?", array($_REQUEST['idUsuarios']));
+			$UsuarioModelo = $UsuarioModelo->select("where idUsuarios = ?", array($_REQUEST['idUsuarios']));
 			$UsuarioModelo = json_encode($UsuarioModelo);
 			echo $UsuarioModelo;
 		}

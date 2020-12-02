@@ -155,41 +155,46 @@ $(document).ready(function (){
     //------------------
     //CONTROL DE AVES 
     //------------------
-    $('.BuscarGalpon').click(function(){
+    $('#Nombre_Galpon').change(function(){
         let Nombre_Galpon = $('#Nombre_Galpon').val();
-        console.log(Nombre_Galpon);
+        // console.log(Nombre_Galpon);
          $.ajax({
             url:  "?c=ajax&m=infoNombreGalponLote",
             data: 'Nombre_Galpon='+Nombre_Galpon,
             type: 'GET',
             success: function(respuesta){
-                console.log(respuesta);
+                // console.log(respuesta);
                 if(!respuesta.error) {
                     let datos = JSON.parse(respuesta);
-                     console.log(datos);
-                     // $('#NumeroGallinas').val(datos[datos.length-1].gallinas);
+                     // console.log(datos);
                     $('#NumeroGallinas').val(datos[0].gallinas);
-                    // $.ajax({
-                    //     url:  "?c=ajax&m=tabla",
-                    //     data: 'Nombre_Galpon='+Nombre_Galpon,
-                    //     type: 'GET',
-                    //     success: function(respuesta){
-                    //         if(!respuesta.error) {
-                    //             let datos1 = JSON.parse(respuesta);
-                    //             if (datos1 == false) {
-                    //                 console.log("Está vacío");
-                    //             }else{
-                    //                let html = '';
-                    //                 datos1.forEach(dato => {
-                    //                   html += `<td>dato</td>`;
-                    //                 });
-                    //                 $('.idSector').html(html);
-                    //                 console.log(datos, html); 
-                    //             }
-                            
-                    //         }   
-                    //     }
-                    // });
+                    $.ajax({
+                        url:  "?c=ajax&m=tabla",
+                        data: 'Nombre_Galpon='+Nombre_Galpon,
+                        type: 'GET',
+                        success: function(respuesta){
+                            if(!respuesta.error) {
+                                let datos1 = JSON.parse(respuesta);
+                                let html = '';
+                                if (datos1 == false) {
+                                    html = `<tr>
+                                                <td></td>
+                                                <td><p>Vacío</p></td>
+                                                <td></td>
+                                            </tr>`;
+                                }else{
+                                   Object.entries(datos1).forEach(([key, value]) => {
+                                      html += `<tr>
+                                                <td>${value.idLote}</td>
+                                                <td>${value.fecha}</td>
+                                                <td>${value.numeroMuertes}</td>
+                                              </tr>`;
+                                     });
+                                }
+                                $('#Hola').html(html);
+                            }   
+                        }
+                    });
                 }
             }
         });
