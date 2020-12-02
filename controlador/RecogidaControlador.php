@@ -28,25 +28,62 @@ class RecogidaControlador
 	}
 
 	public function agregarRecogida(){
-		if (isset($_REQUEST['idSector'], $_REQUEST['responsable'], 
-			$_REQUEST['fecha'], $_REQUEST['recogida'])) 
-		{
+		if (isset($_REQUEST['idSector'], $_REQUEST['responsable'], $_REQUEST['fecha'])) {
 			#AGREGAR REGISTRO
 			#AGREGAR LAS RESPECTIVAS VALIDAIONES
 			try {
-				$idRegistro = $this->RegistroModelo->insert($_REQUEST['idSector'],
-															$_REQUEST['fecha']	  );
-				$this->ResponsableModelo->insertResponsableRecogida($idRegistro, $_REQUEST['responsable']);
-				#AGREGAR RECOGIDAS
-				foreach ($_REQUEST['recogida'] as $recogida) {
-					$idRecogida = $this->RecogidaModelo->insert($idRegistro, $recogida['hora']);
-					foreach ($recogida as $key => $valor) {
-						if ($key !== 'hora' && !empty($valor)) {
-							$this->RecogidaModelo->insertValores($idRecogida, $key, $valor);
+				$horas = array('09:00','14:00','18:00');
+				if ($_REQUEST['editRecogida'] == 1) {
+					echo "estamos editando";
+					foreach ($_REQUEST['recogidaEditarValor'] as $idRecogida => $recogida) {
+						foreach ($recogida as $idCategoria => $valor) {
+							$this->RecogidaModelo->updateValores($idRecogida, $idCategoria, $valor);
 						}
 					}
+					foreach ($_REQUEST['recogidaAgregarValor'] as $idRecogida => $recogida) {
+						foreach ($recogida as $idCategoria => $valor) {
+							if (!empty($valor)) {
+								$this->RecogidaModelo->insertValores($idRecogida, $idCategoria, $valor);
+							}
+						}
+					}
+					if (isset($_REQUEST['recogidaValor'], $_REQUEST['idRegistro'])) {
+						foreach ($_REQUEST['recogidaValor'] as $fila => $recogida) {
+							if (vacio($recogida) == false) {
+								$idRecogida = $this->RecogidaModelo->insert($_REQUEST['idRegistro'], $horas[$fila]);
+								foreach ($recogida as $idCategoria => $valor) {
+									if (!empty($valor)) {
+										$this->RecogidaModelo->insertValores($idRecogida, $idCategoria, $valor);
+									}
+								}
+							}
+						}
+					}
+					alerta('success', 'Se actualizó correctamente la Recogida');
+				} else {
+					if (matrizVacia($_REQUEST['recogidaValor'])==false) {
+						$idRegistro = $this->RegistroModelo->insert($_REQUEST['idSector'],
+																	$_REQUEST['fecha']	  );
+						$this->ResponsableModelo->insertResponsableRecogida($idRegistro, $_REQUEST['responsable']);
+						// #AGREGAR RECOGIDAS
+
+						foreach ($_REQUEST['recogidaValor'] as $fila => $recogida) {
+							if (vacio($recogida) == false) {
+								$idRecogida = $this->RecogidaModelo->insert($idRegistro, $horas[$fila]);
+								foreach ($recogida as $idCategoria => $valor) {
+									if (!empty($valor)) {
+										$this->RecogidaModelo->insertValores($idRecogida, $idCategoria, $valor);
+									}
+								}
+							}
+						}
+						alerta('success', 'Se agregó correctamente la Recogida');
+					}else{
+						alerta('danger', 'Introduzca los datos para poder agregar una Recogida');
+					}
 				}
-				alerta('success', 'Se agregó la recogida Correctamente');
+
+				
 			} catch (PDOException $e) {
 				alerta('success', 'Ocurrio un error al agregar la recogida');
 			}

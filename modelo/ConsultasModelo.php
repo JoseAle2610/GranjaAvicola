@@ -31,7 +31,7 @@ class ConsultasModelo
 				    INNER JOIN sectores s ON s.idGalpon = g.idGalpon
 				    INNER JOIN registros r ON r.idSector = s.idSector
 				    INNER JOIN responsablesderegistro rr ON rr.idRegistro = r.idRegistro
-				    $condicion GROUP BY s.idSector ";
+				    $condicion GROUP BY r.idRegistro ";
 		return $this->pdo->obtenerTodos($sql);
 	}
 
@@ -53,7 +53,9 @@ class ConsultasModelo
 			$valores1[$valor->idRegistro][$valor->idRecogida][$valor->idCategoria] = $valor->valor;
 		}
 		foreach ($recogidas as $key => $recogida) {
-			 $recogida->valores = $valores1[$recogida->idRegistro];
+			if (isset($valores1[$recogida->idRegistro])) {
+			 	$recogida->valores = $valores1[$recogida->idRegistro];
+			}
 		}
 		return $recogidas;
 	}
