@@ -19,7 +19,7 @@ class MortalidadModelo
 
 	public function select($condicion='', $datos = array('')){
 		$sql = "SELECT idGalpon, idLote, numeroMuertes, fecha FROM Mortalidad $condicion";
-		return $this->pdo->obtener($sql, $datos);
+		return $this->pdo->obtenerTodos($sql, $datos);
 	}
 
 	public function delete($idGalpon, $idLote){

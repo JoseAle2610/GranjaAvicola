@@ -1,4 +1,4 @@
-<!-- <button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarMortalidad">Agregar Mortalidad</button> -->
+<button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarMortalidad">Agregar Mortalidad</button> -->
 <!-- CONTAINER -->
 <!-- CONTAINER -->
 <div class="container my-3">
@@ -16,7 +16,7 @@
 				<div class="card-body">
 					<form method="POST" action="?c=controlAves&m=AgregarMortalidad">
 						<div class="row justify-content-between ">
-							<div class="col-8 col-md-4">
+							<div class="col-6 col-md-4">
 								<div class="input-group mb-3">
 									<div class="input-group-prepend">
 										<span class="input-group-text">Galpón</span>
@@ -31,22 +31,15 @@
 												echo $select;
 												
 									?>
-									<?php
-										// $this->GalponModelo = new GalponModelo();
-										// select($this->GalponModelo->select(),'idGalpon');
-									?>
 								</div>
 							</div>
-							<div class="col-2 mt-4 mt-md-0">
-								<button type="button" class="btn btn-info btn-block BuscarGalpon"><i class="fas fa-search"></i></button>
-							</div>
 							
-							<div class="col-8 col-md-4 mb-3">
+							<div class="col-6 col-md-4 mb-3">
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<sapn class="input-group-text">N° Gallinas</sapn>
 									</div>
-									<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control" value="800" readonly>
+									<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control"  readonly>
 								</div>
 							</div>
 							
@@ -88,21 +81,7 @@
 									<th>Gallina restantes</th>
 								</thead>
 								<tbody id="Hola">
-									<tr>
-										<td>10</td>
-										<td>10/10/2020</td>
-										<td>18934</td>
-									</tr>
-									<tr>
-										<td>18</td>
-										<td>11/10/2020</td>
-										<td>18934</td>
-									</tr>
-									<tr>
-										<td>5</td>
-										<td>12/10/2020</td>
-										<td>18934</td>
-									</tr>
+									<!-- Llenado por SELECT en consultas.js -> $('#Nombre_Galpon').change(function() -->
 								</tbody>
 							</table>
 						</div>
