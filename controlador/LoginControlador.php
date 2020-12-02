@@ -4,7 +4,9 @@ class LoginControlador{
 	private $users = array( array('nombre' => 'Admin', 'contraseña' => '123456'),
 							array('nombre' => 'User', 'contraseña' => '654321')	);
 	
-	function __construct(){}
+	function __construct(){
+		$this->usuarioModelo = new UsuarioModelo();
+	}
 
 	public function index(){
 		require_once 'vista/includes/header.php';
@@ -14,22 +16,23 @@ class LoginControlador{
 
 	public function login(){
 		if (isset($_REQUEST['nombreUsuario'], $_REQUEST['claveUsuario'])) {
-			if(	$_REQUEST['nombreUsuario'] == 'Admin' && 
-				$_REQUEST['claveUsuario'] == '123456'){
-
+			$usuario = $this->usuarioModelo->verificar($_REQUEST['nombreUsuario'], $_REQUEST['claveUsuario']);
+			if (!empty($usuario) && $usuario->nombreUsuario == $_REQUEST['nombreUsuario']) {
 				$_SESSION['login'] = true;
-				$_SESSION['nombreUsuario'] = $_REQUEST['nombreUsuario'];
-				$_SESSION['claveUsuario'] = $_REQUEST['claveUsuario'];
-
-				header('location:?c=Recogida');
+				$_SESSION['nombreUsuario'] = $usuario->nombreUsuario;
+				$_SESSION['claveUsuario'] = $usuario->claveUsuario;
+				header('location:?c=recogida');
 			}else{
-				$_SESSION['alerta'] = array( array('color'  =>  'danger', 'mensaje'  =>  "Los datos con los que intento acceder no son los correctos"));
+				alerta('danger', 'El usuario y/o la clave con la que intenta acceder no son validos');
 				#error
 				$this->index();
+				header('location:./');
 			}
 		}else{
+				alerta('danger', 'Ingrese los datos para poder acceder al sistema');
 			#error
 			$this->index();
+			header('location:./');
 		}
 	}
 
