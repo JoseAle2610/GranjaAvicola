@@ -53,3 +53,21 @@ function cambiarFormatoFecha($fecha){
 // function table($datos, $cabeza){
 
 // }
+function vacio(array $array){
+	$vacio = true;
+	foreach ($array as $valor) {
+		if (!empty($valor)) {
+			$vacio = false;
+		}
+	}
+	return $vacio;
+}
+function matrizVacia(array $array){
+	$vacio = true;
+	foreach ($array as $valor) {
+		if (!vacio($valor)) {
+			$vacio = false;
+		}
+	}
+	return $vacio;
+}
