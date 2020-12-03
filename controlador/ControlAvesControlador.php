@@ -23,15 +23,13 @@ class ControlAvesControlador
 
 			foreach ($datosMortalidadModelo as $key => $value) {
 				$numeroMuertes = $datosMortalidadModelo[$key]->numeroMuertes + $numeroMuertes;
-// var_dump($datosMortalidadModelo[$key]); echo "--------------------------------OTROOOOOOOOOOOO-----------------------";
 			}
-			// var_dump($_REQUEST['FechaMortalidad']);
 		
 // else if ($datosMortalidadModelo == NULL) {
 // 				alerta('danger', '');
 // 				// echo "ERROR";
 // 			}
-			$Validando = false;
+			// $Validando = false;
 			if ($_REQUEST['Mortalidad'] <= 0) {
 			  	alerta('danger', 'Ingrese un número válido por favor');
 		  	} else if($GalponEnLoteModelo->terminado == 1) {
@@ -63,10 +61,8 @@ class ControlAvesControlador
 						alerta('success', 'El número de Gallinas ha sido actualizada');
 					} catch (PDOException $e) {
 						alerta('danger', 'Ya ingresó las Gallinas que muerieron en esa fecha, galpón y lote');
-					// }
+					}
 				}
-				
-			}
 		}else {
 			alerta('danger', 'Introduzca los datos para poder agregar Mortalidad');
 		}
