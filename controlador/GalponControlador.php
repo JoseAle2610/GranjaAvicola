@@ -27,36 +27,64 @@ class GalponControlador{
 	}
 
 	public function agregarGalpon (){
-
+		verDatos(array($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
+					$_REQUEST['inicioLote'], $_REQUEST['modulos']));
 		if (isset($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
 					$_REQUEST['inicioLote'], $_REQUEST['modulos'])) {
-			$idGalpon = 0;
-			$idModulos = array();
 			try {
-				# INSERTAMOS EL GALPON Y CAPTURAMOS SU ID
-				$idGalpon = $this->galponModelo->insert($_REQUEST['numeroGalpon']);
-				# AGREGAMOS EL LOTE AL GALPON
-				$datosGalponEnLote = array(	$idGalpon, 1, $_REQUEST['NumeroGallinas'], $_REQUEST['inicioLote']);
-				$this->galponEnLoteModelo->insert($datosGalponEnLote);
-				# AGREGAR LOS MODULOS
-				foreach ($_REQUEST['modulos'] as $key => $valor) {
-					$datosModulo = array($idGalpon, $valor);
-					$this->sectorModelo->insert($datosModulo);
+				
+				$idGalpon = 0;
+				foreach ($_REQUEST['modulos'] as $posicion => $modulo) {
+					$modulo = (object)$modulo;
+					if ($_REQUEST['accion'] == 'agregar') {
+						echo "ESTAMOS AGREGANDO UN NUEVO Galpon";
+						// if ($idGalpon == 0 ) {
+						// 	$idGalpon = $this->galponModelo->insert($_REQUEST['numeroGalpon']);
+						// 	$datosGalponEnLote = array(	$idGalpon, 1, 
+						// 								$_REQUEST['NumeroGallinas'], 
+						// 								$_REQUEST['inicioLote']		);
+						// 	$this->galponEnLoteModelo->insert($datosGalponEnLote);
+						// }
+						// $datosModulo = array($idGalpon, $modulos->nombreSector);
+						// $this->sectorModelo->insert($datosModulo);
+					}else if($modulo->accion == 'insertar'){
+						echo "ESTAMOS AGREGANDO UN NUEVO SECTOR A UN LOTE EXISTENTE<br>";
+
+						// $datosModulo = array($idGalpon, $modulos->nombreSector);
+						// $this->sectorModelo->insert($datosModulo);
+					}else if($modulo->accion == 'editar'){
+						echo "ESTAMOS ACTUALIZANDO EL NOMBRE DE UN LOTE<br>";
+
+						$this->sectorModelo->update($modulo->nombreSector,
+													$modulo->activo,
+													$modulo->idSector);
+					}
 				}
-				# ALERTA DE QUE TODO ESTA BIEN
-				alerta('success', 'El Galpón, el lote y los sectores se han agregardo correctamente');
 			} catch (PDOException $e) {
-				if ($idgalpon != 0) {
-					$this->galponModelo->delete($idGalpon);
-					$this->galponEnLoteModelo->delete($idGalpon, 1);
-				}
-				alerta('danger', 'Ha ocurrido un problema al insertar los datos, por favor intente nuevamente');
-				alerta('danger', $e->getMessage());
+				
 			}
+		// 	$idGalpon = 0;
+		// 	$idModulos = array();
+		// 	try {
+		// 		# INSERTAMOS EL GALPON Y CAPTURAMOS SU ID
+		// 		# AGREGAMOS EL LOTE AL GALPON
+		// 		# AGREGAR LOS MODULOS
+		// 		foreach ($_REQUEST['modulos'] as $key => $valor) {
+		// 		}
+		// 		# ALERTA DE QUE TODO ESTA BIEN
+		// 		alerta('success', 'El Galpón, el lote y los sectores se han agregardo correctamente');
+		// 	} catch (PDOException $e) {
+		// 		if ($idgalpon != 0) {
+		// 			$this->galponModelo->delete($idGalpon);
+		// 			$this->galponEnLoteModelo->delete($idGalpon, 1);
+		// 		}
+		// 		alerta('danger', 'Ha ocurrido un problema al insertar los datos, por favor intente nuevamente');
+		// 		alerta('danger', $e->getMessage());
+		// 	}
 		} else {
 			alerta('danger', 'Introduzca los datos para poder agregar un Galpón');
 		}
-		header('location:?c=Galpon');
+		// header('location:?c=Galpon');
 	}
 
 	public function editarGalpon (){

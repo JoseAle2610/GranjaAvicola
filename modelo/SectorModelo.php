@@ -31,9 +31,9 @@ class SectorModelo
 		return $this->pdo->obtenerTodos($sql, $datos );
 	}
 
-	public function update($nombreSector, $idSector){
-		$sql = 'UPDATE Sectores SET nombreSector = ? WHERE idSector = ?';
-		return $this->pdo->consulta($sql, array($nombreSector, $idSector));
+	public function update($nombreSector, $activo, $idSector){
+		$sql = 'UPDATE Sectores SET nombreSector = ?, activo = ? WHERE idSector = ?';
+		return $this->pdo->consulta($sql, array($nombreSector, $activo, $idSector));
 	}
 
 	public function delete($idSector){
