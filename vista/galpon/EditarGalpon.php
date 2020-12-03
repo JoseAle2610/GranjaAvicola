@@ -58,6 +58,7 @@
 							<!-- INPUT HIDDEN ACCION PARA SABER QUE TIENE QUE HACEL EL SERVIDOR -->
 							<!-- -------------------------------------------------------------- -->
 								<input type="hidden" name="accion" id="accion" value="editar">
+								<input type="hidden" name="editarIdGalpon" id="editarIdGalpon">
 						</div>
 						<div class="col-12 col-md-6">
 							<div class="d-flex">
