@@ -7,10 +7,24 @@
 			<!-- CARD START -->
 			<div class="card card-dark">
 				<!-- CARD HEADER / BUTTON AGREGAR -->
-				<div class="card-header d-flex justify-content-between">
-					<h5 class="card-title">Control de Aves</h5>
-					<div class="col-6">
-						<h6 class="text-right mt-2 mb-0">Nombre Lote</h6>
+				<div class="card-header justify-content-between">
+					<div class="row">
+						<div class="col-6">
+							<h5 class="card-title">Control de Aves</h5>
+						</div>
+						<div class="col-6">
+							<div class="row justify-content-end">
+								<h6 class="text-right d-flex mt-1 col-auto" id="NombreLote">Nombre Lote</h6>
+									<input class="col-1 mt-2" type="checkbox" name="Active" id="Active">Activo
+							</div>
+						</div>
+						
+						
+					</div>
+					
+					<div class="col-auto d-inline-block">
+						
+						
 					</div>
 				</div>
 				<div class="card-body">
