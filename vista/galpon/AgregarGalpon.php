@@ -68,7 +68,7 @@
 								<div class="col-12">
 									<table id="tablaModulos" class="table  table-striped w-100">
 										<thead class="bg-info">
-											<th>Nombre Modulo</th>
+											<th>Nombre Módulo</th>
 											<th>Acción</th>
 										</thead>
 										<tbody>

@@ -75,7 +75,7 @@ class GalponControlador{
 					alerta('success', 'Se Actualizó el galpon correctamente' );
 				}
 			} catch (PDOException $e) {
-				alerta('danger', $e->getMessage());
+				alerta('danger', 'Ha ocurrido un error al insertar, el número de galpón no puede repetirse');
 			}
 		} else {
 			alerta('danger', 'Introduzca los datos para poder agregar un Galpón');

@@ -65,7 +65,7 @@
 							<!-- -------------------------------------- -->
 							<!-- CONSULTA RESPONSABLES                      -->
 							<!-- -------------------------------------- -->
-							<table class="table table-striped table-responsive-md">
+							<table class="table table-striped table-responsive-sm">
 								<thead class="bg-info text-dark">	
 									<th>Estado</th>
 									<th>Cédula</th>

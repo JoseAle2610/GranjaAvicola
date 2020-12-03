@@ -7,7 +7,7 @@ class UsuarioModelo{
 
 	public function insertar(array $datos){
 		$sql = 'INSERT INTO `usuarios` (nombreUsuario, claveUsuario, fechaCreacion, activo, pregunta, respuesta, ci)
-		 						VALUES (?, ?, CURRENT_DATE(), 1, ?, ?, ?);';
+		 						VALUES (?, ?, CURRENT_DATE(), ?, ?, ?, ?);';
 		return $this->pdo->insertGetId($sql, $datos);
 	}
 

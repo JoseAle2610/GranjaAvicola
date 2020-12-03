@@ -44,9 +44,9 @@ $(document).ready(function (){
     $('#formularioAgregarGalpon').submit(e => {
 
         let datosModulo = document.getElementsByClassName('puntero');
-        if (datosModulo.length == 0) {
+        if (datosModulo.length == 0 || $('#NumeroGallinas').val() <= 0 || $('#numeroGalpon').val() <= 0) {
           e.preventDefault();
-          alert('Debe existir por lo menos un modulo');
+          alert('Debe existir por lo menos un módulo, el número de galpón y de gallinas no puede ser menor o igual a cero');
         }
 
     });
@@ -87,7 +87,10 @@ $(document).ready(function (){
                     $('#editarInicioLote')      .val(datos[0]['inicio']);
                     $('#editarNumeroGallinas')  .val(datos[0]['gallinas']);
                     $('#loteActual')            .html(datos[0]['numeroLote'])
-                    $('#activo')                .prop('checked', datos[0]['activo']);
+                    if (datos[0]['activo'] == 0) {
+                        $('#activo')                .prop('checked', false);
+                    } else $('#activo')                .prop('checked', true);
+                    
 
                     $('#editarTablaModulos tbody').html('');
                     let posicion = 0;
@@ -312,26 +315,3 @@ $(document).ready(function (){
       })
 	})
 });
-
-function elemetoTablaModulo (numeroModulo, idModulo = '', editar = false) {
-    let button =    `<button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
-                        <i class="fas fa-trash-alt"></i>
-                    </button>`;
-    if (idModulo.length == 0) {
-        idModulo = numeroModulo;
-    }
-    if (editar == true) {
-        button = `  <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="${idModulo}" name="activo">
-                        <label class="custom-control-label" for="${idModulo}">Activo</label>
-                    </div>`;
-    }
-    let elemento = `<tr class=' p-0 '>
-                        <td>M-${numeroModulo}</td>
-                        <td class="justify-content-center d-flex">
-                            ${button}
-                          <input type="hidden" name="modulos[]" value="${idModulo}" class="puntero">
-                        </td>
-                    </tr>`;
-    return elemento;
-}

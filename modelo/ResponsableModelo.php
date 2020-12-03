@@ -7,7 +7,7 @@ class ResponsableModelo{
 
 	public function insert($datos){
 		$sql = 'INSERT INTO Responsables (nombreResponsable, apellidoResponsable, activo, ci) 
-					VALUES (?, ?, 1, ?)';
+					VALUES (?, ?, ?, ?)';
 		return $this->pdo->insertGetId($sql, $datos);
 	}
 

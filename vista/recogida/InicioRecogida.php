@@ -98,11 +98,8 @@
 										$suma = $grandes + $pequeños + $medianos;
 										echo "<td>$suma</td>";
 										?>
-										<td class="btn-group">
-											<button class="btn btn-info" data-toggle="modal" data-target="#DetallesRecogida" idRegistro='<?= $recogida->idRegistro?>'>
-												<i class="fas fa-search-plus"></i>
-											</button>
-											<button class="btn btn-warning infoRecogida" data-toggle="modal" data-target="#guardarRecogida" idRegistro='<?= $recogida->idRegistro?>'>
+										<td>
+											<button class="btn btn-info infoRecogida btn-block" data-toggle="modal" data-target="#guardarRecogida" idRegistro='<?= $recogida->idRegistro?>'>
 												<i class="fas fa-pen-fancy"></i>
 											</button>
 										</td>

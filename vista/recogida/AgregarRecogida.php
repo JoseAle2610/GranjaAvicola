@@ -31,7 +31,7 @@
 						<div class="col-6">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text bg-dark text-white">Modulo</span>
+									<span class="input-group-text bg-dark text-white">Módulo</span>
 								</div>
 								<select class="form-control idSector" name="idSector" id="idSector">
 								</select>
@@ -49,7 +49,7 @@
 								<span class="input-group-text bg-dark text-white">Responsable</span>
 								</div>
 								<?php 
-									$responsables = $this->ResponsableModelo->select();
+									$responsables = $this->ResponsableModelo->select('where activo = 1');
 									$select = "<select class='form-control' name='responsable' id='responsable'>";
 									foreach ($responsables as $key => $registro) {
 										$select .= "<option value='$registro->ci'>$registro->ci</option>";
@@ -99,7 +99,7 @@
 										<td><input type='time' class='form-control' value='$horas[$i]' readonly></td>";
 								foreach ($categorias as $key => $categoria) {
 									echo "<td class='categoria$categoria->idCategoria'>
-											<input type='number' class='form-control noVacio fila$i' 
+											<input type='number' min = '1' class='form-control noVacio fila$i' 
 										name='recogidaValor[$i][$categoria->idCategoria]'>
 										</td>";
 								}

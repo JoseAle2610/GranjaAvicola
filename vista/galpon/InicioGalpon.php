@@ -36,7 +36,7 @@
 									<th>N° gallinas actuales</th>
 									<th>Lote Activo</th>
 									<th>Inicio del Lote</th>
-									<th>Modulos</th>
+									<th>Módulos</th>
 									<th>Acción</th>
 								</thead>
 								<tbody>

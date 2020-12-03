@@ -15,14 +15,14 @@ class ResponsableControlador
 	}
 
 	public function guardarResponsable() {
+		var_dump($_REQUEST);
 		$activo= isset($_REQUEST['activoResponsable']) ? true : false ;
 		if (isset($_REQUEST['NombreResponsable'], $_REQUEST['ApellidoResponsable'], $_REQUEST['Cedula'], $_REQUEST['Nacionalidad'], $_REQUEST['editar'])) 
 		{
 			$datos = array(	'nombre' 		=> $_REQUEST['NombreResponsable'],
 							'apellido' 		=> $_REQUEST['ApellidoResponsable'],
 							'nacionalidad' 	=> $_REQUEST['Nacionalidad'],
-							'cedula' 		=> $_REQUEST['Cedula'],
-							'activo' 		=> $activo 							);
+							'cedula' 		=> $_REQUEST['Cedula']);
 			$datos = (object)$datos;
 
 			if ($_REQUEST['Cedula'] < 3000000 || $_REQUEST['Cedula'] > 40000000) {
@@ -40,11 +40,12 @@ class ResponsableControlador
 				try {
 					$datos = array(	$datos->nombre,
 									$datos->apellido,
-									$activo,
+									1,
 									$datos->nacionalidad.$datos->cedula);
 					if ($_REQUEST['editar'] == false) {
 						$this->responsableModelo->insert($datos);
 					} else if ($_REQUEST['editar'] == true) {
+						$datos[2] = $activo;
 						$this->responsableModelo->update($datos);
 					}
 					alerta('success', 'Se agregó al Responsable '.$_REQUEST['nombreResponsable'].' Correctamente');

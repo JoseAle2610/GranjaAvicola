@@ -21,7 +21,7 @@ class UsuarioControlador
 		{
 			$datos = array(	$_REQUEST['nombreUsuarioAgregar'],
 							$_REQUEST['claveUsuarioAgregar'],
-							$activoUsuario,
+							1,
 							$_REQUEST['preguntaUsuarioAgregar'],
 							$_REQUEST['RespuestaUsuarioAgregar'],
 							$_REQUEST['Cedula_Usuario']);
@@ -44,6 +44,7 @@ class UsuarioControlador
 					if ($_REQUEST['editarUsuario'] == false) {
 						$this->UsuarioModelo->insertar($datos);
 					 } else if ($_REQUEST['editarUsuario'] == true) {
+					 	$datos[2] = $activoUsuario;
 					 	$datos[6] = $_REQUEST['idUsuarios'];
 						$this->UsuarioModelo->update($datos);
 					}
