@@ -77,8 +77,6 @@ $(document).ready(function (){
     });
 
 
-
-
     $('.editarResponsable').click(function(){
         let ci = $(this).attr("ci");
         console.log(ci);
@@ -194,7 +192,7 @@ $(document).ready(function (){
                                         suma = suma - pos;
                                         pos = parseInt(value.numeroMuertes);
                                          html += `<tr>
-                                                <td class = 'text-center'>${value.idLote}</td>
+                                                <td class = 'text-center'>${value.numeroMuertes}</td>
                                                 <td class = 'text-center'>${value.fecha}</td>
                                                 <td class = 'text-center'>${datos[0].gallinas- suma}</td>
                                               </tr>`;

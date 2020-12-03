@@ -9,8 +9,8 @@
 				<!-- CARD HEADER / BUTTON AGREGAR -->
 				<div class="card-header d-flex justify-content-between">
 					<h5 class="card-title">Control de Aves</h5>
-					<div class="left">
-						<!-- <button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarGalpon">Agregar Galpón</button> -->
+					<div class="col-6">
+						<h6 class="text-right mt-2 mb-0">Nombre Lote</h6>
 					</div>
 				</div>
 				<div class="card-body">
