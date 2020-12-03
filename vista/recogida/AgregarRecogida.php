@@ -41,7 +41,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text bg-dark text-white">Fecha</span>
 							</div>
-							<input type="date" name="fecha" id="secha" class="form-control" min="2000-01-01" max="2020-12-31" value="2020-10-23" required>
+							<input type="date" name="fecha" id="secha" class="form-control" min="2000-01-01" max="2020-12-31" value="<?php echo date("Y-m-d");?>" required>
 						</div>
 						<div class="col-6 mb-2">
 							<div class="input-group">

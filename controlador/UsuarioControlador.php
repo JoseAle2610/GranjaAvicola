@@ -27,12 +27,12 @@ class UsuarioControlador
 							$_REQUEST['Cedula_Usuario']);
 			if (strlen($datos[0]) > 20 || strlen($datos[0]) < 4) {
 				alerta('danger', 'El nombre del usuario es muy largo o corto');
-			} else if(preg_match('/\s/',$datos[0])){
+			} else if(strlen($datos[0]) == 0 || strlen($datos[1]) == 0 || strlen($datos[4]) == 0){
+				alerta('danger', 'El nombre del usuario, contraseña o respuesta no debe estar vacío');
+			}  else if(preg_match('/\s/',$datos[0])){
 				alerta('danger', 'El nombre del usuario no debe contener espacios');
-				// El nombbre no debe contener signo de puntuacion  ni nada
 			} else if(preg_match('/[\W]/',$datos[0])){
 				alerta('danger', 'El nombre del usuario no debe contener caracteres especiales');
-				// El nombbre no debe contener signo de puntuacion  ni nada
 			}else if(strlen($datos[1]) > 20 || strlen($datos[1]) < 4){
 				alerta('danger', 'La contraseña es muy larga');
 			} else if(preg_match('/\s/',$datos[0])){

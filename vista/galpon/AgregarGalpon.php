@@ -37,7 +37,7 @@
 								<div class="input-group-prepend">
 									<label for="inicioLote" class="input-group-text">Inicio</label>
 								</div>
-									<input type="date" name="inicioLote" id="inicioLote" class="form-control" min="2000-01-01" max="2020-12-31" value="2020-10-23" required>
+									<input type="date" name="inicioLote" id="inicioLote" class="form-control" min="2000-01-01" max="2020-12-31" value="<?php echo date("Y-m-d");?>" required>
 								
 							</div>
 							<div class="input-group">
