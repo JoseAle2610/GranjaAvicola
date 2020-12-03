@@ -15,7 +15,7 @@ class ConsultasModelo
 					FROM galpones g INNER JOIN galponesenlote gl ON g.idGalpon = gl.idGalpon 
 					INNER JOIN lotes l ON l.idLote = gl.idLote 
 					INNER JOIN sectores s ON g.idGalpon = s.idGalpon 
-					$group $condicion";
+					$condicion $group ";
 		return $this->pdo->obtenerTodos($sql, $datos);
 	}
 

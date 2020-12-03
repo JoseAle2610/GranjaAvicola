@@ -30,8 +30,8 @@ class GalponModelo{
 		return $this->pdo->consulta($sql, array($id) );
 	}
 
-	public function update($idGalpon, $nombreGalpon){
-		$sql = 'UPDATE Galpones SET nombreGalpon = ? WHERE idGalpon = ?';
-		return $this->pdo->consulta($sql, array( $nombreGalpon, $idGalpon));
+	public function update($idGalpon, $activo, $nombreGalpon){
+		$sql = 'UPDATE Galpones SET nombreGalpon = ?, activo = ? WHERE idGalpon = ?';
+		return $this->pdo->consulta($sql, array( $nombreGalpon,  $activo, $idGalpon));
 	}
 }

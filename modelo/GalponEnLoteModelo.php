@@ -33,7 +33,7 @@ class GalponEnLoteModelo{
 	}
 
 	public function update($datos){
-		$sql = 'UPDATE GalponesEnLote SET terminado = ?, gallinas = ? WHERE idGalpon = ? AND idLote = ?';
+		$sql = 'UPDATE GalponesEnLote SET terminado = ?, gallinas = ?, inicio = ? WHERE idGalpon = ? AND idLote = ?';
 		return $this->pdo->consulta($sql, $datos);
 	}
 }

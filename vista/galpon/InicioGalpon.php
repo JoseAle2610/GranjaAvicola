@@ -54,7 +54,6 @@
 										<td><?=$value->cantModulos?></td>
 										<!-- BUTTONS / MOSTRAR-EDITAR-ELIMINAR -->
 										<td class="btn-group justify-content-center d-flex">
-											<button type="button" class="btn btn-info" data-toggle="modal" data-target="#DetalleGalpon"><i class="fas fa-search-plus"></i></button>
 											<button idGalpon='<?=$value->idGalpon?>' class="btn btn-warning editarGalpon" data-toggle="modal" data-target='#editarGalpon'><i class="fas fa-pen-fancy"></i></button>
 										</td>
 									</tr>

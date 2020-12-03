@@ -83,6 +83,7 @@ $(document).ready(function (){
                     console.log(datos);
                     $('#editarNumeroGalpon')    .val(datos[0]['nombreGalpon']);
                     $('#editarIdGalpon')        .val(datos[0]['idGalpon']);
+                    $('#editarIdLote')        .val(datos[0]['idLote']);
                     $('#editarInicioLote')      .val(datos[0]['inicio']);
                     $('#editarNumeroGallinas')  .val(datos[0]['gallinas']);
                     $('#loteActual')            .html(datos[0]['numeroLote'])
@@ -91,7 +92,7 @@ $(document).ready(function (){
                     $('#editarTablaModulos tbody').html('');
                     let posicion = 0;
                     datos.forEach(dato => {
-                        let checked = (dato.activo == 1)?'checked="1"':'';
+                        let checked = (dato.sectorActivo == 1) ? 'checked':'';
                         let elementoTabla = $('#editarTablaModulos tbody').html();
                         elementoTabla += `<tr class=' p-0 '>
                                             <td>
