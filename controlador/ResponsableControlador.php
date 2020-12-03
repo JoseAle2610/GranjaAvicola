@@ -25,17 +25,17 @@ class ResponsableControlador
 							'cedula' 		=> $_REQUEST['Cedula']);
 			$datos = (object)$datos;
 
-			if ($_REQUEST['Cedula'] < 3000000 || $_REQUEST['Cedula'] > 40000000) {
-			 	alerta('danger', 'Ingrese una cédula válida');
-			 } else if (preg_match('[a-zA-Z ]+', $datos->nombre)) {
-				alerta('danger', 'El nombre del responsable no puede contener caracteres especiales');
-				# NOS ASEGURAMOS DE QUE EL APELLIDO NO CONTENGA CARACTERES ESPECIALES
-			} else if(preg_match('[a-zA-Z ]+',$datos->apellido)){
-				alerta('danger', 'Al apellido del responsable no debe ontener caracteres especiales');
-				# NOS ASEGURAMOS DE QUE LA CEDULA SEA UN ENTERO
-			} else if(!filter_var($datos->cedula,FILTER_VALIDATE_INT)){
-				alerta('danger', 'La cedula debe ser un numero entero');
-			}else {
+			if (!filter_var($datos->cedula,FILTER_VALIDATE_INT)) {
+			 	alerta('danger', 'La cedula debe ser un numero entero');
+			} else if (preg_match('/\d/', $_REQUEST['NombreResponsable']) || preg_match('/\d/', $_REQUEST['ApellidoResponsable'])) {
+			 	alerta('danger', 'El Nombre o Apellido del Responsable no puede tener números');
+			} else if(strlen($_REQUEST['NombreResponsable']) == 0 || strlen($_REQUEST['NombreResponsable']) == 0){
+				alerta('danger', 'El nombre o apellido del responsable no debe estar vacío');
+			} else if (preg_match('/\W/', $_REQUEST['NombreResponsable']) || preg_match('/\W/', $_REQUEST['ApellidoResponsable'])) {
+			 	alerta('danger', 'El Nombre o Apellido del Responsable no puede tener caracteres especiales');
+			} else if($_REQUEST['Cedula'] < 3000000 || $_REQUEST['Cedula'] > 40000000){
+				alerta('danger', 'Ingrese una cédula válida');
+			} else {
 				# INSERTAMOS O EDITAMOS LOS DATOS
 				try {
 					$datos = array(	$datos->nombre,

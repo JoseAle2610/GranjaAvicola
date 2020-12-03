@@ -47,7 +47,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text text-white  bg-dark">Nombre</span>
 								</div>
-								<input type="text" name="NombreResponsable" id="NombreResponsable" class="form-control" required  minlength="3" maxlength="40">
+								<input type="text" name="NombreResponsable" id="NombreResponsable" class="form-control" required pattern="[a-zA-Z ]+" minlength="3" maxlength="40">
 							</div>
 							<!-- APELLIDO RESPONSABLE -->
 							<div class="input-group form-group">
