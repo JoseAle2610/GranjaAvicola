@@ -244,7 +244,7 @@ $(document).ready(function (){
             data: 'Nombre_Galpon='+Nombre_Galpon,
             type: 'GET',
             success: function(respuesta){
-                if(!respuesta.error) {
+                if(!respuesta.error || respuesta.length != 0) {
                     let datos = JSON.parse(respuesta);
                     $('#NumeroGallinas').val(datos[0].gallinas);
                     $('#NombreLote').html(datos[0].idLote);

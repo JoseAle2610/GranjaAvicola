@@ -24,6 +24,7 @@ class ControlAvesControlador
 			foreach ($datosMortalidadModelo as $key => $value) {
 				$numeroMuertes = $datosMortalidadModelo[$key]->numeroMuertes + $numeroMuertes;
 			}
+			var_dump($numeroMuertes);
 		
 			if ($_REQUEST['Mortalidad'] <= 0) {
 			  	alerta('danger', 'Ingrese un número válido por favor');
@@ -37,7 +38,7 @@ class ControlAvesControlador
 					try {
 						$datosMortalidadModelo = array($_REQUEST['Nombre_Galpon'], $GalponEnLoteModelo->idLote, $_REQUEST['Mortalidad'], $_REQUEST['FechaMortalidad']);
 						$GalponEnLoteModelo->gallinas = $GalponEnLoteModelo->gallinas - $_REQUEST['Mortalidad'];
-						if ($numeroMuertes == $GalponEnLoteModelo->gallinas) {
+						if ($numeroMuertes >= $GalponEnLoteModelo->gallinas) {
 							$GalponEnLoteModelo->terminado = 1;
 							 $GalponEnLoteModelo = array($GalponEnLoteModelo->terminado,
 													$GalponEnLoteModelo->gallinas,
