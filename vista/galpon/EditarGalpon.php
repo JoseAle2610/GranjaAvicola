@@ -14,7 +14,7 @@
 				</button>
 			</div>
 			<!--Body-->
-			<form method="post" action="?c=Galpon&m=editarGalpon" id="formularioEditarGalpon">
+			<form method="post" action="?c=Galpon&m=AgregarGalpon" id="formularioEditarGalpon">
 				<div class="modal-body">
 					<div class="row">
 						<!-- -------------------------------------------------------- -->
@@ -26,7 +26,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text">Número de Galpón</span>
 									</div>
-									<input type="number" name="editarNumeroGalpon" id="editarNumeroGalpon" class="form-control" min="1" max="100" required>
+									<input type="number" name="numeroGalpon" id="editarNumeroGalpon" class="form-control" min="1" max="100" required readonly>
 								</div>
 								<div class="col-3 align-self-center">
 									<div class="custom-control custom-checkbox">
@@ -45,33 +45,19 @@
 									<div class="input-group-prepend">
 										<label for="editarInicioLote" class="input-group-text">Inicio</label>
 									</div>
-									<input type="date" name="editarInicioLote" id="editarInicioLote" class="form-control" min="2000-01-01" max="2020-12-31" required>
+									<input type="date" name="inicioLote" id="editarInicioLote" class="form-control" min="2000-01-01" max="2020-12-31" required>
 								</div>
 								<div class="input-group form-group">
 									<div class="input-group-prepend">
 										<span class="input-group-text">N° Gallinas</span>
 									</div>
-									<input type="number" name="editarNumeroGallinas" id="editarNumeroGallinas" class="form-control" min="1" max="9000" required>
+									<input type="number" name="NumeroGallinas" id="editarNumeroGallinas" class="form-control" min="1" max="9000" required>
 								</div>
 							</div>
-							<!-- <button type="button" class="btn btn-info btn-block" id="agregarLote">Agregar Nuevo Lote</button> -->
-							<!-- ----------------------------------------------- -->
-							<!-- AQUI COLOCAREMOS LOS DATOS DEL NUEVO LOTE       -->
-							<!-- ----------------------------------------------- -->
-							<!-- <div id="loteNuevoDatos" class="mt-2">
-								<div class="input-group form-group">
-									<div class="input-group-prepend">
-										<label for="editarInicioLote" class="input-group-text">Inicio</label>
-									</div>
-									<input type="date" name="nuevoInicioLote" id="nuevoInicioLote" class="form-control" min="2000-01-01" max="2020-12-31" required>
-								</div>
-								<div class="input-group form-group">
-									<div class="input-group-prepend">
-										<span class="input-group-text">N° Gallinas</span>
-									</div>
-									<input type="number" name="nuevoNumeroGallinas" id="nuevoNumeroGallinas" class="form-control" min="1" max="9000" required>
-								</div>
-							</div> -->
+							<!-- -------------------------------------------------------------- -->
+							<!-- INPUT HIDDEN ACCION PARA SABER QUE TIENE QUE HACEL EL SERVIDOR -->
+							<!-- -------------------------------------------------------------- -->
+								<input type="hidden" name="accion" id="accion" value="editar">
 						</div>
 						<div class="col-12 col-md-6">
 							<div class="d-flex">

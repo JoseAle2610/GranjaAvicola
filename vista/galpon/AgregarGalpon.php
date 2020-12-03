@@ -59,6 +59,10 @@
 									
 								<input class="form-control" type="number" name="numeroModulo" id="numeroModulo" min="1" max="100">
 								<button type="button" id="agregarGalpon" class="btn btn-warning ml-2">Agregar</button>
+								<!-- -------------------------------------------------------------- -->
+								<!-- INPUT HIDDEN ACCION PARA SABER QUE TIENE QUE HACEL EL SERVIDOR -->
+								<!-- -------------------------------------------------------------- -->
+									<input type="hidden" name="accion" id="accion" value="agregar">
 							</div>
 							<div class="row">
 								<div class="col-12">

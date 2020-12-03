@@ -4,13 +4,13 @@ $(document).ready(function (){
 	
     $('#agregarGalpon').click(function (){
 
-        let numeroModulo = $('#numeroModulo').val();
-        let datosModulo = document.getElementsByClassName('puntero');
+        let numeroModulo    = $('#numeroModulo').val();
+        let datosModulo     = document.getElementsByClassName('puntero');
+        let posicion        = datosModulo.length;
         let repetido = false;
         // ASEGURARSE DE QUE NO SE REPITA 
         // EL NOMBRE DEL MODULO
         if (datosModulo.length != 0) {
-          let arreglo = [];
           for (let i = 0; i < datosModulo.length; i++) {
             if (datosModulo[i].value == numeroModulo) {
               repetido = true;
@@ -20,7 +20,16 @@ $(document).ready(function (){
         // SI NO ESTA VACIO NI ESTA REPETIDO LO AGREGAMOS
         if (numeroModulo != '' && repetido == false) {
             let elementoTabla = $('#tablaModulos tbody').html();
-                elementoTabla += elemetoTablaModulo(numeroModulo);
+                elementoTabla += `<tr class=' p-0 '>
+                                    <td>M-${numeroModulo}</td>
+                                    <td class="justify-content-center d-flex">
+                                        <button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                        <input type="hidden" name="modulos[${posicion}][nombreSector]" value="${numeroModulo}" class="puntero">
+                                        <input type="hidden" name="modulos[${posicion}][activo]" value="1">
+                                    </td>
+                                </tr>`;
             $('#tablaModulos tbody').html(elementoTabla);
         } else {
           alert('El número del modulo no puede estar vacío ni repetido');
@@ -42,6 +51,24 @@ $(document).ready(function (){
 
     });
 
+    $('#formularioEditarGalpon').submit(e => {
+
+        let datosModulo     = document.getElementsByClassName('numeroModulo');
+        let repetido = [];
+        // ASEGURARSE DE QUE NO SE REPITA 
+        // EL NOMBRE DEL MODULO
+     
+        for (let i = 0; i < datosModulo.length; i++) {
+            if (repetido.includes(datosModulo[i].value) == true) {
+                e.preventDefault();
+                alert('El número del modulo no puede estar vacío ni repetido');
+            }else{
+                repetido.push(datosModulo[i].value);
+            }
+        }
+
+    });
+
   // OBTENEMOS TODOS LOS DATOS PARA PODER EDITAR GRACIAS NELLA
     $(".editarGalpon").click(function(){
         let idGalpon = $(this).attr("idGalpon");
@@ -54,29 +81,78 @@ $(document).ready(function (){
                 if (!respuesta.error) {
                     let datos = JSON.parse(respuesta);
                     console.log(datos);
-                    $('#editarNumeroGalpon').val(datos[0]['nombreGalpon']);
-                    $('#editarInicioLote').val(datos[0]['inicio']);
-                    $('#editarNumeroGallinas').val(datos[0]['gallinas']);
-                    $('#loteActual').html(datos[0]['numeroLote'])
-                    $('#activo').prop('checked', datos[0]['activo']);
+                    $('#editarNumeroGalpon')    .val(datos[0]['nombreGalpon']);
+                    $('#editarInicioLote')      .val(datos[0]['inicio']);
+                    $('#editarNumeroGallinas')  .val(datos[0]['gallinas']);
+                    $('#loteActual')            .html(datos[0]['numeroLote'])
+                    $('#activo')                .prop('checked', datos[0]['activo']);
 
                     $('#editarTablaModulos tbody').html('');
+                    let posicion = 0;
                     datos.forEach(dato => {
+                        let checked = (dato.activo == 1)?'checked="1"':'';
                         let elementoTabla = $('#editarTablaModulos tbody').html();
-                        elementoTabla += elemetoTablaModulo(dato.nombreSector, dato.idSector, true)
+                        elementoTabla += `<tr class=' p-0 '>
+                                            <td>
+                                            <div class="input-group d-flex">
+                                                <label class='mt-1'>M-
+                                                </label>
+                                                <input type='number' class='form-control numeroModulo' name="modulos[${posicion}][nombreSector]" 
+                                                value='${dato.nombreSector}'>
+                                            </div>
+                                                
+                                            </td>
+                                            <td class="justify-content-center d-flex">
+                                                <div class="custom-control custom-checkbox">
+                                                    <input type="checkbox" class="custom-control-input" id="fila-${posicion}" 
+                                                        name="modulos[${posicion}][activo]" ${checked}>
+                                                    <label class="custom-control-label" for="fila-${posicion}">Activo</label>
+                                                </div>
+                                                <input type="hidden" value="${dato.idSector}" name="modulos[${posicion}][idSector]">
+                                                <input type="hidden" value="editar" name="modulos[${posicion}][accion]">
+                                            </td>
+                                        </tr>`;
                         $('#editarTablaModulos tbody').html(elementoTabla);
-                        if (dato.sectorActivo == 0) {
-                        $('#'+dato.idSector).prop('checked', false);
-                        }else{
-                        $('#'+dato.idSector).prop('checked', true);
-                    }
+                        posicion++;
                     });
                 }
             }
         });
     });
 
-
+    $('#editarModulo').click(function(){
+        let numeroModulo    = $('#editarNumeroModulo').val();
+        let datosModulo     = document.getElementsByClassName('numeroModulo');
+        let posicion        = datosModulo.length;
+        let repetido = false;
+        // ASEGURARSE DE QUE NO SE REPITA 
+        // EL NOMBRE DEL MODULO
+        if (datosModulo.length != 0) {
+          for (let i = 0; i < datosModulo.length; i++) {
+            if (datosModulo[i].value == numeroModulo) {
+              repetido = true;
+            }
+          }
+        }
+        // SI NO ESTA VACIO NI ESTA REPETIDO LO AGREGAMOS
+        if (numeroModulo != '' && repetido == false) {
+            let elementoTabla = $('#editarTablaModulos tbody').html();
+                elementoTabla += `<tr class=' p-0 '>
+                                    <td>M-${numeroModulo}</td>
+                                    <td class="justify-content-center d-flex">
+                                        <button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                        <input type="hidden" name="modulos[${posicion}][nombreSector]" value="${numeroModulo}" class="numeroModulo">
+                                        <input type="hidden" name="modulos[${posicion}][activo]" value="1">
+                                        <input type="hidden" name="modulos[${posicion}][accion]" value="insertar">
+                                    </td>
+                                </tr>`;
+            $('#editarTablaModulos tbody').html(elementoTabla);
+        } else {
+          alert('El número del modulo no puede estar vacío ni repetido');
+        }
+    });
 
 
     $('.editarResponsable').click(function(){

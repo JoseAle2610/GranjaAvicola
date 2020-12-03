@@ -1,8 +1,5 @@
 <?php 
 class LoginControlador{
-
-	private $users = array( array('nombre' => 'Admin', 'contraseña' => '123456'),
-							array('nombre' => 'User', 'contraseña' => '654321')	);
 	
 	function __construct(){
 		$this->usuarioModelo = new UsuarioModelo();
