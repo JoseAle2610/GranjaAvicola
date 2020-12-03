@@ -21,7 +21,7 @@ class GalponModelo{
 	}
 
 	public function select(){
-		$sql = 'SELECT idGalpon as id, nombreGalpon as nombre FROM Galpones';
+		$sql = 'SELECT idGalpon as id, nombreGalpon as nombre FROM Galpones WHERE activo = 1';
 		return $this->pdo->obtenerTodos($sql, array('')	);
 	}
 
