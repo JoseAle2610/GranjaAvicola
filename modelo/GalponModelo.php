@@ -21,7 +21,7 @@ class GalponModelo{
 	}
 
 	public function select(){
-		$sql = 'SELECT idGalpon as id, nombreGalpon as nombre FROM Galpones';
+		$sql = 'SELECT idGalpon as id, nombreGalpon as nombre FROM Galpones WHERE activo = 1';
 		return $this->pdo->obtenerTodos($sql, array('')	);
 	}
 
@@ -30,8 +30,8 @@ class GalponModelo{
 		return $this->pdo->consulta($sql, array($id) );
 	}
 
-	public function update($idGalpon, $nombreGalpon){
-		$sql = 'UPDATE Galpones SET nombreGalpon = ? WHERE idGalpon = ?';
-		return $this->pdo->consulta($sql, array( $nombreGalpon, $idGalpon));
+	public function update($idGalpon, $activo, $nombreGalpon){
+		$sql = 'UPDATE Galpones SET nombreGalpon = ?, activo = ? WHERE idGalpon = ?';
+		return $this->pdo->consulta($sql, array( $nombreGalpon,  $activo, $idGalpon));
 	}
 }
