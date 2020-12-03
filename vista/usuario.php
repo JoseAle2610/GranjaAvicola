@@ -36,7 +36,7 @@
 								</div>
 								<div class="col-3 mt-2">
 									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" id="activoUsuario" name="activoUsuario" checked="">
+										<input type="checkbox" class="custom-control-input" id="activoUsuario" name="activoUsuario" checked="" disabled>
 										<label class="custom-control-label" for="activoUsuario">Activo</label>
 									</div>
 								</div>

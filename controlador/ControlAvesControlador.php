@@ -25,11 +25,6 @@ class ControlAvesControlador
 				$numeroMuertes = $datosMortalidadModelo[$key]->numeroMuertes + $numeroMuertes;
 			}
 		
-// else if ($datosMortalidadModelo == NULL) {
-// 				alerta('danger', '');
-// 				// echo "ERROR";
-// 			}
-			// $Validando = false;
 			if ($_REQUEST['Mortalidad'] <= 0) {
 			  	alerta('danger', 'Ingrese un número válido por favor');
 		  	} else if($GalponEnLoteModelo->terminado == 1) {
@@ -39,13 +34,6 @@ class ControlAvesControlador
 			}else if ($numeroMuertes > $GalponEnLoteModelo->gallinas) {
 				alerta('danger', 'Las muertes no pueden superar al número total de gallinas en el lote');
 			}  else{
-				// if ($datosMortalidadModelo != NULL) {
-				// 	if ($datosMortalidadModelo[0] < $_REQUEST['FechaMortalidad']) {
-				// 	$Validando = true;
-				// 	alerta('danger', 'Ya ingresó la mortalidad de las gallinas en una fecha mayor a esta');
-				// 	} else alerta('success', 'Ya ingresó la mortalidad de las gallinas en una fecha mayor a esta');
-				// }
-				// if ($Validando == false) {
 					try {
 						$datosMortalidadModelo = array($_REQUEST['Nombre_Galpon'], $GalponEnLoteModelo->idLote, $_REQUEST['Mortalidad'], $_REQUEST['FechaMortalidad']);
 						$GalponEnLoteModelo->gallinas = $GalponEnLoteModelo->gallinas - $_REQUEST['Mortalidad'];
@@ -55,9 +43,9 @@ class ControlAvesControlador
 													$GalponEnLoteModelo->gallinas,
 													$GalponEnLoteModelo->idGalpon,
 													$GalponEnLoteModelo->idLote);
-							// $this->GalponEnLoteModelo->update($GalponEnLoteModelo);
+							$this->GalponEnLoteModelo->update($GalponEnLoteModelo);
 						}
-						// $this->MortalidadModelo->insert($datosMortalidadModelo);
+						$this->MortalidadModelo->insert($datosMortalidadModelo);
 						alerta('success', 'El número de Gallinas ha sido actualizada');
 					} catch (PDOException $e) {
 						alerta('danger', 'Ya ingresó las Gallinas que muerieron en esa fecha, galpón y lote');

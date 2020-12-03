@@ -14,7 +14,7 @@
 						</div>
 						<div class="col-6">
 							<div class="row justify-content-end">
-								<h6 class="text-right d-flex mt-1 col-auto" id="NombreLote">Nombre Lote</h6>
+								<h6 class="text-right d-flex mt-1 col-auto">Lote:<em id="NombreLote"></em></h6>
 									<input class="col-1 mt-2" type="checkbox" name="Active" id="Active">Activo
 							</div>
 						</div>

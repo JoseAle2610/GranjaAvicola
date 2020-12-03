@@ -199,7 +199,6 @@ $(document).ready(function (){
     //----------------------------------------------
     $('.editarUsuario').click(function(){
         let idUsuarios = $(this).attr("idUsuarios");
-        console.log(idUsuarios);
         $.ajax({
             url:  "?c=ajax&m=infoUsuario",
             data: 'idUsuarios='+idUsuarios,
@@ -207,7 +206,7 @@ $(document).ready(function (){
             success: function(respuesta){
                 if (!respuesta.error) {
                     let datos = JSON.parse(respuesta);
-                    console.log(datos[0].activo);
+                    console.log(respuesta);
                     $('#claveUsuarioAgregar').val(datos[0].claveUsuario);
                     $('#nombreUsuarioAgregar').val(datos[0].nombreUsuario);
                     $('#RespuestaUsuarioAgregar').val(datos[0].respuesta);
@@ -216,13 +215,17 @@ $(document).ready(function (){
                     }else{
                         $('#activoUsuario').prop('checked', true);
                     }
+                    if (datos[0].nombreUsuario == 'admin') {
+                         $('#nombreUsuarioAgregar').prop('disabled', true);
+                         $('#activoUsuario').prop('disabled', true);
+                    }else{
+                        $('#nombreUsuarioAgregar').prop('disabled', false);
+                        $('#activoUsuario').prop('disabled', false);
+                    }
                     $('#Cedula_Usuario').val(datos[0].ci);
                     $('#preguntaUsuarioAgregar').val(datos[0].pregunta);
                     $('#idUsuarios').val(datos[0].idUsuarios);
-                    // $('#Cedula').val(datos.ci);
-                    // document.getElementById("activoResponsable").checked = datos.activo;
                     $('#editarUsuario').val(true);
-                    // $('#Nacionalidad').prop('selected', true);
 
                 }
             }
@@ -239,9 +242,12 @@ $(document).ready(function (){
             type: 'GET',
             success: function(respuesta){
                 if(!respuesta.error) {
-                    // console.log(respuesta);
                     let datos = JSON.parse(respuesta);
                     $('#NumeroGallinas').val(datos[0].gallinas);
+                    $('#NombreLote').html(datos[0].idLote);
+                    if (datos[0].idLote != 0) {
+                        $('#Active').prop('checked', true);
+                    }
                     $.ajax({
                         url:  "?c=ajax&m=tabla",
                         data: 'Nombre_Galpon='+Nombre_Galpon,
