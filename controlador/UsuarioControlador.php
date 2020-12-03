@@ -21,7 +21,6 @@ class UsuarioControlador
 		{
 			$datos = array(	$_REQUEST['nombreUsuarioAgregar'],
 							$_REQUEST['claveUsuarioAgregar'],
-							$activoUsuario,
 							$_REQUEST['preguntaUsuarioAgregar'],
 							$_REQUEST['RespuestaUsuarioAgregar'],
 							$_REQUEST['Cedula_Usuario']);
@@ -50,8 +49,6 @@ class UsuarioControlador
 					alerta('success', 'Se agregó al Responsable Correctamente');
 				} catch (PDOException $e) {
 					alerta('danger', 'Ha ocurrido un error al agregar al Usuario, no se pueden repetir NOMBRES o CÉDULAS');
-					die($e->getMessage());
-					alerta('danger', $e->getMessage());
 				}
 			}
 			
