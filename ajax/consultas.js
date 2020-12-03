@@ -120,40 +120,6 @@ $(document).ready(function (){
         });
     });
 
-    $('#editarModulo').click(function(){
-        let numeroModulo    = $('#editarNumeroModulo').val();
-        let datosModulo     = document.getElementsByClassName('numeroModulo');
-        let posicion        = datosModulo.length;
-        let repetido = false;
-        // ASEGURARSE DE QUE NO SE REPITA 
-        // EL NOMBRE DEL MODULO
-        if (datosModulo.length != 0) {
-          for (let i = 0; i < datosModulo.length; i++) {
-            if (datosModulo[i].value == numeroModulo) {
-              repetido = true;
-            }
-          }
-        }
-        // SI NO ESTA VACIO NI ESTA REPETIDO LO AGREGAMOS
-        if (numeroModulo != '' && repetido == false) {
-            let elementoTabla = $('#editarTablaModulos tbody').html();
-                elementoTabla += `<tr class=' p-0 '>
-                                    <td>M-${numeroModulo}</td>
-                                    <td class="justify-content-center d-flex">
-                                        <button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <input type="hidden" name="modulos[${posicion}][nombreSector]" value="${numeroModulo}" class="numeroModulo">
-                                        <input type="hidden" name="modulos[${posicion}][activo]" value="1">
-                                        <input type="hidden" name="modulos[${posicion}][accion]" value="insertar">
-                                    </td>
-                                </tr>`;
-            $('#editarTablaModulos tbody').html(elementoTabla);
-        } else {
-          alert('El número del modulo no puede estar vacío ni repetido');
-        }
-    });
-
 
     $('.editarResponsable').click(function(){
         let ci = $(this).attr("ci");
