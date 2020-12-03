@@ -1,4 +1,4 @@
-<button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarMortalidad">Agregar Mortalidad</button> -->
+<!--<button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarMortalidad">Agregar Mortalidad</button> -->
 <!-- CONTAINER -->
 <!-- CONTAINER -->
 <div class="container my-3">
