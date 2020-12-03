@@ -1,10 +1,5 @@
 <?php 
 
-
-
-
-
-
 class MortalidadModelo
 {
 	
@@ -17,6 +12,7 @@ class MortalidadModelo
 		return $this->pdo->insertGetId($sql, $datos);
 	}
 
+// Usado en ajaxcontrolador para consultas.js ---------> Y en Control Aves Controlador
 	public function select($condicion='', $datos = array('')){
 		$sql = "SELECT idGalpon, idLote, numeroMuertes, fecha FROM Mortalidad $condicion";
 		return $this->pdo->obtenerTodos($sql, $datos);
