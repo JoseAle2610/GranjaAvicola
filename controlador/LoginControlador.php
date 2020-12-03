@@ -24,14 +24,10 @@ class LoginControlador{
 				header('location:?c=recogida');
 			}else{
 				alerta('danger', 'El usuario y/o la clave con la que intenta acceder no son validos');
-				#error
-				$this->index();
 				header('location:./');
 			}
 		}else{
 				alerta('danger', 'Ingrese los datos para poder acceder al sistema');
-			#error
-			$this->index();
 			header('location:./');
 		}
 	}

@@ -53,6 +53,7 @@
 		<!-- JAVASCRIPT AJAX -->
 		<script type="text/javascript" src="ajax/consultas.js"></script>
 		<script type="text/javascript" src="ajax/recogida.js"></script>
+		<script type="text/javascript" src="ajax/login.js"></script>
 
 		<script type="text/javascript">
         // $(document).ready(function () {

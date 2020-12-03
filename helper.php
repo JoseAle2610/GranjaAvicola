@@ -39,9 +39,8 @@ function alerta($color, $mensaje){
 
 function loged(){
 	if (!isset($_SESSION['login']) || $_SESSION['login'] != true) {
-		alerta('danger', 'Para Acceder al sistema <strong>Debes</strong> Iniciar Sesion');
+		// alerta('danger', 'Para Acceder al sistema <strong>Debes</strong> Iniciar Sesion');
 		header('location:./');
-		die();
 	}
 }
 function cambiarFormatoFecha($fecha){
