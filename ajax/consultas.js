@@ -197,48 +197,57 @@ $(document).ready(function (){
     //------------------
     //CONTROL DE AVES 
     //------------------
-    $('#Nombre_Galpon').change(function(){
+     $('#Nombre_Galpon').change(function(){
         let Nombre_Galpon = $('#Nombre_Galpon').val();
-        // console.log(Nombre_Galpon);
-         $.ajax({
-            url:  "?c=ajax&m=infoNombreGalponLote",
+        $.ajax({
+             url:  "?c=ajax&m=infoNombreGalponLote",
             data: 'Nombre_Galpon='+Nombre_Galpon,
             type: 'GET',
             success: function(respuesta){
-                // console.log(respuesta);
                 if(!respuesta.error) {
+                    // console.log(respuesta);
                     let datos = JSON.parse(respuesta);
-                     // console.log(datos);
                     $('#NumeroGallinas').val(datos[0].gallinas);
                     $.ajax({
                         url:  "?c=ajax&m=tabla",
                         data: 'Nombre_Galpon='+Nombre_Galpon,
                         type: 'GET',
-                        success: function(respuesta){
-                            if(!respuesta.error) {
-                                let datos1 = JSON.parse(respuesta);
+                        success: function(respuestas){
+                            if(!respuestas.error) {
+                                let datos1 = JSON.parse(respuestas);
                                 let html = '';
-                                if (datos1 == false) {
+                               if (datos1 == false) {
                                     html = `<tr>
                                                 <td></td>
                                                 <td><p>Vacío</p></td>
                                                 <td></td>
                                             </tr>`;
-                                }else{
+                               } else{
+                                    let pos = 0;
+                                    let suma = 0;
+                                    for (var i = 0; i < datos1.length; i++) {
+                                        suma += parseInt(datos1[i].numeroMuertes);
+                                    }
+                                    // for (let i = 0; i < datos1.length; i++) {
+                                    //     suma = datos1[i].numeroMuertes
+                                    // }
                                    Object.entries(datos1).forEach(([key, value]) => {
-                                      html += `<tr>
-                                                <td>${value.idLote}</td>
-                                                <td>${value.fecha}</td>
-                                                <td>${value.numeroMuertes}</td>
+                                    // suma = datos1[key].numeroMuertes + suma;
+                                        suma = suma - pos;
+                                        pos = parseInt(value.numeroMuertes);
+                                         html += `<tr>
+                                                <td class = 'text-center'>${value.numeroMuertes}</td>
+                                                <td class = 'text-center'>${value.fecha}</td>
+                                                <td class = 'text-center'>${datos[0].gallinas- suma}</td>
                                               </tr>`;
                                      });
                                 }
                                 $('#Hola').html(html);
-                            }   
+                            }
                         }
                     });
-                }
-            }
+                } 
+            }   
         });
     })
 

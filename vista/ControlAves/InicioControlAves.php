@@ -9,8 +9,8 @@
 				<!-- CARD HEADER / BUTTON AGREGAR -->
 				<div class="card-header d-flex justify-content-between">
 					<h5 class="card-title">Control de Aves</h5>
-					<div class="left">
-						<!-- <button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarGalpon">Agregar Galpón</button> -->
+					<div class="col-6">
+						<h6 class="text-right mt-2 mb-0">Nombre Lote</h6>
 					</div>
 				</div>
 				<div class="card-body">
@@ -21,16 +21,16 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text">Galpón</span>
 									</div>
-									<?php
-												$GalponModelo = new GalponModelo();
-												$select = "<select class='form-control' name='Nombre_Galpon' id='Nombre_Galpon'>";
-												foreach ($GalponModelo->select() as $key => $registro) {
-												$select .= "<option value='$registro->id'>$registro->nombre</option>";
-												}
-												$select .= '</select>';
-												echo $select;
-												
-									?>
+<?php
+	$GalponModelo = new GalponModelo();
+	$select = "<select class='form-control' name='Nombre_Galpon' id='Nombre_Galpon'>";
+	foreach ($GalponModelo->select() as $key => $registro) {
+	$select .= "<option value='$registro->id'>$registro->nombre</option>";
+	}
+	$select .= '</select>';
+	echo $select;
+			
+?>
 								</div>
 							</div>
 							
@@ -74,7 +74,7 @@
 							<img src="assets/img/gallinaa.png" class="img-fluid">
 						</div>
 						<div class="col-6">
-							<table class="table table-striped table-hover p-0 text-center ">
+							<table class="table table-striped table-hover p-0 text-center">
 								<thead class="bg-orange text-dark">
 									<th>Mortalidad</th>
 									<th>Fecha</th>
