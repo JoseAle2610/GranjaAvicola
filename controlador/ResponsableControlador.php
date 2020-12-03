@@ -25,7 +25,9 @@ class ResponsableControlador
 							'activo' 		=> $activo 							);
 			$datos = (object)$datos;
 
-			if (preg_match('[a-zA-Z ]+', $datos->nombre)) {
+			if ($_REQUEST['Cedula'] < 3000000 || $_REQUEST['Cedula'] > 40000000) {
+			 	alerta('danger', 'Ingrese una cédula válida');
+			 } else if (preg_match('[a-zA-Z ]+', $datos->nombre)) {
 				alerta('danger', 'El nombre del responsable no puede contener caracteres especiales');
 				# NOS ASEGURAMOS DE QUE EL APELLIDO NO CONTENGA CARACTERES ESPECIALES
 			} else if(preg_match('[a-zA-Z ]+',$datos->apellido)){

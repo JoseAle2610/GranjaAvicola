@@ -25,7 +25,7 @@
 										<?php
 										$ResponsableModel = new ResponsableModelo();
 										$select = "<select class='form-control' name='Cedula_Usuario' id='Cedula_Usuario'>";
-												foreach ($ResponsableModel->select() as $key => $registro) {
+												foreach ($ResponsableModel->select('where activo = 1') as $key => $registro) {
 												$select .= "<option value='$registro->ci'>$registro->ci</option>";
 												}
 										$select .= '</select>';

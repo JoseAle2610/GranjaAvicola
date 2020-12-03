@@ -168,6 +168,7 @@ $(document).ready(function (){
                     console.log(datos.activo);
                     $('#NombreResponsable').val(datos.nombreResponsable);
                     $('#ApellidoResponsable').val(datos.apellidoResponsable);
+                    $('#activoResponsable').prop('disabled', false);
                     if (datos.activo == 0) {
                         $('#activoResponsable').prop('checked', false);
                     }else{
@@ -175,10 +176,8 @@ $(document).ready(function (){
                     }
                     $('#Nacionalidad').val(datos.ci.substring(0,1));
                     $('#Cedula').val(datos.ci.substring(1)); 
-                    // $('#Cedula').val(datos.ci);
-                    // document.getElementById("activoResponsable").checked = datos.activo;
+
                     $('#editar').val(true);
-                    // $('#Nacionalidad').prop('selected', true);
 
                 }
             }

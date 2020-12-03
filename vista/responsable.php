@@ -19,9 +19,14 @@
 							<!-- -------------------------------------- -->
 							<!-- DATOS DEL RESPONSABLES                 -->
 							<!-- -------------------------------------- -->
+							<div class="form-row justify-content-between">
+								<div class="col-auto">
+									<h6>Datos del Responsable:</h6>
+								</div>
+							</div>
 							<!-- CEDULA -->
 							<div class="form-row">
-								<div class="input-group form-group col-9">
+								<div class="input-group form-group col-10">
 									<div class="input-group-prepend">
 										<span class="input-group-text text-white bg-dark">Cédula</span></div>
 									<select name="Nacionalidad" id="Nacionalidad" class="form-control" style="max-width: 5em">
@@ -30,9 +35,9 @@
 									</select>
 									<input type="number" name="Cedula" id="Cedula" class="form-control" min="3000000" max="40000000" required>
 								</div>
-								<div class="col-3">
+								<div class="col-2">
 									<div class="custom-control custom-checkbox">
-										<input type="checkbox" class="custom-control-input" id="activoResponsable" name="activoResponsable">
+										<input type="checkbox" class="custom-control-input" id="activoResponsable" name="activoResponsable" checked disabled>
 										<label class="custom-control-label" for="activoResponsable">Activo</label>
 									</div>
 								</div>
@@ -42,7 +47,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text text-white  bg-dark">Nombre</span>
 								</div>
-								<input type="text" name="NombreResponsable" id="NombreResponsable" class="form-control" required pattern="[a-zA-Z ]+" minlength="3" maxlength="40">
+								<input type="text" name="NombreResponsable" id="NombreResponsable" class="form-control" required  minlength="3" maxlength="40">
 							</div>
 							<!-- APELLIDO RESPONSABLE -->
 							<div class="input-group form-group">
@@ -60,7 +65,7 @@
 							<!-- -------------------------------------- -->
 							<!-- CONSULTA RESPONSABLES                      -->
 							<!-- -------------------------------------- -->
-							<table class="table table-striped table-responsive">
+							<table class="table table-striped table-responsive-md">
 								<thead class="bg-info text-dark">	
 									<th>Estado</th>
 									<th>Cédula</th>
@@ -82,13 +87,9 @@
 										<td><?=$value->nombreResponsable?></td>
 										<td><?=$value->apellidoResponsable?></td>
 										<td class="btn-group justify-content-center d-flex">
-											<button type="button" data-toggle="modal" data-target="#Alerta" class="btn btn-info"><i class="fas fa-search-plus"></i></button>
-											<button type="button"class="btn btn-warning editarResponsable"
+											<button type="button"class="btn btn-danger editarResponsable"
 													ci='<?=$value->ci?>'>
 												<i class="fas fa-pen-fancy"></i>
-											</button>
-											<button type="button"class="btn btn-danger eliminarResponsable" ci='<?=$value->ci?>'>
-												<i class="fas fa-trash-alt"></i>
 											</button>
 										</td>
 									</tr>

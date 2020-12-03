@@ -21,6 +21,7 @@ class UsuarioControlador
 		{
 			$datos = array(	$_REQUEST['nombreUsuarioAgregar'],
 							$_REQUEST['claveUsuarioAgregar'],
+							$activoUsuario,
 							$_REQUEST['preguntaUsuarioAgregar'],
 							$_REQUEST['RespuestaUsuarioAgregar'],
 							$_REQUEST['Cedula_Usuario']);
