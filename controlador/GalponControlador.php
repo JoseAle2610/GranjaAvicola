@@ -20,6 +20,7 @@ class GalponControlador{
 		require_once 'vista/galpon/InicioGalpon.php' ;
 		require_once 'vista/galpon/AgregarGalpon.php';
 		require_once 'vista/galpon/EditarGalpon.php';
+		require_once 'vista/galpon/CambiarLote.php';
 		require_once 'vista/includes/footer.php';
 	}
 

@@ -54,7 +54,8 @@
 										<td><?=$value->cantModulos?></td>
 										<!-- BUTTONS / MOSTRAR-EDITAR-ELIMINAR -->
 										<td class="btn-group justify-content-center d-flex">
-											<button idGalpon='<?=$value->idGalpon?>' class="btn btn-warning editarGalpon" data-toggle="modal" data-target='#editarGalpon'><i class="fas fa-pen-fancy"></i></button>
+											<button idGalpon='<?=$value->idGalpon?>' class="btn btn-info cambiarLote" data-toggle="modal" data-target='#CambiarLote'>Cambiar Lote</button>
+											<button idGalpon='<?=$value->idGalpon?>' class="btn btn-danger editarGalpon" data-toggle="modal" data-target='#editarGalpon'><i class="fas fa-pen-fancy"></i></button>
 										</td>
 									</tr>
 									<?php endforeach ?>
