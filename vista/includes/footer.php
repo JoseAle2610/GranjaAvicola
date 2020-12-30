@@ -48,19 +48,15 @@
 		<script type="text/javascript" src="assets/js/popper.js"></script>
 		<!-- Bootstrap core JavaScript -->
 		<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-		<!-- MDB core JavaScript -->
-		<!-- <script type="text/javascript" src="assets/js/mdb.min.js"></script> -->
-		<!-- JAVASCRIPT AJAX -->
+		<!-- DataTable core JavaScript -->
+		<script type="text/javascript" src="assets/js/Datatable.min.js"></script>
+		<script type="text/javascript" src="assets/js/dataTables.bootstrap4.min.js"></script>
+	
+		<!-- My core JavaScript -->
+		<script type="text/javascript" src="ajax/Datatable.js"></script>
 		<script type="text/javascript" src="ajax/consultas.js"></script>
 		<script type="text/javascript" src="ajax/recogida.js"></script>
 		<script type="text/javascript" src="ajax/login.js"></script>
 
-		<script type="text/javascript">
-        // $(document).ready(function () {
-        //     $('#cerrar').on('click', function () {
-        //         $('#sidebar').toggleClass('active');
-        //     });
-        // });
-    </script>
 	</body>
 </html>

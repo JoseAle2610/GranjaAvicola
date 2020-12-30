@@ -10,9 +10,8 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.css">
 		<!-- Datatable css -->
 		<link rel="stylesheet" href="assets/css/Datatable.min.css">
-		<!-- Material Design Bootstrap -->
-		<!-- <link rel="stylesheet" href="assets/css/mdb.min.css"> -->
-		<!-- Your custom styles (optional) -->
+		<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"> -->
+		<!-- MY CSS -->
 		<link rel="stylesheet" href="assets/css/main.css">
 	</head>
 	<?php $nombre = (!isset($_REQUEST['c']) || ucwords($_REQUEST['c']) == 'Login') ? 'Login' : ucwords($_REQUEST['c']) ?>

@@ -41,7 +41,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text bg-dark text-white">Fecha</span>
 							</div>
-							<input type="date" name="fecha" id="secha" class="form-control" min="2000-01-01" max="2020-12-31" value="<?php echo date("Y-m-d");?>" required>
+							<input type="date" name="fecha" id="fecha" class="form-control" min="2000-01-01" max="2020-12-31" value="<?php echo date("Y-m-d");?>" required>
 						</div>
 						<div class="col-6 mb-2">
 							<div class="input-group">
@@ -66,7 +66,7 @@
 						<!-- ---------------------------------- -->
 						<!-- INPUT HIDDEN ID SECTOR ACTUALIZAR  -->
 						<!-- ---------------------------------- -->
-						<input type="hidden" id="idSectorActualizar">
+						<!-- <input type="hidden" id="idSectorActualizar"> -->
 						<!-- ---------------------------------- -->
 						<!--      INPUT HIDDEN ID REGISTRO      -->
 						<!-- ---------------------------------- -->

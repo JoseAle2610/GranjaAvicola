@@ -2,9 +2,9 @@ $(document).ready( function (){
 	// agregarRecogida
 
 	$('.infoRecogida').click(function(){
-		limpiarName();
+		limpiarformularioRecogida();
 		let idRegistro = $(this).attr('idRegistro');
-		let idSector = 0;
+
         $.ajax({
             url:  "?c=ajax1&m=infoRecogida",
             data: 'idRegistro='+idRegistro,
@@ -22,25 +22,27 @@ $(document).ready( function (){
                             inputss[i].value = '';
                         }
 					    Object.entries(valores).forEach(([categoria, valor]) => {
-					    	let input = document.querySelector('.categoria'+categoria+' .fila'+x);
-					    	input.setAttribute("name", `recogidaEditarValor[${recogida}][${categoria}]`);
-					    	input.value = valor;
+					    	let input = document.querySelector(`.categoria${categoria} .fila${x}`);
+					    	input.setAttribute("name", `recogidaEditarValor[${recogida}][${categoria}]`)
+                            input.value = valor;
 						});
 						x++;
 					});
                     // LLENAMOS LOS DATOS DEL FORMULARIO
                     $('#idGalpon').val(datos.idGalpon);
                     $('#idGalpon').prop('disabled', true);
-                    $('#fecha').val(datos.fecha);
-                    $('#responsable').val(datos.ci);
+                    $('#idSector').attr('readonly', true);
                     refrescarSelect(datos.idGalpon, datos.idSector);
-                    // COMO AL DESAVILITAR EL SELECT ID SECTOR NO SE ENVIAN LOS DATOS AL SERVIDOR
-                    // HAY QUE AGREGAR UN INPUT HIDDEN CON EL MISMO NAME Y VALOR
-                    $('#idSector').prop('disabled', true);
-                    $('#idSectorActualizar').val(datos.idSector);
-                    $('#idSectorActualizar').attr('name', 'idSector');
-                    // LLENAMOS ESTE INPUT HIDDEN QUE LE DIRA AL SERVIDOR SI ESTAMOS EDITANDO O NO
-                    $('#editRecogida').val(1);
+                    $('#fecha').val(datos.fecha);
+                    if (datos.responsableActivo == 0) {
+                        let responsableOptions = $('#responsable').html();
+                            responsableOptions += `<option value="${datos.ci}" class='responsableInactivo'>
+                                                        ${datos.ci} (Inactivo)
+                                                    </option>`;
+                            $('#responsable').html(responsableOptions);
+                    }
+                    $('#responsable').val(datos.ci);
+                    $('#editRecogida').val(1)
                     // PASAMOS TAMBIEN EL ID DE REGISTRO QUE ACABAMOS DE LLENAR POR SI ACASO
                     $('#idRegistro').val(idRegistro);
                 }
@@ -49,19 +51,25 @@ $(document).ready( function (){
 	});
 
     $('.agregarRecogida').click(function(){
-    	$('#idGalpon').val('0');
-    	$('#fecha').val('2020-10-23');
-    	limpiarName();
-    	$('#idSector').html('');
-    	$('#editRecogida').val(0);
-        $('#idGalpon').prop('disabled', false);
-        $('#idSector').prop('disabled', false);
+    	limpiarformularioRecogida();
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = yyyy+'-'+mm+'-'+dd;
+    	$('#fecha').val(today);
         // inutilizamos el input hidden para solventar el problema del select desavilitado
-        $('#idSectorActualizar').removeAttr('name', 'idSector');
-        $('#idSectorActualizar').val('');
+        // $('#idSectorActualizar').removeAttr('name', 'idSector');
+        // $('#idSectorActualizar').val('');
     });
 
-function limpiarName(){
+function limpiarformularioRecogida(){
+	$('#idGalpon').val('0');
+	$('#idSector').html('');
+	$('#editRecogida').val(0);
+    $('#idGalpon').prop('disabled', false);
+    $('#idSector').attr('readonly', false);
+    $('.responsableInactivo').remove();
     for (var x = 0; x < 3; x++) {
         let inputs = document.getElementsByClassName('fila'+x);
         for( let i = 0; i < inputs.length; i++){
@@ -89,12 +97,11 @@ function refrescarSelect(idGalpon, idSector){
                 html += `<option value='${dato.id}' ${selected}> ${dato.nombre}`;
             });
             $('.idSector').html(html);
-            console.log(datos, html);
         }
     } 
   })
 }
-// function limpiarName(){
+// function limpiarformularioRecogida(){
 // 	for(let x = 0; x < 3; x++){
 // 		let inputs = document.getElementsByClassName('fila'+x);
 // 		for( let i = 1; i <= inputs.length ; i++){

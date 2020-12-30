@@ -1,8 +1,8 @@
 <!-- CONTAINER -->
-<div class="container">
+<div class="container-lg my-3">
 	<!-- <button class="btn btn-danger mt-3 ml-3" id='cerrar'><strong>X</strong></button> -->
 	<div class="row">
-		<div class="col-12 my-3">
+		<div class="col-12">
 			<!-- CARD START -->
 			<div class="card card-dark">
 				<!-- CARD HEADER / BUTTON AGREGAR -->
@@ -19,43 +19,9 @@
 					<!-- <button class="btn btn-info text-dark" data-toggle="modal" data-target="#AgregarResponsable">Agregar Responsable</button> -->
 				</div>
 				<div class="card-body">
-					<div class="row mb-3 justify-content-center">
-						<div class="col-6 col-md-4">
-							<div class="input-group mb-3 mb-md-0">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Galpón</span>
-								</div>
-								<select class="form-control" id="NumeroGalpon">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-6 col-md-4">
-							<div class="input-group mb-3 mb-md-0">
-								<div class="input-group-prepend">
-									<span class="input-group-text">Tiempo</span>
-								</div>
-								<select class="form-control" id="Tiempo">
-									<option value="3">Día</option>
-									<option value="2">Mes</option>
-									<option value="1">Año</option>
-								</select>
-							</div>
-						</div>
-						<div class="col-6 col-md-2">
-							<button class="btn btn-info btn-block" data-toggle="modal" data-target="#Alerta"><i class="fas fa-search"></i></button>
-						</div>
-					</div>
 					<div class="row">
-						<div class="col-12">
-							<table class="table table-striped table-hover table-responsive-xl p-0 ">
+						<div class="col-12 px-1 ">
+							<table class="table table-striped table-hover table-responsive-lg p-0 tablas">
 
 								<thead class="bg-orange text-dark text-center" >
 									<th>Fecha Recogida</th>

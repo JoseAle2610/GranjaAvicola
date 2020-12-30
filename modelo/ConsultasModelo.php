@@ -24,13 +24,15 @@ class ConsultasModelo
 	}
 
 	public function tablaRecogidas($condicion = ''){
-		$sql = "SELECT l.numeroLote, g.nombreGalpon, g.idGalpon, s.idSector, s.nombreSector, r.idRegistro, r.fecha, rr.ci
+		$sql = "SELECT l.numeroLote, g.nombreGalpon, g.idGalpon, s.idSector, s.nombreSector, r.idRegistro, 
+					r.fecha, rs.ci, rs.activo responsableActivo
 					FROM lotes l 
 					INNER JOIN galponesenlote gl ON l.idLote = gl.idLote
 				    INNER JOIN galpones g ON g.idGalpon = gl.idGalpon
 				    INNER JOIN sectores s ON s.idGalpon = g.idGalpon
 				    INNER JOIN registros r ON r.idSector = s.idSector
 				    INNER JOIN responsablesderegistro rr ON rr.idRegistro = r.idRegistro
+				    INNER JOIN responsables rs ON rr.ci = rs.ci
 				    $condicion GROUP BY r.idRegistro ";
 		return $this->pdo->obtenerTodos($sql);
 	}

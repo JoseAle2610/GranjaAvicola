@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2020 a las 03:17:00
+-- Tiempo de generación: 03-12-2020 a las 19:58:29
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -59,15 +59,6 @@ CREATE TABLE `galpones` (
   `activo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `galpones`
---
-
-INSERT INTO `galpones` (`idGalpon`, `nombreGalpon`, `activo`) VALUES
-(17, '1', 1),
-(18, '2', 1),
-(20, '3', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -81,15 +72,6 @@ CREATE TABLE `galponesenlote` (
   `gallinas` int(11) NOT NULL,
   `inicio` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `galponesenlote`
---
-
-INSERT INTO `galponesenlote` (`idGalpon`, `idLote`, `terminado`, `gallinas`, `inicio`) VALUES
-(17, 1, 0, 1325, '2020-10-23'),
-(18, 1, 0, 1854, '2020-10-23'),
-(20, 1, 0, 2345, '2020-10-23');
 
 -- --------------------------------------------------------
 
@@ -134,15 +116,6 @@ CREATE TABLE `recogidas` (
   `hora` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `recogidas`
---
-
-INSERT INTO `recogidas` (`idRecogida`, `idRegistro`, `hora`) VALUES
-(7, 3, '09:00:00'),
-(8, 3, '14:00:00'),
-(9, 3, '18:00:00');
-
 -- --------------------------------------------------------
 
 --
@@ -152,15 +125,9 @@ INSERT INTO `recogidas` (`idRecogida`, `idRegistro`, `hora`) VALUES
 CREATE TABLE `registros` (
   `idRegistro` int(11) NOT NULL,
   `idSector` int(11) NOT NULL,
+  `semana` int(11) NOT NULL,
   `fecha` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `registros`
---
-
-INSERT INTO `registros` (`idRegistro`, `idSector`, `fecha`) VALUES
-(3, 5, '2020-10-23');
 
 -- --------------------------------------------------------
 
@@ -180,11 +147,7 @@ CREATE TABLE `responsables` (
 --
 
 INSERT INTO `responsables` (`nombreResponsable`, `apellidoResponsable`, `activo`, `ci`) VALUES
-('Paola', 'Gervazzi', 1, 'v12688737'),
-('mark', 'Suarez', 1, 'v12944385'),
-('Jose', 'Suarez', 1, 'v29587834'),
-('Edith', 'Navarro', 0, 'v7427156'),
-('Enrique', 'Nutria', 1, 'v9998999');
+('Edith', 'Navarro', 0, 'v7427156');
 
 -- --------------------------------------------------------
 
@@ -196,13 +159,6 @@ CREATE TABLE `responsablesderegistro` (
   `idRegistro` int(11) NOT NULL,
   `ci` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `responsablesderegistro`
---
-
-INSERT INTO `responsablesderegistro` (`idRegistro`, `ci`) VALUES
-(3, 'v7427156');
 
 -- --------------------------------------------------------
 
@@ -216,19 +172,6 @@ CREATE TABLE `sectores` (
   `nombreSector` varchar(45) COLLATE utf8_spanish_ci NOT NULL,
   `activo` tinyint(1) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `sectores`
---
-
-INSERT INTO `sectores` (`idSector`, `idGalpon`, `nombreSector`, `activo`) VALUES
-(4, 17, '2', 1),
-(5, 18, '1', 1),
-(6, 18, '2', 1),
-(7, 20, '1', 1),
-(8, 20, '2', 1),
-(9, 20, '3', 1),
-(10, 20, '4', 1);
 
 -- --------------------------------------------------------
 
@@ -247,6 +190,13 @@ CREATE TABLE `usuarios` (
   `ci` varchar(10) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`idUsuarios`, `nombreUsuario`, `claveUsuario`, `fechaCreacion`, `activo`, `pregunta`, `respuesta`, `ci`) VALUES
+(12, 'Admin', '123456', '2020-11-30', 1, 'Nombre de tu mama', 'Amenaida', 'v7427156');
+
 -- --------------------------------------------------------
 
 --
@@ -258,21 +208,6 @@ CREATE TABLE `valores` (
   `idCategoria` int(11) NOT NULL,
   `valor` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `valores`
---
-
-INSERT INTO `valores` (`idRecogida`, `idCategoria`, `valor`) VALUES
-(7, 1, 100),
-(7, 2, 40),
-(7, 3, 10),
-(8, 1, 34),
-(8, 6, 734),
-(9, 1, 12),
-(9, 2, 24),
-(9, 3, 54),
-(9, 4, 63);
 
 --
 -- Índices para tablas volcadas
@@ -353,6 +288,8 @@ ALTER TABLE `sectores`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`idUsuarios`),
+  ADD UNIQUE KEY `NombreUsuarioNOseRepita` (`nombreUsuario`),
+  ADD UNIQUE KEY `CINOserepita` (`ci`),
   ADD KEY `fk_Usuarios_has_Responsables_Responsables1_idx` (`ci`);
 
 --
@@ -371,37 +308,37 @@ ALTER TABLE `valores`
 -- AUTO_INCREMENT de la tabla `galpones`
 --
 ALTER TABLE `galpones`
-  MODIFY `idGalpon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `idGalpon` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `idLote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idLote` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `recogidas`
 --
 ALTER TABLE `recogidas`
-  MODIFY `idRecogida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idRecogida` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `registros`
 --
 ALTER TABLE `registros`
-  MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idRegistro` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sectores`
 --
 ALTER TABLE `sectores`
-  MODIFY `idSector` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idSector` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas

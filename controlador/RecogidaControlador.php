@@ -85,7 +85,7 @@ class RecogidaControlador
 
 				
 			} catch (PDOException $e) {
-				alerta('success', 'Ocurrio un error al agregar la recogida');
+				alerta('danger', 'Ocurrio un error al agregar la recogida');
 			}
 
 		}else {

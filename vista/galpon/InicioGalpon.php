@@ -1,5 +1,5 @@
 <!-- CONTAINER -->
-<div class="container my-3">
+<div class="container-lg my-3">
 	<div class="row">
 		<div class="col-12">
 			<!-- CARD START -->
@@ -16,20 +16,10 @@
 					</div>
 				</div>
 				<div class="card-body">
-					<form method="POST">
-					<div class="row justify-content-center">
-						<div class="col-6">
-							<div class="input-group">
-								<input class="form-control " type="text" minlength="1" maxlength="8" pattern="[0-9]+" required>
-								<button class="form-control btn btn-info">Buscar</button>
-							</div>
-						</div>
-					</div>
-					</form>
-					<div class="row p-3">
+					<div class="row">
 						
-						<div class="col">
-							<table class="table table-striped table-responsive-md p-0 tablas">
+						<div class="col px-1 ">
+							<table class="table table-striped table-responsive-lg p-0 tablas">
 								<thead class="bg-orange text-dark" >
 									<th>Estado</th>
 									<th>Nombre</th>
@@ -54,7 +44,7 @@
 										<td><?=$value->cantModulos?></td>
 										<!-- BUTTONS / MOSTRAR-EDITAR-ELIMINAR -->
 										<td class="btn-group justify-content-center d-flex">
-											<button idGalpon='<?=$value->idGalpon?>' class="btn btn-info cambiarLote" data-toggle="modal" data-target='#CambiarLote'>Cambiar Lote</button>
+											<!-- <button idGalpon='<? //=$value->idGalpon?>' class="btn btn-info cambiarLote" data-toggle="modal" data-target='#CambiarLote'>Cambiar Lote</button> -->
 											<button idGalpon='<?=$value->idGalpon?>' class="btn btn-danger editarGalpon" data-toggle="modal" data-target='#editarGalpon'><i class="fas fa-pen-fancy"></i></button>
 										</td>
 									</tr>

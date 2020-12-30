@@ -1,7 +1,7 @@
 <!--<button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarMortalidad">Agregar Mortalidad</button> -->
 <!-- CONTAINER -->
 <!-- CONTAINER -->
-<div class="container my-3">
+<div class="container-lg my-3">
 	<div class="row">
 		<div class="col-12">
 			<!-- CARD START -->

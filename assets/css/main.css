@@ -1,8 +1,12 @@
 /* ---------------------------------------------------
     FONDO STYLE
 ----------------------------------------------------- */
+.bg-datatable {
+    background-color: #ffffff99 ;
+    border-radius: 5px;
+}
 .f {
-    
+    width: 100vw;
     position: absolute;
     top: 0;
     left: 0;
@@ -11,17 +15,13 @@
 .fondoLogin {
 	background-image: url(../img/fondoLoginA.png);
     background-size: cover;
-    width: 100vw;
 position: fixed;
 min-height: 100vh;
 }
 .fondo {
-	background-image:url(../img/2902348.jpg);
-	background-size: 1000px;
-width: 100vw;
-position: fixed;
-    min-height: 100vh;
-    opacity: .8;
+	background-image:url(../img/GallinasPatron.jpg);
+	background-size: 500px;
+    height: 100vh;
 }
 .bg-orange{
 	background: #f0ad4e;
@@ -70,11 +70,11 @@ position: fixed;
     CARD DARK STYLE
 ----------------------------------------------------- */
 .card-dark {
-  background-color: rgba(0,0,0,.5);
-  border-color: #000000;
+  background-color: #343a40ee;
+  border-color: #343a40;
 }
 .card-dark .card-header {
-  background-color: rgba(0,0,0,.5);
+  background-color: #343a40ee;
   border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
@@ -105,7 +105,7 @@ tbody tr {
   background-color: #c4c4c4 ;
 }
 .table-striped tbody tr:nth-of-type(even) {
-  background-color: #eeeeee ;
+  background-color: #eee ;
 }
 tr td input {
 	min-width: 5em;
@@ -114,6 +114,44 @@ tr td input {
 .table td {
   vertical-align: center;
   border-top: 1px solid transparent;
+}
+/* ---------------------------------------------------
+    DATATABLE STYLE
+----------------------------------------------------- */
+.dataTables_wrapper .dataTables_length, 
+.dataTables_wrapper .dataTables_filter, 
+.dataTables_wrapper .dataTables_info, 
+.dataTables_wrapper .dataTables_processing, 
+.dataTables_wrapper .dataTables_paginate {
+    color: #fff;
+    font-weight: 600;
+}
+
+.dataTables_wrapper label {
+    font-weight: 600 !important;
+}
+
+.page-item.disabled .page-link {
+    color: #343a40;
+    background-color: #eeeeee;
+    border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #343a40;
+    background-color: #f0ad4e;
+    border-color: #f0ad4e;
+}
+.page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #f0ad4e;
+    background-color: #eeeeee;
+    border: 1px solid #dee2e6;
 }
 /* ---------------------------------------------------
     SIDEBAR STYLE
