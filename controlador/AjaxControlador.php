@@ -65,4 +65,14 @@ class AjaxControlador{
 			echo "Estamos en No existen";
 		} 
 	}
+
+	public function produccionDiaria(){
+		if (isset($_REQUEST['fecha'])) {
+			$consultasModelo = new ConsultasModelo();
+			$group = 'GROUP BY r.idSector, c.idCategoria';
+			$produccionDiaria = $consultasModelo->produccionDiaria($_REQUEST['fecha'], $group, false);
+			$produccionDiaria = json_encode($produccionDiaria);
+			echo $produccionDiaria;
+		}
+	}
 }

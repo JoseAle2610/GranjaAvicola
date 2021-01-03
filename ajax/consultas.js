@@ -298,20 +298,106 @@ $(document).ready(function (){
 		let idGalpon = $('.idGalpon').val();
 		console.log(idGalpon);
 		$.ajax({
-        url: '?c=Ajax&m=sectorAnidado',
-        data: 'idGalpon='+idGalpon,
-        type: 'GET',
-        success: function (respuesta) {
-          if(!respuesta.error) {
-            let datos = JSON.parse(respuesta);
-            let html = '';
-            datos.forEach(dato => {
-              html += `<option value='${dato.id}'> ${dato.nombre}`;
-            });
-            $('.idSector').html(html);
-            console.log(datos, html);
-          }
-        } 
-      })
-	})
+            url: '?c=Ajax&m=sectorAnidado',
+            data: 'idGalpon='+idGalpon,
+            type: 'GET',
+            success: function (respuesta) {
+              if(!respuesta.error) {
+                let datos = JSON.parse(respuesta);
+                let html = '';
+                datos.forEach(dato => {
+                  html += `<option value='${dato.id}'> ${dato.nombre}`;
+                });
+                $('.idSector').html(html);
+                console.log(datos, html);
+              }
+            } 
+        });
+	});
+
+    // REPORTE PRODUCCION DIARIA
+    $('#buscarProduccionDiaria').click(function (){
+        let fecha = $('#fechaProduccionDiaria').val();
+        $.ajax({
+            url: '?c=Ajax&m=produccionDiaria',
+            data: 'fecha='+fecha,
+            type: 'GET',
+            success: function (respuesta) {
+                if(!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                    let valores = {1:0,2:0,3:0};
+                    let cajasProducidas = {1:0,2:0,3:0};
+                    datos.forEach(dato =>{
+                        if (!valores.hasOwnProperty(dato.idCategoria)) {
+                            valores[dato.idCategoria] = parseInt(dato.valor);
+                            cajasProducidas[dato.idCategoria] = parseInt(dato.valor/360);
+                        }else{
+                            valores[dato.idCategoria] += parseInt(dato.valor)
+                            cajasProducidas[dato.idCategoria] += parseInt(dato.valor/360);
+                        }
+                    });
+                    let datosFilas = { 
+                                        Producidas:     [], 
+                                        Sobrantes:      [],
+                                        Anexadas:       [],
+                                        HuevosPorEncajarHoy:  [] 
+                                    };
+                    for(const fila in datosFilas){
+                        
+                        $(`.${fila}`).children().each(function (i, obj){
+                            let clase = $(this).attr('class');
+                            if(clase == `tipo-${i}`){
+                                switch (fila){
+                                    case 'Producidas':  valor = cajasProducidas[i];
+                                                        break;
+                                    case 'Sobrantes':   valor = valores[i]-(datosFilas.Producidas[i-1]*360)
+                                                        break;
+                                    case 'Anexadas':    valor = parseInt(datosFilas.Sobrantes[i-1]/360);
+                                                        break;
+                                    case 'HuevosPorEncajarHoy':valor = datosFilas.Sobrantes[i-1]-(datosFilas.Anexadas[i-1]*360);
+                                                        break;
+                                }
+                                datosFilas[fila].push(valor);
+                                $(this).html(valor);
+                            }else if(clase == 'total'){
+                                $(this).html(datosFilas[fila].reduce((a, b) => a + b, 0));
+                            }
+                        });
+                    }
+                }
+            } 
+        })
+    });
+
+    $('#imprimirProduccionDiaria').click(function (){
+        var pdf = new jsPDF('p', 'pt', 'letter')
+        , source = $('#ProduccionDiaria')[0]
+        , specialElementHandlers = {
+            '#bypassme': function(element, renderer){
+                return true
+            }
+        }
+
+        margins = {
+          top: 80,
+          bottom: 60,
+          left: 40,
+          width: 522
+        };
+        pdf.fromHTML(source, margins.left , margins.top
+            , {
+                'width': margins.width // max width of content on PDF
+                , 'elementHandlers': specialElementHandlers
+            },
+            function (dispose) {
+              let fecha = $('#fechaProduccionDiaria').val();
+              pdf.save('produccion'+fecha+'.pdf');
+            },
+            margins
+        )
+    });
+
+
+
+
 });

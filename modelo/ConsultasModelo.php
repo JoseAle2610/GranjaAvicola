@@ -62,15 +62,17 @@ class ConsultasModelo
 		return $recogidas;
 	}
 
-	// public function infoGalpon($condicion = '', $datos = array('') ){
-	// 	$sql = 'SELECT g.idGalpon as id , g.nombreGalpon, gl.gallinas, 
-	// 			l.numeroLote, gl.inicio, s.idSector, s.nombreSector
-	// 				FROM galpones g INNER JOIN galponesenlote gl ON g.idGalpon = gl.idGalpon 
-	// 				INNER JOIN lotes l ON l.idLote = gl.idLote 
-	// 				INNER JOIN sectores s ON g.idGalpon = s.idGalpon ';
-	// 	$sql .= $condicion;
-	// 	return $this->pdo->obtenerTodos($sql, $datos);
-	// }
+	public function produccionDiaria($fecha, $group){
+		$sum = $group == '' ? 'v.valor': 'SUM(v.valor) valor';
+		$sql = "SELECT r.fecha, r.idRegistro, r.idSector, rg.idRecogida, $sum, 
+					c.idCategoria, c.NombreCategoria
+					FROM registros r 
+					INNER JOIN recogidas rg ON rg.idRegistro = r.idRegistro
+					INNER JOIN valores v ON v.idRecogida = rg.idRecogida
+					INNER JOIN categorias c ON c.idCategoria = v.idCategoria
+					WHERE r.fecha = ? $group";
+		return $this->pdo->obtenerTodos($sql, array($fecha));
+	}
 }
 
 
