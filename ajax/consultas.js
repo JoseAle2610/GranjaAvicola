@@ -1,39 +1,5 @@
 $(document).ready(function (){
 	
-    $('#agregarGalpon').click(function (){
-
-        let numeroModulo    = $('#numeroModulo').val();
-        let datosModulo     = document.getElementsByClassName('puntero');
-        let posicion        = datosModulo.length;
-        let repetido = false;
-        // ASEGURARSE DE QUE NO SE REPITA 
-        // EL NOMBRE DEL MODULO
-        if (datosModulo.length != 0) {
-          for (let i = 0; i < datosModulo.length; i++) {
-            if (datosModulo[i].value == numeroModulo) {
-              repetido = true;
-            }
-          }
-        }
-        // SI NO ESTA VACIO NI ESTA REPETIDO LO AGREGAMOS
-        if (numeroModulo != '' && repetido == false) {
-            let elementoTabla = $('#tablaModulos tbody').html();
-                elementoTabla += `<tr class=' p-0 '>
-                                    <td>M-${numeroModulo}</td>
-                                    <td class="justify-content-center d-flex">
-                                        <button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                        <input type="hidden" name="modulos[${posicion}][nombreSector]" value="${numeroModulo}" class="puntero">
-                                        <input type="hidden" name="modulos[${posicion}][activo]" value="1">
-                                    </td>
-                                </tr>`;
-            $('#tablaModulos tbody').html(elementoTabla);
-        } else {
-          alert('El número del modulo no puede estar vacío ni repetido');
-        }
-    });
-
     $(document).on('click', '.eliminarModuloTabla', (e) => {
         $(this)[0].activeElement.parentElement.parentElement.remove();
     });
@@ -123,9 +89,17 @@ $(document).ready(function (){
         });
     });
 
+    $('#agregarModulo').click(function(){
+        AgregarModulo('#numeroModulo', '#tablaModulos tbody', 'puntero')
+    });
+
     $('#editarModulo').click(function(){
-        let numeroModulo    = $('#editarNumeroModulo').val();
-        let datosModulo     = document.getElementsByClassName('numeroModulo');
+        AgregarModulo('#editarNumeroModulo', '#editarTablaModulos tbody', 'numeroModulo')
+    });
+
+    function AgregarModulo(input, table, clase){
+        let numeroModulo    = $(input).val();
+        let datosModulo     = document.getElementsByClassName(clase);
         let posicion        = datosModulo.length;
         let repetido = false;
         // ASEGURARSE DE QUE NO SE REPITA 
@@ -139,23 +113,23 @@ $(document).ready(function (){
         }
         // SI NO ESTA VACIO NI ESTA REPETIDO LO AGREGAMOS
         if (numeroModulo != '' && repetido == false) {
-            let elementoTabla = $('#editarTablaModulos tbody').html();
+            let elementoTabla = $(table).html();
                 elementoTabla += `<tr class=' p-0 '>
                                     <td>M-${numeroModulo}</td>
                                     <td class="justify-content-center d-flex">
                                         <button type="button" class="btn btn-danger form-control eliminarModuloTabla" >
                                             <i class="fas fa-trash-alt"></i>
                                         </button>
-                                        <input type="hidden" name="modulos[${posicion}][nombreSector]" value="${numeroModulo}" class="numeroModulo">
+                                        <input type="hidden" name="modulos[${posicion}][nombreSector]" value="${numeroModulo}" class="${clase}">
                                         <input type="hidden" name="modulos[${posicion}][activo]" value="1">
                                         <input type="hidden" name="modulos[${posicion}][accion]" value="insertar">
                                     </td>
                                 </tr>`;
-            $('#editarTablaModulos tbody').html(elementoTabla);
+            $(table).html(elementoTabla);
         } else {
           alert('El número del modulo no puede estar vacío ni repetido');
         }
-    });
+    }
 
     $('.cambiarLote').click(function (){
         let idGalpon = $(this).attr('idGalpon');

@@ -45,7 +45,7 @@
 									<div class="input-group-prepend">
 										<label for="editarInicioLote" class="input-group-text">Inicio</label>
 									</div>
-									<input type="date" name="inicioLote" id="editarInicioLote" class="form-control" min="2000-01-01" max="2020-12-31" required>
+									<input type="date" name="inicioLote" id="editarInicioLote" class="form-control" min="2000-01-01" max="2030-12-31" required>
 								</div>
 								<div class="input-group form-group">
 									<div class="input-group-prepend">
@@ -77,7 +77,7 @@
 								<div class="col-12">
 									<table id="editarTablaModulos" class="table  table-striped w-100">
 										<thead class="bg-info">
-											<th>Nombre Modulo</th>
+											<th>Nombre Módulo</th>
 											<th>Acción</th>
 										</thead>
 										<tbody>
