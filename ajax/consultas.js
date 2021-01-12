@@ -1,6 +1,4 @@
 $(document).ready(function (){
-    let loteDatosHide= false;
-    $('#loteNuevoDatos').hide();
 	
     $('#agregarGalpon').click(function (){
 
@@ -159,6 +157,29 @@ $(document).ready(function (){
         }
     });
 
+    $('.cambiarLote').click(function (){
+        let idGalpon = $(this).attr('idGalpon');
+        $.ajax({
+            url:  "?c=ajax&m=infoGalpon",
+            data: 'idGalpon='+idGalpon,
+            type: 'GET',
+            success: function(respuesta){
+                let datos = JSON.parse(respuesta);
+                $('#numeroGalponCL').val(datos[0]['nombreGalpon']);
+                $('#idLoteCL').val(datos[0]['idLote']);
+                $('#idGalponCL').val(datos[0]['idGalpon']);
+                $('#numeroGallinasVL').val(datos[0]['gallinas']);
+                $('#inicioLoteVL').val(datos[0]['inicio']);
+            }
+        });
+    });
+
+    $('#formularioCambiarLote').submit(e => {
+        console.log('enviar');
+    });
+    // ----------------------------------------------
+    // EDITANDO RESPONSABLE
+    //----------------------------------------------
     $('.editarResponsable').click(function(){
         let ci = $(this).attr("ci");
         console.log(ci);
@@ -314,8 +335,9 @@ $(document).ready(function (){
             } 
         });
 	});
-
-    // REPORTE PRODUCCION DIARIA
+    //----------------------------//
+    // REPORTE PRODUCCION DIARIA  //
+    //----------------------------//
     $('#buscarProduccionDiaria').click(function (){
         let fecha = $('#fechaProduccionDiaria').val();
         $.ajax({
@@ -391,7 +413,7 @@ $(document).ready(function (){
             },
             function (dispose) {
               let fecha = $('#fechaProduccionDiaria').val();
-              pdf.save('produccion'+fecha+'.pdf');
+              pdf.save('Producción '+fecha+'.pdf');
             },
             margins
         )

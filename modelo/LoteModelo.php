@@ -10,6 +10,11 @@ class LoteModelo{
 		return $this->pdo->consulta($sql, array($numeroLote));
 	}
 
+	public function insertNotExisst($datos){
+		$sql = 'INSERT IGNORE INTO Lotes (idLote, numeroLote) VALUES (?, ?)';
+		return $this->pdo->consulta($sql, $datos);
+	}
+
 	public function selectByName($numeroLote){
 		$sql = 'SELECT idLote as id, numeroLote as nombre FROM Lotes WHERE numeroLote = ?';
 		return $this->pdo->obtener($sql, array($numeroLote)	);

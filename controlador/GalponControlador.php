@@ -14,7 +14,8 @@ class GalponControlador{
 		loged();
 		$group = 'GROUP BY g.nombreGalpon';
 		$count = 'COUNT(s.idSector) as cantModulos';
-		$this->galpones = $this->consultasModelo->infoGalpon($group, $count);
+		$where = 'WHERE gl.terminado = 0';
+		$this->galpones = $this->consultasModelo->infoGalpon($group, $count, $where);
 		require_once 'vista/includes/header.php';
 		require_once 'vista/includes/menu.php';
 		require_once 'vista/galpon/InicioGalpon.php' ;
@@ -28,7 +29,8 @@ class GalponControlador{
 		verDatos(array($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
 					$_REQUEST['inicioLote'], $_REQUEST['modulos']));
 		if (isset($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
-					$_REQUEST['inicioLote'], $_REQUEST['modulos'])) {
+					$_REQUEST['inicioLote'], $_REQUEST['modulos'])) 
+		{
 			try {
 				
 				$idGalpon = 0;
@@ -84,17 +86,34 @@ class GalponControlador{
 		header('location:?c=Galpon');
 	}
 
-	public function sacarLote(){
-		
-		if (isset($_REQUEST['idLote'], $_REQUEST['idGalpon'])) 
+	public function cambiarLote(){
+		if (isset($_REQUEST['idLoteCL'], $_REQUEST['idGalponCL'], $_REQUEST['numeroGallinasNL'], 
+			$_REQUEST['inicioLoteNL'], $_REQUEST['numeroGallinasVL'], 
+			$_REQUEST['inicioLoteVL'])) 
 		{
-			$galpon = $this->galponEnLoteModelo->selectById($_REQUEST['idGalpon'], $_REQUEST['idLote']);
-			if ($galpon != false) {
-				$datos = array( 1, $galpon->gallinas, $galpon->idGalpon, $galpon->idLote);
+			try {
+		$sql = 'UPDATE GalponesEnLote SET terminado = ?, gallinas = ?, inicio = ? WHERE idGalpon = ? AND idLote = ?';
+				// actualizar el lote y deactivarlo
+				$datos = array(	1,
+								$_REQUEST['numeroGallinasVL'],
+								$_REQUEST['inicioLoteVL'],
+								$_REQUEST['idGalponCL'],
+								$_REQUEST['idLoteCL']);
 				$this->galponEnLoteModelo->update($datos);
-				alerta('success', 'Se sacó al Galpon del Lote Correctamente');
-			}else {
+				// agregar el nuevo
+				$datos = array($_REQUEST['idLoteCL']+1,
+							   $_REQUEST['idLoteCL']+1);
+				$this->loteModelo->insertNotExisst($datos);
+				$datos = array(	$_REQUEST['idGalponCL'],
+								$_REQUEST['idLoteCL']+1,
+								$_REQUEST['numeroGallinasNL'],
+								$_REQUEST['inicioLoteNL']);
+				$this->galponEnLoteModelo->insert($datos);
+				alerta('success', 'Se cambio el Lote Correctamente');
+				// y listo papaaaaaa
+			} catch (PDOException $e) {
 				alerta('danger', 'No se pudo Sacar el Lote');
+				alerta('danger', $e->getMessage());
 			}
 		}else{
 			alerta('danger', 'Ingrese los datos para Poder Sacar un Galpon de un Lote');

@@ -13,7 +13,7 @@
 				</button>
 			</div>
 			<!--Body-->
-			<form method="post" action="?c=Galpon&m=AgregarGalpon" id="formularioAgregarGalpon">
+			<form method="post" action="?c=Galpon&m=cambiarLote" id="formularioCambiarLote">
 				<div class="modal-body">
 					<div class="row">
 						<!-- -------------------------------------------------------- -->
@@ -24,7 +24,11 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">Numero galpon</span>
 								</div>
-								<input type="number" name="numeroGalpon" id="numeroGalpon" class="form-control" min="1" max="100" required readonly="">
+								<input type="number" name="numeroGalponCL" id="numeroGalponCL" class="form-control" min="1" max="100" required readonly="">
+								<input type="hidden" name="idLoteCL" id="idLoteCL">
+								<input type="hidden" name="idGalponCL" id="idGalponCL">
+								<input type="hidden" name="numeroGallinasVL" id="numeroGallinasVL">
+								<input type="hidden" name="inicioLoteVL" id="inicioLoteVL">
 							</div>
 							<div class="row">
 								<div class="col-4"><hr class="bg-warning"></div>
@@ -36,14 +40,14 @@
 								<div class="input-group-prepend">
 									<label for="inicioLote" class="input-group-text">Inicio</label>
 								</div>
-									<input type="date" name="inicioLote" id="inicioLote" class="form-control" min="2000-01-01" max="2020-12-31" value="<?php echo date("Y-m-d");?>" required>
+									<input type="date" name="inicioLoteNL" id="inicioLoteNL" class="form-control" min="2000-01-01" value="<?php echo date("Y-m-d");?>" required>
 								
 							</div>
 							<div class="input-group">
 								<div class="input-group-prepend">
 									<span class="input-group-text">N° Gallinas</span>
 								</div>
-								<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control" min="1" max="9000" required>
+								<input type="number" name="numeroGallinasNL" id="numeroGallinasNL" class="form-control" min="1" max="9000" required>
 							</div>
 						</div>
 						

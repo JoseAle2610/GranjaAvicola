@@ -21,7 +21,7 @@
 				<div class="card-body">
 					<div class="row">
 						<div class="col-12 px-1 ">
-							<table class="table table-striped table-hover table-responsive-lg p-0 tablas">
+							<table class="table table-striped table-hover table-responsive p-0 tablas">
 
 								<thead class="bg-orange text-dark text-center" >
 									<th>Fecha Recogida</th>
