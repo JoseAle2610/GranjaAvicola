@@ -40,8 +40,13 @@
 
 		?>
 		</div>
-		<?php require_once 'vista/responsable.php' ?>
-		<?php require_once "vista/usuario.php" ?>
+
+		<?php 
+			if (isset($_SESSION['nombreUsuario']) && $_SESSION['nombreUsuario'] == 'Admin') {
+				require_once 'vista/responsable.php'; 
+				require_once "vista/usuario.php";
+			}
+		?>
 		<!-- jQuery -->
 		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
 		<!-- Bootstrap tooltips -->

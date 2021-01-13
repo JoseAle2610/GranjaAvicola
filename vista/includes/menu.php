@@ -15,12 +15,14 @@
       <li class="nav-item <?= ($nombre == 'ControlAves') ? 'active' : '' ?>">
         <a href="?c=ControlAves" class="nav-link">Control de Aves</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#Responsables">Responsables</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="modal" data-target="#Usuario">Usuarios</a>
-      </li>
+      <?php if ($_SESSION['nombreUsuario'] == 'Admin'): ?>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#Responsables">Responsables</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#Usuario">Usuarios</a>
+        </li>
+      <?php endif ?>
 
       <li class="nav-item dropdown <?= ($nombre == 'Reportes') ? 'active' : '' ?>">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -29,6 +31,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="?c=Reportes&p=CierreMes">Cierre de Mes</a>
           <a class="dropdown-item" href="?c=Reportes&p=ProduccionDiaria">Produccion Diaria</a>
+          <a class="dropdown-item" href="?c=Reportes&p=FormatoDistribucion">Formato de Distribucion</a>
         </div>
       </li>
     </ul>

@@ -65,6 +65,7 @@
 						</div>
 						<div class="col-md-4">
 							<img src="assets/img/huevos1.png" class="img-fluid">
+							<img src="assets/img/Logo.png" class="d-none" id="img">
 						</div>
 					</div>
 					<div id="bypassme"></div>

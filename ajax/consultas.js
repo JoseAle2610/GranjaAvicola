@@ -367,30 +367,37 @@ $(document).ready(function (){
 
     $('#imprimirProduccionDiaria').click(function (){
         var pdf = new jsPDF('p', 'pt', 'letter')
-        , source = $('#ProduccionDiaria')[0]
-        , specialElementHandlers = {
+        var source = $('#ProduccionDiaria')[0]
+        let fecha = $('#fechaProduccionDiaria').val().split('-');
+        fecha = `${fecha[2]}-${fecha[1]}-${fecha[0]}`;
+        var specialElementHandlers = {
             '#bypassme': function(element, renderer){
                 return true
             }
         }
 
         margins = {
-          top: 80,
+          top: 90,
           bottom: 60,
-          left: 40,
+          left: 50,
           width: 522
         };
+        pdf.setFontType('normal');
+        pdf.text(150, 55, `Granja Avicola Las Tunas C.A.\nReporte Produccion Diaria\nFecha: ${fecha}`);
+        // pdf.addImage($('#img')[0], 'png', 30, 20 , 100, 100);
         pdf.fromHTML(source, margins.left , margins.top
             , {
                 'width': margins.width // max width of content on PDF
                 , 'elementHandlers': specialElementHandlers
             },
             function (dispose) {
-              let fecha = $('#fechaProduccionDiaria').val();
-              pdf.save('Producción '+fecha+'.pdf');
+                // pdf.save('Producción '+fecha+'.pdf');
+                pdf.setProperties({ title: `Produccion ${fecha}.pdf` });
+                window.open(pdf.output('bloburl', {filename:`Produccion ${fecha}.pdf`}), '_blank');
             },
             margins
         )
+        
     });
 
 
