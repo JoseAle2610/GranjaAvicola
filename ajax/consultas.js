@@ -167,7 +167,10 @@ $(document).ready(function (){
                     console.log(datos.activo);
                     $('#NombreResponsable').val(datos.nombreResponsable);
                     $('#ApellidoResponsable').val(datos.apellidoResponsable);
-                    $('#activoResponsable').prop('disabled', false);
+                    if (datos.nombreResponsable == "Edith") {
+                        $('#activoResponsable').prop('disabled', true);
+                        $('#NombreResponsable').prop('readonly', true);
+                    } else $('#activoResponsable').prop('disabled', false);
                     if (datos.activo == 0) {
                         $('#activoResponsable').prop('checked', false);
                     }else{
@@ -205,6 +208,7 @@ $(document).ready(function (){
                 if (!respuesta.error) {
                     let datos = JSON.parse(respuesta);
                     console.log(respuesta);
+                    // $('#Cedula_Usuario').val(datos[0].ci);
                     $('#claveUsuarioAgregar').val(datos[0].claveUsuario);
                     $('#nombreUsuarioAgregar').val(datos[0].nombreUsuario);
                     $('#RespuestaUsuarioAgregar').val(datos[0].respuesta);
@@ -213,8 +217,8 @@ $(document).ready(function (){
                     }else{
                         $('#activoUsuario').prop('checked', true);
                     }
-                    if (datos[0].nombreUsuario == 'admin') {
-                         $('#nombreUsuarioAgregar').prop('disabled', true);
+                    if (datos[0].nombreUsuario == 'Admin') {
+                         $('#nombreUsuarioAgregar').prop('readonly', true);
                          $('#activoUsuario').prop('disabled', true);
                     }else{
                         $('#nombreUsuarioAgregar').prop('disabled', false);
