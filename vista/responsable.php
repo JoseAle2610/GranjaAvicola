@@ -61,7 +61,7 @@
 							<!-- EDITAR -->
 							<input type="hidden" name="editar" id="editar" value="0">
 						</div>
-						<div class="col-md-7">
+						<div class="col-12 col-md-7">
 							<!-- -------------------------------------- -->
 							<!-- CONSULTA RESPONSABLES                      -->
 							<!-- -------------------------------------- -->

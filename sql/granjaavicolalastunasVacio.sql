@@ -125,8 +125,9 @@ CREATE TABLE `recogidas` (
 CREATE TABLE `registros` (
   `idRegistro` int(11) NOT NULL,
   `idSector` int(11) NOT NULL,
-  `semana` int(11) NOT NULL,
-  `fecha` date NOT NULL
+  `fecha` date NOT NULL,
+  `idGalpon` int(11) NOT NULL,
+  `idLote` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
@@ -147,7 +148,7 @@ CREATE TABLE `responsables` (
 --
 
 INSERT INTO `responsables` (`nombreResponsable`, `apellidoResponsable`, `activo`, `ci`) VALUES
-('Edith', 'Navarro', 0, 'v7427156');
+('Edith', 'Navarro', 1, 'v7427156');
 
 -- --------------------------------------------------------
 
@@ -258,6 +259,8 @@ ALTER TABLE `recogidas`
 -- Indices de la tabla `registros`
 --
 ALTER TABLE `registros`
+  ADD KEY `fk_Registro_GalponenLote_idx` (`idGalpon`),
+  ADD KEY `fk_Registros_GalponenLote_idx` (`idLote`),  
   ADD PRIMARY KEY (`idRegistro`),
   ADD KEY `fk_Registro_Sectores1_idx` (`idSector`);
 
@@ -367,7 +370,9 @@ ALTER TABLE `recogidas`
 -- Filtros para la tabla `registros`
 --
 ALTER TABLE `registros`
-  ADD CONSTRAINT `fk_Registro_Sectores1` FOREIGN KEY (`idSector`) REFERENCES `sectores` (`idSector`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Registro_Sectores1` FOREIGN KEY (`idSector`) REFERENCES `sectores` (`idSector`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Registro_GalponenLote` FOREIGN KEY (`idGalpon`) REFERENCES `galponesEnLote` (`idGalpon`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_Registros_GalponenLote` FOREIGN KEY (`idLote`) REFERENCES `galponesEnLote` (`idLote`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `responsablesderegistro`

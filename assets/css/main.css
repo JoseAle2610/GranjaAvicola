@@ -58,6 +58,7 @@ min-height: 100vh;
 ----------------------------------------------------- */
 .alertBox {
 	position: absolute;
+    z-index: 999;
 	max-width: 40%;
 	bottom: 0;
 	right: 0;

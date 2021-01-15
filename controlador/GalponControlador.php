@@ -87,36 +87,43 @@ class GalponControlador{
 	}
 
 	public function cambiarLote(){
-		if (isset($_REQUEST['idLoteCL'], $_REQUEST['idGalponCL'], $_REQUEST['numeroGallinasNL'], 
+		if (isset($_REQUEST['idLoteCL'], $_REQUEST['idGalponCL'], $_REQUEST['numeroGallinasNL'],
 			$_REQUEST['inicioLoteNL'], $_REQUEST['numeroGallinasVL'], 
-			$_REQUEST['inicioLoteVL'])) 
-		{
-			try {
-		$sql = 'UPDATE GalponesEnLote SET terminado = ?, gallinas = ?, inicio = ? WHERE idGalpon = ? AND idLote = ?';
-				// actualizar el lote y deactivarlo
-				$datos = array(	1,
-								$_REQUEST['numeroGallinasVL'],
-								$_REQUEST['inicioLoteVL'],
-								$_REQUEST['idGalponCL'],
-								$_REQUEST['idLoteCL']);
-				$this->galponEnLoteModelo->update($datos);
-				// agregar el nuevo
-				$datos = array($_REQUEST['idLoteCL']+1,
-							   $_REQUEST['idLoteCL']+1);
-				$this->loteModelo->insertNotExisst($datos);
-				$datos = array(	$_REQUEST['idGalponCL'],
-								$_REQUEST['idLoteCL']+1,
-								$_REQUEST['numeroGallinasNL'],
-								$_REQUEST['inicioLoteNL']);
-				$this->galponEnLoteModelo->insert($datos);
-				alerta('success', 'Se cambio el Lote Correctamente');
-				// y listo papaaaaaa
-			} catch (PDOException $e) {
-				alerta('danger', 'No se pudo Sacar el Lote');
-				alerta('danger', $e->getMessage());
-			}
+			$_REQUEST['inicioLoteVL'])) {
+			if (date("d-m-Y", strtotime($_REQUEST['inicioLoteVL'])) > date("d-m-Y", strtotime($_REQUEST['inicioLoteNL']))) {
+				alerta('danger', 'El inicio del Lote anterior no puede ser mayor al nuevo');
+			} else if ($_REQUEST['numeroGallinasVL'] > 50000 || $_REQUEST['numeroGallinasVL'] < 1) {
+				alerta('danger', 'El número de gallinas supera la cantidad máxima o debe ser mayor a 0');
+			}else if ($_REQUEST['inicioLoteNL'] < date("Y-d-m",strtotime($_REQUEST['inicioLoteVL']."+ 90 week"))){
+				$Inicio = date_create($_REQUEST['inicioLoteNL']);
+				$Fin = date_create(date("Y-m-d",strtotime($_REQUEST['inicioLoteVL']."+ 90 week")));
+				$intervalo = date_diff($Fin, $Inicio);
+				alerta('danger', 'Faltan '.intval($intervalo->days / 7).' semanas y '.$intervalo->d.' días para acabar el lote');
+				try {
+					// actualizar el lote y deactivarlo
+					$datos = array(	1,
+									$_REQUEST['numeroGallinasVL'],
+									$_REQUEST['inicioLoteVL'],
+									$_REQUEST['idGalponCL'],
+									$_REQUEST['idLoteCL']);
+					$this->galponEnLoteModelo->update($datos);
+					// agregar el nuevo
+					$datos = array($_REQUEST['idLoteCL']+1,
+								   $_REQUEST['idLoteCL']+1);
+					$this->loteModelo->insertNotExisst($datos);
+					$datos = array(	$_REQUEST['idGalponCL'],
+									$_REQUEST['idLoteCL']+1,
+									$_REQUEST['numeroGallinasNL'],
+									$_REQUEST['inicioLoteNL']);
+					$this->galponEnLoteModelo->insert($datos);
+					alerta('success', 'Se cambió el Lote Correctamente');
+				} catch (PDOException $e) {
+					alerta('danger', 'No se pudo Sacar el Lote');
+					alerta('danger', $e->getMessage());
+				}
+			} 
 		}else{
-			alerta('danger', 'Ingrese los datos para Poder Sacar un Galpon de un Lote');
+			alerta('danger', 'Ingrese los datos para cambiar de un lote a otro');
 		}
 		header('location:?c=galpon');
 	}

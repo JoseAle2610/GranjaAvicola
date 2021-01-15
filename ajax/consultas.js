@@ -149,7 +149,37 @@ $(document).ready(function (){
     });
 
     $('#formularioCambiarLote').submit(e => {
-        console.log('enviar');
+        if ($('#inicioLoteNL').val() > $('#inicioLoteVL').val()) {
+            let fecha = new Date($('#inicioLoteVL').val());
+            fecha.setDate(fecha.getDate() + 630);
+             var dd = String(fecha.getDate()).padStart(2, '0');
+        var mm = String(fecha.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = fecha.getFullYear();
+        fecha = yyyy+'-'+mm+'-'+dd;
+           
+            console.log(fecha);
+            if (fecha > $('#inicioLoteNL').val()) {
+                var fecha1 = moment(fecha);
+                var fecha2 = moment(Date($('#inicioLoteNL').val));
+                if (!confirm('Aún faltan '+(fecha1.diff(fecha2, 'days'))+' semanas para que el lote anterior deba ser cambiado ¿Está seguro de que desea continuar?')) {
+                    alert('Se canceló el Cambio de Lote');
+                    e.preventDefault();
+                }
+            }
+            // let fecha = moment($('#inicioLoteVL').val()).add((7*90), 'days').format('YYYY-MM-DD');
+            // if (fecha > $('#inicioLoteNL').val()) {
+            //     fecha = moment(fecha);
+            //     var fecha2 = moment(Date($('#inicioLoteNL').val));
+            //     if (!confirm('Aún faltan '+(fecha.diff(fecha2, 'days'))+' semanas para que el lote anterior deba ser cambiado ¿Está seguro de que desea continuar?')) {
+            //         alert('Se canceló el Cambio de Lote');
+            //         e.preventDefault();
+            //     }
+            // }            
+
+        }else{
+            e.preventDefault();
+            alert('La fecha del nuevo lote no puede ser menor al lote anterior');
+        }
     });
     // ----------------------------------------------
     // EDITANDO RESPONSABLE
@@ -167,7 +197,7 @@ $(document).ready(function (){
                     console.log(datos.activo);
                     $('#NombreResponsable').val(datos.nombreResponsable);
                     $('#ApellidoResponsable').val(datos.apellidoResponsable);
-                    if (datos.nombreResponsable == "Edith") {
+                    if (datos.ci == "v7427156") {
                         $('#activoResponsable').prop('disabled', true);
                         $('#NombreResponsable').prop('readonly', true);
                     } else $('#activoResponsable').prop('disabled', false);

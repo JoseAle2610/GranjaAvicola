@@ -6,7 +6,7 @@
 			<!--Header-->
 			<div class="modal-header bg-dark text-white">
 				<div class="d-flex justify-content-between">
-						<h5 class="mt-2">Cambiar Lote Del Galpon xn</h5>
+						<h5 class="mt-2">Cambiar Lote Del Galpón</h5>
 				</div>
 				<button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true" class="white-text">&times;</span>
@@ -22,7 +22,7 @@
 						<div class="col-12 mb-4 align-self-start">
 							<div class="input-group">
 								<div class="input-group-prepend">
-									<span class="input-group-text">Numero galpon</span>
+									<span class="input-group-text">Número galpón</span>
 								</div>
 								<input type="number" name="numeroGalponCL" id="numeroGalponCL" class="form-control" min="1" max="100" required readonly="">
 								<input type="hidden" name="idLoteCL" id="idLoteCL">
@@ -47,7 +47,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">N° Gallinas</span>
 								</div>
-								<input type="number" name="numeroGallinasNL" id="numeroGallinasNL" class="form-control" min="1" max="9000" required>
+								<input type="number" name="numeroGallinasNL" id="numeroGallinasNL" class="form-control" min="1" max="50000" required>
 							</div>
 						</div>
 						
