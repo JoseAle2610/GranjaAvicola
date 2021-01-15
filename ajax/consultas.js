@@ -365,6 +365,93 @@ $(document).ready(function (){
         })
     });
 
+    $('#nombreGalpon').change(function (){
+        let idGalpon = $(this).val();
+        $.ajax({
+            url: '?c=Ajax&m=galponLotes',
+            data: 'idGalpon='+idGalpon,
+            type: 'GET',
+            success: function (respuesta) {
+              if(!respuesta.error) {
+                let datos = JSON.parse(respuesta);
+                console.log(datos);
+                let html = '<option value="0">-Seleccionar-</option>';
+                datos.forEach(dato => {
+                  html += `<option value='${dato.idLote}' fechaInicio='${dato.inicio}' terminado='${dato.terminado}' class='lote'>
+                                L-${dato.idLote}
+                            </option>`;
+                });
+                $('#numeroLote').html(html);
+              }
+            } 
+        });
+    });
+
+    $('#numeroLote').change(function (){
+        // let fechaInicio = [];
+        // let terminado = [];
+        // $('.lote').each(function (i, obj){
+        //     fechaInicio[i] = $(this).attr('fechaInicio');
+        //     terminado[i] = $(this).attr('terminado');
+        // });
+
+    });
+
+    $('#buscarFormatoDistribucion').click(function(){
+        let idGalpon = $('#nombreGalpon').val();
+        let idLote = $('#numeroLote').val();
+        $.ajax({
+            url: '?c=Ajax&m=formatoDistribucion&idLote='+idLote,
+            data: 'idGalpon='+idGalpon,
+            type: 'GET',
+            success: function (respuesta) {
+                if(!respuesta.error) {
+                    let datos = JSON.parse(respuesta);
+                    // console.log(datos);
+                    let matriz = {};
+                    datos.forEach((fila, x) => {
+                        let filaMatriz = {};
+                        if (!matriz.hasOwnProperty(fila.fecha)) {
+                            matriz[fila.fecha] = {}; 
+                            matriz[fila.fecha][fila.idCategoria] = parseInt(fila.valor);
+                        }else {
+                            if (!matriz[fila.fecha].hasOwnProperty(fila.idCategoria)) {
+                                matriz[fila.fecha][fila.idCategoria] = parseInt(fila.valor);
+                            }else{
+                                matriz[fila.fecha][fila.idCategoria] += parseInt(fila.valor);
+                            }
+                        }
+                    });//tr td:nth-child(1)
+                    console.log(matriz)
+                    $('#tablaFormatoDistribucion tbody ').html('');
+                    for(const fecha in matriz){
+                        // console.log(fecha);
+                        let tr = $('#tablaFormatoDistribucion tbody ').html();
+                        let td = `<td>${fecha}</td>`;
+                        let totales = 0;
+                        for (var i = 1; i <= 8 ; i++) {
+                            if (matriz[fecha].hasOwnProperty(i)) {
+                                td += `<td>${matriz[fecha][i]}</td>`;
+                            }else{
+                                td += `<td>0</td>`;
+                                matriz[fecha][i] = 0;
+                            }
+                            totales += matriz[fecha][i];
+                            if ( i == 3) {
+                                td += `<td>${totales}</td>`;
+                            } else if (i == 8) {
+                                td += ` <td>${totales}</td>
+                                        <td>${totales}</td>`
+                            }
+                        }
+                        tr += `<tr>${td}</tr>`;
+                        $('#tablaFormatoDistribucion tbody ').html(tr);
+                    }
+                }
+            } 
+        });
+    })
+
     $('#imprimirProduccionDiaria').click(function (){
         var pdf = new jsPDF('p', 'pt', 'letter')
         var source = $('#ProduccionDiaria')[0]

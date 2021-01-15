@@ -10,12 +10,12 @@ function autoload($clase){
 spl_autoload_register('autoload');
 #
 
-function select(array $datos, $name, $value=''){
+function select(array $datos, $name, $prefijo = '', $value=''){
 	$select = "<select class='form-control $name' name='$name' id='$name'>";
 	$select .= "<option value='0'>-Seleccione-</option>";
 	foreach ($datos as $key => $registro) {
 		$selected = ($registro->id == $value) ? 'selected': '' ;
-		$select .= "<option value='$registro->id' $selected>$registro->nombre</option>";
+		$select .= "<option value='$registro->id' $selected>$prefijo$registro->nombre</option>";
 	}
 	$select .= '</select>';
 	return $select;

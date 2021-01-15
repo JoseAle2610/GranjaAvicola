@@ -75,4 +75,26 @@ class AjaxControlador{
 			echo $produccionDiaria;
 		}
 	}
+	
+	public function galponLotes(){
+		if (isset($_REQUEST['idGalpon'])) {
+			$galponEnLoteModelo = new GalponEnLoteModelo();
+			$where = 'WHERE idGalpon = ?';
+			$galponEnLoteModelo = $galponEnLoteModelo->select($where, array($_REQUEST['idGalpon']));
+			$galponEnLoteModelo = json_encode($galponEnLoteModelo);
+			echo $galponEnLoteModelo;
+		}
+	}
+
+	public function formatoDistribucion(){
+		if (isset($_REQUEST['idGalpon'], $_REQUEST['idLote'])) {
+			$consultasModelo = new ConsultasModelo();
+			$where = 'WHERE gl.idGalpon = ? AND gl.idLote = ?';
+			$consultasModelo = $consultasModelo->formatoDistribucion($where, '', 
+																array(	$_REQUEST['idGalpon'], 
+																		$_REQUEST['idLote']));
+			$consultasModelo = json_encode($consultasModelo);
+			echo $consultasModelo;
+		}
+	}
 }

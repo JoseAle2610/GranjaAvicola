@@ -23,7 +23,7 @@ class ConsultasModelo
 
 	}
 
-	public function tablaRecogidas($condicion = ''){
+	public function tablaRecogidas($condicion = '', $group = '', $datos = array('')){
 		$sql = "SELECT l.numeroLote, g.nombreGalpon, g.idGalpon, s.idSector, s.nombreSector, r.idRegistro, 
 					r.fecha, rs.ci, rs.activo responsableActivo
 					FROM lotes l 
@@ -33,8 +33,8 @@ class ConsultasModelo
 				    INNER JOIN registros r ON r.idSector = s.idSector
 				    INNER JOIN responsablesderegistro rr ON rr.idRegistro = r.idRegistro
 				    INNER JOIN responsables rs ON rr.ci = rs.ci
-				    $condicion GROUP BY r.idRegistro ";
-		return $this->pdo->obtenerTodos($sql);
+				    $condicion $group";
+		return $this->pdo->obtenerTodos($sql, $datos);
 	}
 
 	public function recogidaValores ($condicion = ''){
@@ -44,7 +44,8 @@ class ConsultasModelo
 	}
 
 	public function infoRecogida ($condicion = ''){
-		$recogidas = $this->tablaRecogidas($condicion);
+		$group = 'GROUP BY r.idRegistro ';
+		$recogidas = $this->tablaRecogidas($condicion, $group);
 		$valores = $this->recogidaValores($condicion);
 		$valores1 = array();
 		$recogidas1 = array();
@@ -72,6 +73,18 @@ class ConsultasModelo
 					INNER JOIN categorias c ON c.idCategoria = v.idCategoria
 					WHERE r.fecha = ? $group";
 		return $this->pdo->obtenerTodos($sql, array($fecha));
+	}
+
+	public function formatoDistribucion($condicion = '', $group = '', $datos = array('')){
+		$sql = "SELECT gl.*, s.nombreSector, r.*, v.*, c.NombreCategoria 
+					FROM galponesenlote gl 
+					INNER JOIN  sectores s ON s.idGalpon = gl.idGalpon
+				    INNER JOIN registros r ON r.idSector = s.idSector
+				    INNER JOIN recogidas rg ON rg.idRegistro = r.idRegistro
+				    INNER JOIN valores v ON v.idRecogida = rg.idRecogida
+				    INNER JOIN categorias c ON c.idCategoria = v.idCategoria
+				    $condicion $group";
+		return $this->pdo->obtenerTodos($sql, $datos);
 	}
 }
 

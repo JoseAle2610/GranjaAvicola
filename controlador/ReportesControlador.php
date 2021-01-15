@@ -5,7 +5,9 @@
 class ReportesControlador
 {
 	
-	function __construct(){}
+	function __construct(){
+		$this->galponModelo = new GalponModelo();
+	}
 
 	public function index(){
 		$pagina = !isset($_REQUEST['p']) ? 'CierreMes':$_REQUEST['p']; 

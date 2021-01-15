@@ -28,13 +28,7 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Galpon</span>
 										</div>
-										<select class="form-control" id="numeroGalpon">
-											<option value="0">-Seleccionar-</option>
-											<option value="1">G-1</option>
-											<option value="2">G-2</option>
-											<option value="3">G-3</option>
-											<option value="4">G-4</option>
-										</select>
+										<?=select($this->galponModelo->select(), 'nombreGalpon', 'G-')?>
 									</div>
 								</div>
 								<div class="col-md-3">
@@ -43,11 +37,7 @@
 											<span class="input-group-text">Lote</span>
 										</div>
 										<select class="form-control" id="numeroLote">
-											<option value="0">-Seleccionar-</option>
-											<option value="1">L-1</option>
-											<option value="2">L-2</option>
-											<option value="3">L-3</option>
-											<option value="4">L-4</option>
+											
 										</select>
 									</div>
 								</div>
@@ -56,16 +46,18 @@
 										<div class="input-group-prepend">
 											<span class="input-group-text">Mes</span>
 										</div>
-										<input type="month" id="fechaProduccionDiaria" class="form-control" value="<?php echo date("Y-m");?>" required>
+										<select class="form-control" id="numeroMes">
+											
+										</select>
 									</div>
 								</div>
 								<div class="col-md-2">
-									<button id="buscarProduccionDiaria" class="btn btn-info btn-block"><i class="fas fa-search"></i></button>
+									<button id="buscarFormatoDistribucion" class="btn btn-info btn-block mb-3"><i class="fas fa-search"></i></button>
 								</div>
 							</div>
 						</div>
 						<div class="col-12" id="ProduccionDiaria">
-							<table class="table table-striped table-hover table-responsive-lg p-0">
+							<table class="table table-striped table-hover table-responsive-lg p-0" id="tablaFormatoDistribucion">
 								<thead class="bg-info">
 									<th>Fecha</th>
 									<th>Grandes</th>
