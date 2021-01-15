@@ -90,7 +90,7 @@ class GalponControlador{
 		if (isset($_REQUEST['idLoteCL'], $_REQUEST['idGalponCL'], $_REQUEST['numeroGallinasNL'],
 			$_REQUEST['inicioLoteNL'], $_REQUEST['numeroGallinasVL'], 
 			$_REQUEST['inicioLoteVL'])) {
-			if (date("d-m-Y", strtotime($_REQUEST['inicioLoteVL'])) > date("d-m-Y", strtotime($_REQUEST['inicioLoteNL']))) {
+			if ($_REQUEST['inicioLoteVL'] > $_REQUEST['inicioLoteNL']) {
 				alerta('danger', 'El inicio del Lote anterior no puede ser mayor al nuevo');
 			} else if ($_REQUEST['numeroGallinasVL'] > 50000 || $_REQUEST['numeroGallinasVL'] < 1) {
 				alerta('danger', 'El número de gallinas supera la cantidad máxima o debe ser mayor a 0');
