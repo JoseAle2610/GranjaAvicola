@@ -15,7 +15,7 @@ class ResponsableControlador
 	}
 
 	public function guardarResponsable() {
-		var_dump($_REQUEST);
+		// var_dump($_REQUEST);
 		$activo= isset($_REQUEST['activoResponsable']) ? true : false ;
 		if (isset($_REQUEST['NombreResponsable'], $_REQUEST['ApellidoResponsable'], $_REQUEST['Cedula'], $_REQUEST['Nacionalidad'], $_REQUEST['editar'])) 
 		{
@@ -45,10 +45,15 @@ class ResponsableControlador
 					if ($_REQUEST['editar'] == false) {
 						$this->responsableModelo->insert($datos);
 					} else if ($_REQUEST['editar'] == true) {
-						$datos[2] = $activo;
-						$this->responsableModelo->update($datos);
+						if ($_REQUEST['NombreResponsable'] == "Edith") {
+							$datos[2] = 1;
+							$datos[0] = "Edith";
+						} else{
+							$datos[2] = $activo;
+						}
+							$this->responsableModelo->update($datos);
 					}
-					alerta('success', 'Se agregó al Responsable '.$_REQUEST['nombreResponsable'].' Correctamente');
+					alerta('success', 'Se agregó al Responsable '.$_REQUEST['NombreResponsable'].' Correctamente');
 				} catch (PDOException $e) {
 					alerta('danger', 'Ha ocurrido un error al agregar al Responsable');
 					alerta('danger', $e->getMessage());

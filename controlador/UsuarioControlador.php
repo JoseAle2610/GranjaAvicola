@@ -44,11 +44,16 @@ class UsuarioControlador
 					if ($_REQUEST['editarUsuario'] == false) {
 						$this->UsuarioModelo->insertar($datos);
 					 } else if ($_REQUEST['editarUsuario'] == true) {
-					 	$datos[2] = $activoUsuario;
+					 	if ($_REQUEST['nombreUsuarioAgregar'] == "Admin") {
+						 	$datos[2] = 1;
+						 	$datos[0] = "Admin";
+					 	} else {
+					 		$datos[2] = $activoUsuario;
+					 	}
 					 	$datos[6] = $_REQUEST['idUsuarios'];
 						$this->UsuarioModelo->update($datos);
 					}
-					alerta('success', 'Se agregó al Responsable Correctamente');
+					alerta('success', 'Se agregó al Usuario Correctamente');
 				} catch (PDOException $e) {
 					alerta('danger', 'Ha ocurrido un error al agregar al Usuario, no se pueden repetir NOMBRES o CÉDULAS');
 				}
@@ -56,7 +61,7 @@ class UsuarioControlador
 			
 			
 
-		} else alerta('danger', 'ESTA VACIO ALGUN CAMPO');
+		} else alerta('danger', 'ESTá VACío ALGúN CAMPO');
 		$pagina = isset($_REQUEST['pagina']) ? $_REQUEST['pagina'] : 'recogida' ;
 		header('location:?c='.$pagina);
 	}
@@ -71,7 +76,7 @@ class UsuarioControlador
 				alerta('danger', 'Ha ocurrido un error a la hora de eliminar al responsable');
 			}
 		} else {
-			alerta('danger', 'Para eliminar al responsable debe facilitar la Cedula');
+			alerta('danger', 'Para eliminar al responsable debe facilitar la Cédula');
 		}
 		$pagina = isset($_REQUEST['pagina']) ? $_REQUEST['pagina'] : 'recogida' ;
 		header('location:?c='.$pagina);
