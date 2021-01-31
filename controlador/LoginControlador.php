@@ -8,6 +8,7 @@ class LoginControlador{
 	public function index(){
 		require_once 'vista/includes/header.php';
 		require_once 'vista/LoginVista.php';
+		require_once 'vista/LoginContraseña.php';
 		require_once 'vista/includes/footer.php';
 	}
 
@@ -34,6 +35,33 @@ class LoginControlador{
 		unset($_SESSION['login']);
 		session_destroy();
 		header('location:./');
+	}
+
+	public function CambiarContra(){
+		var_dump($_REQUEST);
+		if (isset($_REQUEST['nombreUsuarioRecuperar'], $_REQUEST['RespuestaPreguntaSeguridad'], $_REQUEST['ContraseñaNueva'], $_REQUEST['RepeticiónContraseña'])) {
+			
+			if ($_REQUEST['ContraseñaNueva'] != $_REQUEST['RepeticiónContraseña']) {
+				echo "No son iguales";
+			} else {
+				$usuario = $this->usuarioModelo->select("WHERE nombreUsuario = ?", array($_REQUEST['nombreUsuarioRecuperar']));
+				echo "<pre>";var_dump($usuario[0]);echo "</pre>";
+				if ($_REQUEST['RespuestaPreguntaSeguridad'] == $usuario[0]->respuesta) {
+					$usuario[0]->claveUsuario = $_REQUEST['RepeticiónContraseña'];
+					$usuario = array($usuario[0]->nombreUsuario,
+					$usuario[0]->claveUsuario, $usuario[0]->activo,
+					$usuario[0]->pregunta , $usuario[0]->respuesta, 
+					$usuario[0]->ci, $usuario[0]->idUsuarios);
+					$this->usuarioModelo->update($usuario);
+					alerta('success', 'Al usuario '.$usuario[0].' se le actualizó su contraseña exitosamente');
+				} else alerta('danger', 'Su respuesta no coincide con la anteriormente proporcionada, intente nuevamente');
+			}
+			header('location:./');
+		}
+		else{
+				alerta('danger', 'Ingrese los datos para poder actualizar su información');
+			// header('location:./');
+		}
 	}
 
 }

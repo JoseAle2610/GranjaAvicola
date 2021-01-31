@@ -16,14 +16,15 @@ class Ajax1Controlador{
 	}
 
 	public function recuperarClave(){
-		if (isset($_REQUEST['nombreUsuario'])) {
+		if (isset($_REQUEST['nombreUsuario']) || !empty($_REQUEST['nombreUsuario'])) {
+
 			$UsuarioModelo = new UsuarioModelo();
-			$nombreUsuario = $_REQUEST['nombreUsuario'];
-			$UsuarioModelo = $UsuarioModelo->select("WHERE nombreUsuario = '$nombreUsuario'");
-			$UsuarioModelo = $UsuarioModelo[0];
+			$condicion = 'WHERE  nombreUsuario = ?';
+			$datos = array($_REQUEST['nombreUsuario']);
+			$UsuarioModelo = $UsuarioModelo->select($condicion, $datos);
 			$UsuarioModelo = json_encode($UsuarioModelo);
 			echo $UsuarioModelo;
-		}
+		};
 	}
 
 }

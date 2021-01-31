@@ -5,14 +5,14 @@ $controlador = 'Login';
 $metodo      = 'index';
 
 if (!isset($_REQUEST['c'])) {
-	if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
-		header('location:?c=recogida');
-	}
+	// if (isset($_SESSION['login']) && $_SESSION['login'] == true) {
+	// 	header('location:?c=recogida');
+	// }
 	$controlador = ucwords($controlador)."Controlador";
 	$controlador = new $controlador();
 	$controlador->index();
 }else {
-	loged();
+	// loged();
 		$controlador = ucwords($_REQUEST['c'])."Controlador";
 		// if (!file_exists("controlador/$controlador.controlador.php")) {
 		// 	echo ' la archivo que busca no esta disponible ';
