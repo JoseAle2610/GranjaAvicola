@@ -46,7 +46,7 @@ class AjaxControlador{
 	public function infoNombreGalponLote(){
 		if (isset($_REQUEST['Nombre_Galpon'])) {
 			$GalponEnLoteModelo = new GalponEnLoteModelo();
-			$GalponEnLoteModelo = $GalponEnLoteModelo->select("where idGalpon = ?", array($_REQUEST['Nombre_Galpon']));
+			$GalponEnLoteModelo = $GalponEnLoteModelo->select("where idGalpon = ? AND terminado=0", array($_REQUEST['Nombre_Galpon']));
 			$GalponEnLoteModelo = json_encode($GalponEnLoteModelo);
 			echo $GalponEnLoteModelo;
 		}

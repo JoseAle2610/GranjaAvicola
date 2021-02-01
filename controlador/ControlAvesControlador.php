@@ -23,9 +23,7 @@ class ControlAvesControlador
 
 			foreach ($datosMortalidadModelo as $key => $value) {
 				$numeroMuertes = $datosMortalidadModelo[$key]->numeroMuertes + $numeroMuertes;
-			}
-			var_dump($numeroMuertes);
-		
+			} var_dump($numeroMuertes); echo "AQUIIIII";
 			if ($_REQUEST['Mortalidad'] <= 0) {
 			  	alerta('danger', 'Ingrese un número válido por favor');
 		  	} else if($GalponEnLoteModelo->terminado == 1) {
@@ -37,11 +35,16 @@ class ControlAvesControlador
 			}  else{
 					try {
 						$datosMortalidadModelo = array($_REQUEST['Nombre_Galpon'], $GalponEnLoteModelo->idLote, $_REQUEST['Mortalidad'], $_REQUEST['FechaMortalidad']);
-						$GalponEnLoteModelo->gallinas = $GalponEnLoteModelo->gallinas - $_REQUEST['Mortalidad'];
-						if ($numeroMuertes >= $GalponEnLoteModelo->gallinas) {
+						echo "GALPON EN LOTE MODELO";
+						var_dump($GalponEnLoteModelo->gallinas); echo "NUMERO MUERTES";
+						var_dump($numeroMuertes);
+						if ($numeroMuertes == $GalponEnLoteModelo->gallinas) {
+							var_dump($GalponEnLoteModelo);echo "Entramooooos";
 							$GalponEnLoteModelo->terminado = 1;
+							var_dump($GalponEnLoteModelo);
 							 $GalponEnLoteModelo = array($GalponEnLoteModelo->terminado,
 													$GalponEnLoteModelo->gallinas,
+													$GalponEnLoteModelo->inicio,
 													$GalponEnLoteModelo->idGalpon,
 													$GalponEnLoteModelo->idLote);
 							$this->GalponEnLoteModelo->update($GalponEnLoteModelo);
@@ -49,7 +52,7 @@ class ControlAvesControlador
 						$this->MortalidadModelo->insert($datosMortalidadModelo);
 						alerta('success', 'El número de Gallinas ha sido actualizada');
 					} catch (PDOException $e) {
-						alerta('danger', 'Ya ingresó las Gallinas que muerieron en esa fecha, galpón y lote');
+						alerta('danger', 'Ya ingresó las Gallinas que muerieron en esa fecha, galpón y lote'); echo "ERROR";
 					}
 				}
 		}else {

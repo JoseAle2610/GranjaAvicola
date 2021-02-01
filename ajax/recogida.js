@@ -3,6 +3,7 @@ $(document).ready( function (){
 
 	$('.infoRecogida').click(function(){
 		limpiarformularioRecogida();
+        $('#AgregarReco').html('Editar Recogida');
 		let idRegistro = $(this).attr('idRegistro');
 
         $.ajax({
@@ -45,6 +46,7 @@ $(document).ready( function (){
                     $('#editRecogida').val(1)
                     // PASAMOS TAMBIEN EL ID DE REGISTRO QUE ACABAMOS DE LLENAR POR SI ACASO
                     $('#idRegistro').val(idRegistro);
+
                 }
             }
 		});
@@ -52,6 +54,7 @@ $(document).ready( function (){
 
     $('.agregarRecogida').click(function(){
     	limpiarformularioRecogida();
+        $('#AgregarReco').html('Agregar Recogida');
         var today = new Date();
         var dd = String(today.getDate()).padStart(2, '0');
         var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

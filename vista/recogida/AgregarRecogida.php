@@ -7,7 +7,7 @@
 			<div class="modal-header bg-dark text-white">
 				<div class="d-flex justify-content-between">
 						<img src="assets/img/cesta.png" height="40px" class="mr-1 ">
-						<h5 class="heading lead mt-0 mt-md-1">
+						<h5 class="heading lead mt-0 mt-md-1" id="AgregarReco">
 							Agregar Recogida
 						</h5>
 				</div>
@@ -41,7 +41,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text bg-dark text-white">Fecha</span>
 							</div>
-							<input type="date" name="fecha" id="fecha" class="form-control" min="2000-01-01" value="<?php echo date("Y-m-d");?>" required>
+							<input type="date" name="fecha" id="fecha" class="form-control" min="2000-01-01" value="<?php echo date("Y-m-d");?>" max="<?php echo date("Y-m-d"); ?>"required>
 						</div>
 						<div class="col-6 mb-2">
 							<div class="input-group">

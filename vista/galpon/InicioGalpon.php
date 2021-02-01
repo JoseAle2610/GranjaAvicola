@@ -11,7 +11,8 @@
 						<h3>Galpón</h3>
 					</div>
 					
-					<div class="left">
+					<div class="col-auto">
+						<button class="btn btn-info btn-sm text-dark circulo py-0" data-toggle="modal" data-target="#Informacion"><h6 class="p-0"><i class="fas mt-2 fa-info"></i></h6></button>
 						<button class="btn btn-warning text-dark" data-toggle="modal" data-target="#AgregarGalpon"><i class="fas fa-plus"></i></button>
 					</div>
 				</div>
