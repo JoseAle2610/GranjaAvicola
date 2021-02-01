@@ -71,7 +71,7 @@
 									<div class="input-group-prepend">
 										<span class="input-group-text">Fecha</span>
 									</div>
-									<input type="date" class="form-control" name="FechaMortalidad" id="FechaMortalidad" min="2000-01-01" max="2020-12-31" 
+									<input type="date" class="form-control" name="FechaMortalidad" id="FechaMortalidad" min="2000-01-01" max="<?php echo date("Y-m-d");?>" 
 									value="<?php echo date("Y-m-d");?>" required>
 								</div>
 							</div>
