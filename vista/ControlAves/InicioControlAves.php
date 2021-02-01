@@ -9,8 +9,9 @@
 				<!-- CARD HEADER / BUTTON AGREGAR -->
 				<div class="card-header justify-content-between">
 					<div class="row">
-						<div class="col-6">
-							<h5 class="card-title">Control de Aves</h5>
+						<div class="col-6 d-flex">
+							<h5 class="card-title mr-2">Control de Aves</h5>
+							<button class="btn btn-info btn-sm text-dark circulo py-0" data-toggle="modal" data-target="#Informacion"><h6 class="p-0"><i class="fas mt-2 fa-info"></i></h6></button>
 						</div>
 						<div class="col-6">
 							<div class="row justify-content-end">
@@ -18,8 +19,6 @@
 									<input class="col-1 mt-2" type="checkbox" name="Active" id="Active">Activo
 							</div>
 						</div>
-						
-						
 					</div>
 					
 					<div class="col-auto d-inline-block">

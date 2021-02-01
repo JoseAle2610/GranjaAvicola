@@ -13,9 +13,12 @@
 							Recogida / Actividad en los últimos días
 						</h5>
 					</div>
-					
-					<button class="btn btn-warning text-dark agregarRecogida" data-toggle="modal" data-target="#guardarRecogida">Recogida de hoy<i class="fas fa-plus ml-2"></i></button>
+					<div class="col-auto">
+						<button class="btn btn-info btn-sm text-dark circulo py-0" data-toggle="modal" data-target="#Informacion"><h6 class="p-0"><i class="fas mt-2 fa-info"></i></h6></button>
+						<button class="btn btn-warning text-dark agregarRecogida" data-toggle="modal" data-target="#guardarRecogida">Recogida de hoy<i class="fas fa-plus ml-2"></i></button>
 
+					</div>
+					
 					<!-- <button class="btn btn-info text-dark" data-toggle="modal" data-target="#AgregarResponsable">Agregar Responsable</button> -->
 				</div>
 				<div class="card-body">
@@ -27,13 +30,13 @@
 									<th>Fecha Recogida</th>
 									<th>Galpón</th>
 									<th>Lote</th>
-									<th>Modulo</th>
+									<th>Módulo</th>
 									<th>Responsable</th>
 									<th>Grandes</th>
 									<th>Medianos</th>
 									<th>Pequeños</th>
 									<th class="bg-info">Huevos Producidos</th>
-									<th>Accion</th>
+									<th>Acción</th>
 								</thead>
 								<tbody>
 								<?php foreach ($recogidas as $recogida): ?>
@@ -62,10 +65,10 @@
 										echo "<td>$medianos</td>";
 										echo "<td>$pequeños</td>";
 										$suma = $grandes + $pequeños + $medianos;
-										echo "<td>$suma</td>";
+										echo "<td title='Suma de los huevos aptos para su venta'>$suma</td>";
 										?>
 										<td>
-											<button class="btn btn-info infoRecogida btn-block" data-toggle="modal" data-target="#guardarRecogida" idRegistro='<?= $recogida->idRegistro?>'>
+											<button title="Editar" class="btn btn-info infoRecogida btn-block" data-toggle="modal" data-target="#guardarRecogida" idRegistro='<?= $recogida->idRegistro?>'>
 												<i class="fas fa-pen-fancy"></i>
 											</button>
 										</td>

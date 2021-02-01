@@ -7,7 +7,7 @@
 			<div class="modal-header bg-dark text-white">
 				<div class="d-flex justify-content-between">
 						<img src="assets/img/cesta.png" height="40px" class="mr-1 ">
-						<h5 class="heading lead mt-0 mt-md-1">
+						<h5 class="heading lead mt-0 mt-md-1" id="AgregarReco">
 							Agregar Recogida
 						</h5>
 				</div>

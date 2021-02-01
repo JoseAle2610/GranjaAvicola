@@ -46,6 +46,7 @@
 				require_once 'vista/responsable.php'; 
 				require_once "vista/usuario.php";
 			}
+			require_once 'vista/Informacion.php';
 		?>
 		<!-- jQuery -->
 		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
