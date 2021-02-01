@@ -16,6 +16,8 @@ class RecogidaControlador
 	public function index(){
 		loged();
 		$recogidas = $this->ConsultasModelo->infoRecogida();
+		$Galpon = $this->GalponModelo->seleccionar();
+		
 		require_once 'vista/includes/header.php';
 		require_once 'vista/includes/menu.php';
 		require_once 'vista/recogida/InicioRecogida.php';

@@ -40,7 +40,7 @@ class ControlAvesControlador
 						var_dump($GalponEnLoteModelo->gallinas); echo "NUMERO MUERTES";
 						var_dump($numeroMuertes);
 						if ($numeroMuertes == $GalponEnLoteModelo->gallinas) {
-							alerta('warning', "Recuerde cambiar el lote ya que este finalizó, para ello vaya al módulo de Galpón.Presione aquí  <button idGalpon='$GalponEnLoteModelo->idGalpon' class='btn btn-info cambiarLote' data-toggle='modal' data-target='#CambiarLote'><i class='fas fa-exchange-alt pl-1'>Lote</i> </button>");
+							alerta('warning', "Recuerde cambiar el lote ya que este finalizó, para ello vaya al módulo de Galpón o presione el siguiente botón.   <button idGalpon='$GalponEnLoteModelo->idGalpon' class='btn btn-info cambiarLote' data-toggle='modal' data-target='#CambiarLote'><i class='fas fa-exchange-alt pl-1'>Lote</i> </button>");
 						}
 						$this->MortalidadModelo->insert($datosMortalidadModelo);
 						alerta('success', 'El número de Gallinas ha sido actualizada');
