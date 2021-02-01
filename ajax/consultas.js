@@ -257,51 +257,54 @@ $(document).ready(function (){
             data: 'Nombre_Galpon='+Nombre_Galpon,
             type: 'GET',
             success: function(respuesta){
-                if(!respuesta.error || respuesta.length != 0) {
-                    let datos = JSON.parse(respuesta);
-                    $('#NumeroGallinas').val(datos[0].gallinas);
-                    $('#NombreLote').html(datos[0].idLote);
-                    if (datos[0].idLote != 0) {
-                        $('#Active').prop('checked', true);
-                    }
-                    $.ajax({
-                        url:  "?c=ajax&m=tabla",
-                        data: 'Nombre_Galpon='+Nombre_Galpon,
-                        type: 'GET',
-                        success: function(respuestas){
-                            if(!respuestas.error) {
-                                let datos1 = JSON.parse(respuestas);
-                                let html = '';
-                               if (datos1 == false) {
-                                    html = `<tr>
-                                                <td></td>
-                                                <td><p>Vacío</p></td>
-                                                <td></td>
-                                            </tr>`;
-                               } else{
-                                    let pos = 0;
-                                    let suma = 0;
-                                    for (var i = 0; i < datos1.length; i++) {
-                                        suma += parseInt(datos1[i].numeroMuertes);
-                                    }
-                                    // for (let i = 0; i < datos1.length; i++) {
-                                    //     suma = datos1[i].numeroMuertes
-                                    // }
-                                   Object.entries(datos1).forEach(([key, value]) => {
-                                    // suma = datos1[key].numeroMuertes + suma;
-                                        suma = suma - pos;
-                                        pos = parseInt(value.numeroMuertes);
-                                         html += `<tr>
-                                                <td class = 'text-center'>${value.numeroMuertes}</td>
-                                                <td class = 'text-center'>${value.fecha}</td>
-                                                <td class = 'text-center'>${datos[0].gallinas- suma}</td>
-                                              </tr>`;
-                                     });
-                                }
-                                $('#Hola').html(html);
-                            }
+                console.log(respuesta);
+                if(!respuesta.error) {
+                    if (respuesta != "[]") {
+                        let datos = JSON.parse(respuesta);
+                        $('#NumeroGallinas').val(datos[0].gallinas);
+                        $('#NombreLote').html(datos[0].idLote);
+                        if (datos[0].idLote != 0) {
+                            $('#Active').prop('checked', true);
                         }
-                    });
+                        $.ajax({
+                            url:  "?c=ajax&m=tabla",
+                            data: 'Nombre_Galpon='+Nombre_Galpon,
+                            type: 'GET',
+                            success: function(respuestas){
+                                if(!respuestas.error) {
+                                    let datos1 = JSON.parse(respuestas);
+                                    let html = '';
+                                   if (datos1 == false) {
+                                        html = `<tr>
+                                                    <td></td>
+                                                    <td><p>Vacío</p></td>
+                                                    <td></td>
+                                                </tr>`;
+                                   } else{
+                                        let pos = 0;
+                                        let suma = 0;
+                                        for (var i = 0; i < datos1.length; i++) {
+                                            suma += parseInt(datos1[i].numeroMuertes);
+                                        }
+                                        // for (let i = 0; i < datos1.length; i++) {
+                                        //     suma = datos1[i].numeroMuertes
+                                        // }
+                                       Object.entries(datos1).forEach(([key, value]) => {
+                                        // suma = datos1[key].numeroMuertes + suma;
+                                            suma = suma - pos;
+                                            pos = parseInt(value.numeroMuertes);
+                                             html += `<tr>
+                                                    <td class = 'text-center'>${value.numeroMuertes}</td>
+                                                    <td class = 'text-center'>${value.fecha}</td>
+                                                    <td class = 'text-center'>${datos[0].gallinas- suma}</td>
+                                                  </tr>`;
+                                         });
+                                    }
+                                    $('#Hola').html(html);
+                                }
+                            }
+                        });
+                    }else alert("Debe de agregar otro lote en Galpón, debido a que éste ya finalizó")
                 } 
             }   
         });
