@@ -31,6 +31,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="?c=Reportes&p=CierreMes">Cierre de Mes</a>
           <a class="dropdown-item" href="?c=Reportes&p=ProduccionDiaria">Produccion Diaria</a>
+          <a class="dropdown-item" href="?c=Reportes&p=ProduccionEntreDias">Produccion Entre Dias</a>
           <a class="dropdown-item" href="?c=Reportes&p=FormatoDistribucion">Formato de Distribucion</a>
         </div>
       </li>
