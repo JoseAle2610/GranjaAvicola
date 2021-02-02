@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"bar",
+				"barChartOptios"
+			],
+			[
+				"fecha",
+				"fechaHasta"
+			],
+			[
+				"dat",
+				"data"
+			],
+			[
+				"La",
+				"labels"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"idR",
+				"idRegistro"
+			],
+			[
+				"sub",
+				"submit〔function〕"
+			],
+			[
 				"max",
 				"maxlength\tAttr"
 			],
@@ -182,10 +210,6 @@
 			[
 				"id",
 				"idCategoria"
-			],
-			[
-				"idR",
-				"idRecogida"
 			],
 			[
 				"nom",
@@ -490,71 +514,11 @@
 			[
 				"campo",
 				"campox"
-			],
-			[
-				"H",
-				"Hometec.png\tw:697 h:607"
-			],
-			[
-				"datos",
-				"datos2"
-			],
-			[
-				"idj",
-				"idJugador"
-			],
-			[
-				"array_s",
-				"array_slice"
-			],
-			[
-				"est",
-				"$est〔variable〕"
-			],
-			[
-				"val",
-				"value"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "vista/reportes/ProduccionEntreDias.php",
-			"settings":
-			{
-				"buffer_size": 2304,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "ajax/Datatable.js",
-			"settings":
-			{
-				"buffer_size": 2219,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "vista/includes/menu.php",
-			"settings":
-			{
-				"buffer_size": 2180,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/xampp/htdocs/Proyectos/GranjaAvicola/vista/reportes/ProduccionEntreFechas.php",
-			"settings":
-			{
-				"buffer_size": 2637,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -567,6 +531,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"menu",
+				"View: Toggle Menu"
+			],
 			[
 				"php",
 				"PHPCompanion:Import Namespace"
@@ -646,15 +614,26 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
-	"expanded_folders":
-	[
-		"/C/xampp/htdocs/Proyectos/Granja",
-		"/C/xampp/htdocs/Proyectos/Granja/assets",
-		"/C/xampp/htdocs/Proyectos/Granja/vista",
-		"/C/xampp/htdocs/Proyectos/Granja/vista/reportes"
-	],
 	"file_history":
 	[
+		"/C/xampp/htdocs/Proyectos/Granja/controlador/AjaxControlador.php",
+		"/C/xampp/htdocs/Proyectos/Granja/modelo/ConsultasModelo.php",
+		"/C/xampp/htdocs/Proyectos/Granja/ajax/Datatable.js",
+		"/C/xampp/htdocs/Proyectos/Granja/ajax/consultas.js",
+		"/C/xampp/htdocs/Proyectos/Granja/vista/reportes/ProduccionEntreDias.php",
+		"/C/xampp/htdocs/Proyectos/Granja/helper.php",
+		"/C/xampp/htdocs/Proyectos/Granja/modelo/RegistroModelo.php",
+		"/C/xampp/htdocs/Proyectos/Granja/vista/recogida/InicioRecogida.php",
+		"/C/xampp/htdocs/Proyectos/Granja/controlador/Ajax1Controlador.php",
+		"/C/xampp/htdocs/Proyectos/Granja/controlador/RecogidaControlador.php",
+		"/C/xampp/htdocs/Proyectos/Granja/vista/recogida/AgregarRecogida.php",
+		"/C/xampp/htdocs/Proyectos/Granja/ajax/recogida.js",
+		"/C/xampp/htdocs/Proyectos/Granja/modelo/RecogidaModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicola/modelo/ConsultasModelo.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicola/controlador/RecogidaControlador.php",
+		"/C/xampp/htdocs/Proyectos/GranjaAvicola/vista/reportes/ProduccionEntreFechas.php",
+		"/C/xampp/htdocs/Proyectos/Granja/vista/includes/menu.php",
+		"/C/xampp/htdocs/Proyectos/Granja/modelo/Conexion.php",
 		"/C/xampp/htdocs/Proyectos/Granja/vista/includes/footer.php",
 		"/C/xampp/htdocs/Proyectos/GranjaAvicola/vista/includes/footer.php",
 		"/C/xampp/htdocs/Proyectos/GranjaAvicola/ajax/Datatable.js",
@@ -764,29 +743,11 @@
 		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/formularios/input_group.html",
 		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/formularios/inline_forms.html",
 		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/grupos_botones.html",
-		"/D/Tarea t.t/PROYECTOS/libs/Plantillas/MDB Admin/dashboard.html",
-		"/D/Tarea t.t/PROYECTOS/libs/Ejemplos Bootstrap/flexbox2.html",
-		"/D/Tarea t.t/PROYECTOS/libs/MDB-Free_4.19.1/css/mdb.css",
-		"/D/Tarea t.t/PROYECTOS/Proyecto Granja/GranjaAvicolaLasTunasSQL.sql",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/Login.vista.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/controlador/Inicio.controlador.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/index.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/includes/header.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/Controlador/Login.controlador.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/assets/css/main.css",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/includes/menu.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/Inicio.vista.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/vista/includes/footer.php",
-		"/D/Tarea t.t/PROYECTOS/libs/MDB-Free_4.19.1/index.html",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/modelo/Conexion.php",
-		"/C/xampp/htdocs/Proyectos/BaseBall_Practica/modelo/Usuarios.modelo.php",
-		"/D/Cursos/SISTEMA POS DE INVENTARIOS Y VENTAS ADMINISTRABLE/09 Impresora de Tickets Cajon Monedero Lector de Codigo y Facturas Electronicas/08.Hardware-y-Factura-Electronica/index.php",
-		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/bitacoraPHP-master/clases/usuario.class.php",
-		"/D/Tarea t.t/PROYECTOS/Ejempos PHP/bitacoraPHP-master/clases/checada.class.php"
+		"/D/Tarea t.t/PROYECTOS/libs/Plantillas/MDB Admin/dashboard.html"
 	],
 	"find":
 	{
-		"height": 29.0
+		"height": 24.0
 	},
 	"find_in_files":
 	{
@@ -800,6 +761,52 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"tr",
+			"tbody",
+			"Columna",
+			"th",
+			"fila",
+			"int",
+			"'G-'+dato.nombreGalpon",
+			"labels",
+			"text",
+			"datosGrafico",
+			"July",
+			"tabla",
+			"nombreCategoria",
+			"tabla",
+			"nombreCategoria",
+			"labels",
+			"lebels",
+			"buscarProduccionEntreFechas",
+			"form",
+			"form ",
+			"form",
+			"formularioProduccionEntreDias",
+			"respuesta",
+			"$produccionDiaria",
+			"produccionDiaria",
+			"isset",
+			"fechahasta",
+			"fechaHasta",
+			"fechaDesde",
+			"idGalpon",
+			"produccionDiaria",
+			"hastafechaHastaProduccion",
+			"fechaHasta",
+			"fechaDesde",
+			"$(#);",
+			"where",
+			"false",
+			"idGalpon",
+			"RegistroModelo",
+			"ajax",
+			"form",
+			"1)",
+			", 1",
+			"white",
+			"borderColor",
+			"backgroundColor",
 			"j",
 			"JSPDF",
 			"Diaria",
@@ -821,476 +828,14 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "vista/reportes/ProduccionEntreDias.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2304,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1344,
-								1344
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1340,
-										1343
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/tag.png",
-										"region.orangish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										777,
-										780
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 342.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "ajax/Datatable.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2219,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2214,
-								2214
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										2215,
-										2216
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/curly_bracket.png",
-										"region.purplish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										30,
-										31
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 505.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "vista/includes/menu.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2180,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1898,
-								1898
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-									"1":
-									[
-										1900,
-										1901
-									]
-								},
-								"icon":
-								{
-									"1":
-									[
-										"Packages/BracketHighlighter/icons/tag.png",
-										"region.orangish"
-									]
-								},
-								"open":
-								{
-									"1":
-									[
-										1812,
-										1813
-									]
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 180.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/C/xampp/htdocs/Proyectos/GranjaAvicola/vista/reportes/ProduccionEntreFechas.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2637,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								2637
-							]
-						],
-						"settings":
-						{
-							"bracket_highlighter.busy": false,
-							"bracket_highlighter.locations":
-							{
-								"close":
-								{
-								},
-								"icon":
-								{
-								},
-								"open":
-								{
-								},
-								"unmatched":
-								{
-								}
-							},
-							"bracket_highlighter.regions":
-							[
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_double_quote_content",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_square_content",
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_regex_content",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_curly_content",
-								"bh_c_define",
-								"bh_c_define_center",
-								"bh_c_define_open",
-								"bh_c_define_close",
-								"bh_c_define_content",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_angle_content",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_tag_content",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_default_content",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_round_content",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_unmatched_content",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close",
-								"bh_single_quote_content"
-							],
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 549.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 29.0
+		"height": 24.0
 	},
 	"input":
 	{
@@ -1331,7 +876,7 @@
 	"project": "index.sublime-project",
 	"replace":
 	{
-		"height": 54.0
+		"height": 44.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -1340,6 +885,42 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"data",
+				"ajax\\Datatable.js"
+			],
+			[
+				"helper",
+				"helper.php"
+			],
+			[
+				"cons",
+				"ajax\\consultas.js"
+			],
+			[
+				"consul",
+				"modelo\\ConsultasModelo.php"
+			],
+			[
+				"recogida",
+				"ajax\\recogida.js"
+			],
+			[
+				"agregar",
+				"vista\\recogida\\AgregarRecogida.php"
+			],
+			[
+				"reco",
+				"controlador\\RecogidaControlador.php"
+			],
+			[
+				"inicio",
+				"vista\\recogida\\InicioRecogida.php"
+			],
+			[
+				"consula",
+				"ajax\\consultas.js"
+			],
 			[
 				"da",
 				"ajax\\Datatable.js"
@@ -1357,20 +938,12 @@
 				"GranjaAvicolaLasTunas\\Integrantes.txt"
 			],
 			[
-				"inicio",
-				"GranjaAvicolaLasTunas\\vista\\galpon\\InicioGalpon.php"
-			],
-			[
 				"detalle",
 				"GranjaAvicolaLasTunas\\vista\\galpon\\DetalleGalpon.php"
 			],
 			[
 				"detalles",
 				"GranjaAvicolaLasTunas\\vista\\recogida\\DetallesRecogida.php"
-			],
-			[
-				"agregar",
-				"GranjaAvicolaLasTunas\\vista\\galpon\\AgregarGalpon.php"
 			],
 			[
 				"login",
@@ -1399,10 +972,6 @@
 			[
 				"galpon",
 				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
-			],
-			[
-				"recogida",
-				"GranjaAvicolaLasTunas\\controlador\\RecogidaControlador.php"
 			],
 			[
 				"incio",
@@ -1489,20 +1058,12 @@
 				"GranjaAvicolaLasTunas\\controlador\\GalponControlador.php"
 			],
 			[
-				"consula",
-				"GranjaAvicolaLasTunas\\ajax\\consultas.js"
-			],
-			[
 				"",
 				"GranjaAvicolaLasTunas\\vista\\includes\\menu.php"
 			],
 			[
 				"mani",
 				"GranjaAvicolaLasTunas\\assets\\css\\main.css"
-			],
-			[
-				"cons",
-				"GranjaAvicolaLasTunas\\ajax\\consultas.js"
 			],
 			[
 				"card",
@@ -1563,10 +1124,6 @@
 			[
 				"sec",
 				"GranjaAvicolaLasTunas\\modelo\\SectorModelo.php"
-			],
-			[
-				"helper",
-				"GranjaAvicolaLasTunas\\helper.php"
 			],
 			[
 				"sector",
@@ -1770,7 +1327,7 @@
 	{
 	},
 	"show_minimap": true,
-	"show_open_files": false,
+	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
 	"side_bar_width": 220.0,

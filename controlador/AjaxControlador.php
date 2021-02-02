@@ -67,13 +67,19 @@ class AjaxControlador{
 	}
 
 	public function produccionDiaria(){
+		$consultasModelo = new ConsultasModelo();
 		if (isset($_REQUEST['fecha'])) {
-			$consultasModelo = new ConsultasModelo();
+			$where = 'WHERE r.fecha = ?';
 			$group = 'GROUP BY r.idSector, c.idCategoria';
-			$produccionDiaria = $consultasModelo->produccionDiaria($_REQUEST['fecha'], $group, false);
-			$produccionDiaria = json_encode($produccionDiaria);
-			echo $produccionDiaria;
+			$consultasModelo = $consultasModelo->produccionDiaria($where, $group, array($_REQUEST['fecha']));
+		} else if(isset($_REQUEST['fechaDesde'], $_REQUEST['fechaHasta'])) {
+			$where = 'WHERE r.fecha >= ? AND r.fecha <= ?';
+			$group = 'GROUP BY r.idRegistro, c.idCategoria';
+			$consultasModelo = $consultasModelo->produccionDiaria($where, $group, array($_REQUEST['fechaDesde'],
+																						$_REQUEST['fechaHasta']));
 		}
+		$consultasModelo = json_encode($consultasModelo);
+		echo $consultasModelo;
 	}
 	
 	public function galponLotes(){

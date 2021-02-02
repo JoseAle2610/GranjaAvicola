@@ -24,15 +24,15 @@ class ConsultasModelo
 	}
 
 	public function tablaRecogidas($condicion = '', $group = '', $datos = array('')){
-		$sql = "SELECT l.numeroLote, g.nombreGalpon, g.idGalpon, s.idSector, s.nombreSector, r.idRegistro, 
+		$sql = "SELECT l.numeroLote, gl.terminado, g.nombreGalpon, g.idGalpon, s.idSector, s.nombreSector, r.idRegistro, 
 					r.fecha, rs.ci, rs.activo responsableActivo
 					FROM lotes l 
 					INNER JOIN galponesenlote gl ON l.idLote = gl.idLote
-				    INNER JOIN galpones g ON g.idGalpon = gl.idGalpon
-				    INNER JOIN sectores s ON s.idGalpon = g.idGalpon
-				    INNER JOIN registros r ON r.idSector = s.idSector
-				    INNER JOIN responsablesderegistro rr ON rr.idRegistro = r.idRegistro
-				    INNER JOIN responsables rs ON rr.ci = rs.ci
+					INNER JOIN galpones g ON g.idGalpon = gl.idGalpon
+					INNER JOIN sectores s ON s.idGalpon = g.idGalpon
+					INNER JOIN registros r ON r.idSector = s.idSector
+					INNER JOIN responsablesderegistro rr ON rr.idRegistro = r.idRegistro
+					INNER JOIN responsables rs ON rr.ci = rs.ci
 				    $condicion $group";
 		return $this->pdo->obtenerTodos($sql, $datos);
 	}
@@ -44,7 +44,7 @@ class ConsultasModelo
 	}
 
 	public function infoRecogida ($condicion = ''){
-		$group = 'GROUP BY r.idRegistro ';
+		$group = 'GROUP BY r.idRegistro';
 		$recogidas = $this->tablaRecogidas($condicion, $group);
 		$valores = $this->recogidaValores($condicion);
 		$valores1 = array();
@@ -63,17 +63,22 @@ class ConsultasModelo
 		return $recogidas;
 	}
 
-	public function produccionDiaria($fecha, $group){
+	public function produccionDiaria($where = '', $group = '', $datos = array('')){
 		$sum = $group == '' ? 'v.valor': 'SUM(v.valor) valor';
-		$sql = "SELECT r.fecha, r.idRegistro, r.idSector, rg.idRecogida, $sum, 
-					c.idCategoria, c.NombreCategoria
+		$sql = "SELECT g.nombreGalpon, r.fecha, r.idRegistro, r.idSector, rg.idRecogida, $sum, 
+					c.idCategoria, c.nombreCategoria
 					FROM registros r 
 					INNER JOIN recogidas rg ON rg.idRegistro = r.idRegistro
+					INNER JOIN galpones g ON g.idGalpon = r.idGalpon
 					INNER JOIN valores v ON v.idRecogida = rg.idRecogida
 					INNER JOIN categorias c ON c.idCategoria = v.idCategoria
-					WHERE r.fecha = ? $group";
-		return $this->pdo->obtenerTodos($sql, array($fecha));
+					$where $group";
+		return $this->pdo->obtenerTodos($sql, $datos);
 	}
+
+
+// WHERE r.fecha >= '2021-02-01' AND r.fecha <= '2021-02-01'
+// GROUP BY gl.idGalpon
 
 	public function formatoDistribucion($condicion = '', $group = '', $datos = array('')){
 		$sql = "SELECT gl.*, s.nombreSector, r.*, v.*, c.NombreCategoria 
