@@ -1,9 +1,7 @@
 <div class="modal fade " id="Informacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
 	aria-hidden="true" >
 	<div class="modal-dialog" role="document">
-		<!--Content-->
 		<div class="modal-content bg-dark text-white">
-			<!--Header-->
 			<div class="row justify-content-between">
 				<div class="col-auto ml-2 mt-1 d-flex">
 					<h4><i class="fas fa-info-circle"></i></h4><h5>nformación</h5>

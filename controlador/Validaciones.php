@@ -1,25 +1,51 @@
 <?php 
-/**
- * 
- */
-class Validaciones
-{
-	
-	function __construct(){}
 
-	public function entero($dato){
-		if (!filter_var($dato,FILTER_VALIDATE_INT)) {
-			return false;
-		} else {
-			return true;
-		}
+function Numerogallinas($NumeroGallinas){
+	$Informe = '';
+	if ($NumeroGallinas <= 0 || $NumeroGallinas > 50000 || empty($NumeroGallinas)){
+		$Informe = "El número de gallinas no puede ser mayor a 50000 o menor a 1 o estar vacío.";
 	}
-
-	public function caratEsp ($dato){
-		if (preg_match('[a-zA-Z ]+', $dato)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	return $Informe;
 }
+
+function Fechamayor($FechaNueva, $FechaVieja){
+	$Informe = '';
+	if ($FechaVieja > $FechaNueva ) {
+		$Informe = 'El inicio del Lote anterior no puede ser mayor al nuevo.';
+	}
+	return $Informe;
+	// $_REQUEST['inicioLoteVL'] > $_REQUEST['inicioLoteNL']
+}
+
+function String($Strings){
+	$validacion = false;
+	foreach ($Strings as $key => $String) {
+		if (preg_match('/\d/', $String)) {
+			$validacion = true;
+		}
+	}
+	return $validacion;
+}
+
+
+// class Validaciones
+// {
+	
+// 	function __construct(){}
+
+// 	public function entero($dato){
+// 		if (!filter_var($dato,FILTER_VALIDATE_INT)) {
+// 			return false;
+// 		} else {
+// 			return true;
+// 		}
+// 	}
+
+// 	public function caratEsp ($dato){
+// 		if (preg_match('[a-zA-Z ]+', $dato)) {
+// 			return true;
+// 		} else {
+// 			return false;
+// 		}
+// 	}
+// }

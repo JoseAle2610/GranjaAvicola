@@ -44,7 +44,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text">N° Gallinas</span>
 								</div>
-								<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control" min="1" max="9000" required>
+								<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control" min="1" max="50000" required>
 							</div>
 						</div>
 						<div class="col-12 col-md-6">

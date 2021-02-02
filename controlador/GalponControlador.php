@@ -26,46 +26,46 @@ class GalponControlador{
 	}
 
 	public function agregarGalpon (){
-		verDatos(array($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
-					$_REQUEST['inicioLote'], $_REQUEST['modulos']));
 		if (isset($_REQUEST['numeroGalpon'], $_REQUEST['NumeroGallinas'], 
-					$_REQUEST['inicioLote'], $_REQUEST['modulos'])) 
-		{
+					$_REQUEST['inicioLote'], $_REQUEST['modulos'])) {
+			if (!empty(Numerogallinas($_REQUEST['NumeroGallinas']))) {
+				alerta('danger', Numerogallinas($_REQUEST['NumeroGallinas']));
+			}else{
 			try {
-				
 				$idGalpon = 0;
 				$editarGalpon = true;
+				if (isset($_REQUEST['editarIdGalpon'])) {
+				$Galpon = $this->galponEnLoteModelo->seleccionando(array($_REQUEST['editarIdGalpon'])); 
+				 if (!empty(Fechamayor($_REQUEST['inicioLote'], $Galpon->inicio))) {
+					alerta('danger', Fechamayor($_REQUEST['inicioLote'], $Galpon->inicio));
+				} 
+				}
 				foreach ($_REQUEST['modulos'] as $posicion => $modulo) {
 					$modulo = (object)$modulo;
-					if ($_REQUEST['accion'] == 'agregar') {
+					if (isset($_REQUEST['accion']) && $_REQUEST['accion'] == 'agregar') {
 						if ($idGalpon == 0 ) {
 							$idGalpon = $this->galponModelo->insert($_REQUEST['numeroGalpon']);
 							$datosGalponEnLote = array(	$idGalpon, 1, 
 														$_REQUEST['NumeroGallinas'], 
 														$_REQUEST['inicioLote']		);
 							$this->galponEnLoteModelo->insert($datosGalponEnLote);
-							alerta('success', 'Se agregó al galpon correctamente' );
+							alerta('success', 'Se agregó al Galpón correctamente.' );
 						}
 						$datosModulo = array($idGalpon, $modulo->nombreSector);
 						$this->sectorModelo->insert($datosModulo);
-
-						echo "ESTAMOS AGREGANDO UN NUEVO Galpon";
 					}else if($modulo->accion == 'insertar'){
 						$datosModulo = array($_REQUEST['editarIdGalpon'], $modulo->nombreSector);
 						$this->sectorModelo->insert($datosModulo);
-
-						echo $_REQUEST['editarIdGalpon'];
-						echo " ESTAMOS AGREGANDO UN NUEVO SECTOR A UN LOTE EXISTENTE <br>";
-					}else if($modulo->accion == 'editar'){
+					}else if($modulo->accion == 'editar' && empty(Fechamayor($_REQUEST['inicioLote'], $Galpon->inicio))){ 
 						$activo = (array)$modulo;
 						$activo = (isset($activo['activo'])) ? 1 : 0;
 						$this->sectorModelo->update($modulo->nombreSector,
 													$activo,
 													$modulo->idSector);
-						echo "ESTAMOS ACTUALIZANDO EL NOMBRE DE UN LOTE<br>";
 					}
 				}
-				if ($_REQUEST['accionEditar'] == 'editar') {
+				if (isset($_REQUEST['editarIdGalpon'], $_REQUEST['accionEditar'])) {
+				if ($_REQUEST['accionEditar'] == 'editar' && empty(Fechamayor($_REQUEST['inicioLote'], $Galpon->inicio))) {
 					$datosEditarGalpon = array(0, $_REQUEST['NumeroGallinas'],
 												$_REQUEST['inicioLote'],
 												$_REQUEST['editarIdGalpon'],
@@ -75,13 +75,14 @@ class GalponControlador{
 												$activo, 
 												$_REQUEST['numeroGalpon']);
 					$this->galponEnLoteModelo->update($datosEditarGalpon);
-					alerta('success', 'Se Actualizó el galpon correctamente' );
-				}
+					alerta('success', 'Se Actualizó el Galpón correctamente.');
+				}}
 			} catch (PDOException $e) {
-				alerta('danger', 'Ha ocurrido un error al insertar, el número de galpón no puede repetirse');
+				alerta('danger', 'Ha ocurrido un error al insertar. Recuerde que el número de Galpón no puede repetirse.');
 			}
+			}	
 		} else {
-			alerta('danger', 'Introduzca los datos para poder agregar un Galpón');
+			alerta('danger', 'Introduzca los datos para poder agregar un Galpón.');
 		}
 		header('location:?c=Galpon');
 	}
@@ -90,17 +91,21 @@ class GalponControlador{
 		if (isset($_REQUEST['idLoteCL'], $_REQUEST['idGalponCL'], $_REQUEST['numeroGallinasNL'],
 			$_REQUEST['inicioLoteNL'], $_REQUEST['numeroGallinasVL'], 
 			$_REQUEST['inicioLoteVL'])) {
-			if ($_REQUEST['inicioLoteVL'] > $_REQUEST['inicioLoteNL']) {
-				alerta('danger', 'El inicio del Lote anterior no puede ser mayor al nuevo');
-			} else if ($_REQUEST['numeroGallinasVL'] > 50000 || $_REQUEST['numeroGallinasVL'] < 1) {
-				alerta('danger', 'El número de gallinas supera la cantidad máxima o debe ser mayor a 0');
-			}else if ($_REQUEST['inicioLoteNL'] < date("Y-d-m",strtotime($_REQUEST['inicioLoteVL']."+ 90 week"))){
-				$Inicio = date_create($_REQUEST['inicioLoteNL']);
-				$Fin = date_create(date("Y-m-d",strtotime($_REQUEST['inicioLoteVL']."+ 90 week")));
-				$intervalo = date_diff($Fin, $Inicio);
-				alerta('danger', 'Faltan '.intval($intervalo->days / 7).' semanas y '.$intervalo->d.' días para acabar el lote');
+
+			if (!empty(Fechamayor($_REQUEST['inicioLoteNL'], $_REQUEST['inicioLoteVL']))) {
+				alerta('danger', Fechamayor($_REQUEST['inicioLoteNL'], $_REQUEST['inicioLoteVL']));
+			} else if (!empty(Numerogallinas($_REQUEST['numeroGallinasNL']))) {
+				alerta('danger', Numerogallinas($_REQUEST['numeroGallinasNL']));
+			}else{
+				// Solo si el nuevo lote es cambiado antes de llegar a las 90 semanas
+			 	if ($_REQUEST['inicioLoteNL'] < date("Y-d-m",strtotime($_REQUEST['inicioLoteVL']."+ 90 week"))){
+				 	$Inicio = date_create($_REQUEST['inicioLoteNL']);
+					$Fin = date_create(date("Y-m-d",strtotime($_REQUEST['inicioLoteVL']."+ 90 week")));
+					$intervalo = date_diff($Fin, $Inicio);
+					alerta('warning', 'Faltan '.intval($intervalo->days / 7).' semanas y '.$intervalo->d.' días para acabar el lote.');
+				}
 				try {
-					// actualizar el lote y deactivarlo
+					// actualizar el lote y desactivarlo
 					$datos = array(	1,
 									$_REQUEST['numeroGallinasVL'],
 									$_REQUEST['inicioLoteVL'],
@@ -116,14 +121,13 @@ class GalponControlador{
 									$_REQUEST['numeroGallinasNL'],
 									$_REQUEST['inicioLoteNL']);
 					$this->galponEnLoteModelo->insert($datos);
-					alerta('success', 'Se cambió el Lote Correctamente');
+					alerta('success', 'Se cambió el Lote Correctamente.');
 				} catch (PDOException $e) {
-					alerta('danger', 'No se pudo Sacar el Lote');
-					alerta('danger', $e->getMessage());
+					alerta('danger', 'No se pudo Sacar el Lote.');
 				}
 			} 
 		}else{
-			alerta('danger', 'Ingrese los datos para cambiar de un lote a otro');
+			alerta('danger', 'Ingrese los datos para cambiar de un lote a otro.');
 		}
 		header('location:?c=galpon');
 	}

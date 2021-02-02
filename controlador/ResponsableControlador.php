@@ -1,7 +1,4 @@
 <?php 
-/**
- * 
- */
 class ResponsableControlador
 {
 	
@@ -15,8 +12,7 @@ class ResponsableControlador
 	}
 
 	public function guardarResponsable() {
-		// var_dump($_REQUEST);
-		$activo= isset($_REQUEST['activoResponsable']) ? true : false ;
+		$activo = isset($_REQUEST['activoResponsable']) ? true : false ;
 		if (isset($_REQUEST['NombreResponsable'], $_REQUEST['ApellidoResponsable'], $_REQUEST['Cedula'], $_REQUEST['Nacionalidad'], $_REQUEST['editar'])) 
 		{
 			$datos = array(	'nombre' 		=> $_REQUEST['NombreResponsable'],
@@ -26,15 +22,15 @@ class ResponsableControlador
 			$datos = (object)$datos;
 
 			if (!filter_var($datos->cedula,FILTER_VALIDATE_INT)) {
-			 	alerta('danger', 'La cedula debe ser un numero entero');
-			} else if (preg_match('/\d/', $_REQUEST['NombreResponsable']) || preg_match('/\d/', $_REQUEST['ApellidoResponsable'])) {
-			 	alerta('danger', 'El Nombre o Apellido del Responsable no puede tener números');
+			 	alerta('danger', 'La cédula debe ser un número entero.');
+			} else if (String(array($_REQUEST['NombreResponsable'],$_REQUEST['ApellidoResponsable'])) == true) {
+			 	alerta('danger', 'El nombre o apellido del Responsable no puede contener números.');
 			} else if(strlen($_REQUEST['NombreResponsable']) == 0 || strlen($_REQUEST['NombreResponsable']) == 0){
-				alerta('danger', 'El nombre o apellido del responsable no debe estar vacío');
+				alerta('danger', 'El nombre o apellido del responsable no debe estar vacío.');
 			} else if (preg_match('/\W/', $_REQUEST['NombreResponsable']) || preg_match('/\W/', $_REQUEST['ApellidoResponsable'])) {
-			 	alerta('danger', 'El Nombre o Apellido del Responsable no puede tener caracteres especiales');
+			 	alerta('danger', 'El nombre o apellido del Responsable no puede contener caracteres especiales.');
 			} else if($_REQUEST['Cedula'] < 3000000 || $_REQUEST['Cedula'] > 40000000){
-				alerta('danger', 'Ingrese una cédula válida');
+				alerta('danger', 'Ingrese una cédula válida.');
 			} else {
 				# INSERTAMOS O EDITAMOS LOS DATOS
 				try {
@@ -53,33 +49,13 @@ class ResponsableControlador
 						}
 							$this->responsableModelo->update($datos);
 					}
-					alerta('success', 'Se agregó al Responsable '.$_REQUEST['NombreResponsable'].' Correctamente');
+					alerta('success', 'Se agregó al Responsable '.$_REQUEST['NombreResponsable'].' Correctamente.');
 				} catch (PDOException $e) {
-					alerta('danger', 'Ha ocurrido un error al agregar al Responsable');
-					alerta('danger', $e->getMessage());
+					alerta('danger', 'Ha ocurrido un error al agregar al Responsable.');
 				}
 			}
-
 		}
 		$pagina = isset($_REQUEST['pagina']) ? $_REQUEST['pagina'] : 'recogida' ;
 		header('location:?c='.$pagina);
 	}
-
-	public function eliminarResponsable(){
-		$ci = isset($_REQUEST['ci']) ? $_REQUEST['ci'] : '';
-		if (!empty($ci)) {
-			try {
-				$this->responsableModelo->delete($ci);
-				alerta('success', 'Responsable eliminado Correctamente');
-			} catch (PDOException $e) {
-				alerta('danger', 'Ha ocurrido un error a la hora de eliminar al responsable');
-			}
-		} else {
-			alerta('danger', 'Para eliminar al responsable debe facilitar la Cedula');
-		}
-		$pagina = isset($_REQUEST['pagina']) ? $_REQUEST['pagina'] : 'recogida' ;
-		header('location:?c='.$pagina);
-	}
-
-
 }

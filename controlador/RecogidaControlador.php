@@ -22,21 +22,17 @@ class RecogidaControlador
 		require_once 'vista/includes/menu.php';
 		require_once 'vista/recogida/InicioRecogida.php';
 		require_once 'vista/recogida/AgregarRecogida.php';
-		require_once 'vista/recogida/EditarRecogida.php';
-		require_once 'vista/recogida/EliminarRecogida.php';
-		require_once 'vista/recogida/DetallesRecogida.php';
-		require_once 'vista/recogida/AgregarResponsable.php';
 		require_once 'vista/includes/footer.php';
 	}
 
 	public function agregarRecogida(){
 		if (isset($_REQUEST['idSector'], $_REQUEST['responsable'], $_REQUEST['fecha'])) {
+
 			#AGREGAR REGISTRO
 			#AGREGAR LAS RESPECTIVAS VALIDAIONES
 			try {
 				$horas = array('09:00','14:00','18:00');
 				if ($_REQUEST['editRecogida'] == 1) {
-					echo "estamos editando";
 					foreach ($_REQUEST['recogidaEditarValor'] as $idRecogida => $recogida) {
 						foreach ($recogida as $idCategoria => $valor) {
 							$this->RecogidaModelo->updateValores($idRecogida, $idCategoria, $valor);
@@ -61,7 +57,7 @@ class RecogidaControlador
 							}
 						}
 					}
-					alerta('success', 'Se actualizó correctamente la Recogida');
+					alerta('success', 'Se actualizó correctamente la Recogida.');
 				} else {
 					if (matrizVacia($_REQUEST['recogidaValor'])==false) {
 						$idRegistro = $this->RegistroModelo->insert($_REQUEST['idSector'],
@@ -79,35 +75,19 @@ class RecogidaControlador
 								}
 							}
 						}
-						alerta('success', 'Se agregó correctamente la Recogida');
+						alerta('success', 'Se agregó correctamente la Recogida.');
 					}else{
-						alerta('danger', 'Introduzca los datos para poder agregar una Recogida');
+						alerta('danger', 'Introduzca los datos para poder agregar una Recogida.');
 					}
 				}
 
 				
 			} catch (PDOException $e) {
-				alerta('danger', 'Ocurrio un error al agregar la recogida');
+				alerta('danger', 'Ocurrió un error al agregar la Recogida.');
 			}
 
 		}else {
-			alerta('danger', 'Introduzca los datos para poder agregar una Recogida');
-		}
-		header('location:?c=Recogida');
-	}
-
-	public function agregarUsuario(){
-		if (isset($_REQUEST['nombreUsuarioAgregar'], $_REQUEST['claveUsuarioAgregar'])) {
-			try {
-				$this->UsuarioModelo->incertar(	$_REQUEST['nombreUsuarioAgregar'], 
-											$_REQUEST['claveUsuarioAgregar']	);
-				alerta('success', 'Se agregó al usuario Correctamente');
-			} catch (PDOException $e) {
-				alerta('danger', 'Hay algun error en los datos, por favor corrija');
-				alerta('danger', $e->getMessage());
-			}
-		}else {
-			alerta('danger', 'Para poder agregar un usuario debes agregar los datos');
+			alerta('danger', 'Introduzca los datos para poder agregar una Recogida.');
 		}
 		header('location:?c=Recogida');
 	}
