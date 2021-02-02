@@ -11,6 +11,7 @@ class RecogidaControlador
 		$this->RecogidaModelo = new RecogidaModelo();
 		$this->UsuarioModelo = new UsuarioModelo();
 		$this->ConsultasModelo = new ConsultasModelo();
+		$this->GalponEnLoteModelo = new GalponEnLoteModelo();
 	}
 
 	public function index(){
@@ -47,7 +48,7 @@ class RecogidaControlador
 					}
 					if (isset($_REQUEST['recogidaValor'], $_REQUEST['idRegistro'])) {
 						foreach ($_REQUEST['recogidaValor'] as $fila => $recogida) {
-							if (vacio($recogida) == false) {
+							if (!vacio($recogida)) {
 								$idRecogida = $this->RecogidaModelo->insert($_REQUEST['idRegistro'], $horas[$fila]);
 								foreach ($recogida as $idCategoria => $valor) {
 									if (!empty($valor)) {
@@ -60,13 +61,14 @@ class RecogidaControlador
 					alerta('success', 'Se actualizó correctamente la Recogida.');
 				} else {
 					if (matrizVacia($_REQUEST['recogidaValor'])==false) {
-						$idRegistro = $this->RegistroModelo->insert($_REQUEST['idSector'],
-																	$_REQUEST['fecha']	  );
+						$SectorModelo = $this->SectorModelo->selectById($_REQUEST['idSector']);
+						$SectorModelo = $this->GalponEnLoteModelo->seleccionando(array($SectorModelo->idGalpon));
+						$idRegistro = $this->RegistroModelo->insert(array($_REQUEST['idSector'], $_REQUEST['fecha'], $SectorModelo->idGalpon, $SectorModelo->idLote)); 
 						$this->ResponsableModelo->insertResponsableRecogida($idRegistro, $_REQUEST['responsable']);
-						// #AGREGAR RECOGIDAS
+						// // #AGREGAR RECOGIDAS
 
 						foreach ($_REQUEST['recogidaValor'] as $fila => $recogida) {
-							if (vacio($recogida) == false) {
+							if (!vacio($recogida)) {
 								$idRecogida = $this->RecogidaModelo->insert($idRegistro, $horas[$fila]);
 								foreach ($recogida as $idCategoria => $valor) {
 									if (!empty($valor)) {
@@ -80,8 +82,6 @@ class RecogidaControlador
 						alerta('danger', 'Introduzca los datos para poder agregar una Recogida.');
 					}
 				}
-
-				
 			} catch (PDOException $e) {
 				alerta('danger', 'Ocurrió un error al agregar la Recogida.');
 			}

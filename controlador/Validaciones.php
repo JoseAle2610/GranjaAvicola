@@ -46,6 +46,14 @@ function Novacio($Strings){
 	return $validacion;
 }
 
+function Comparar($Compara1, $Compara2){
+	$validacion = false;
+	if ($Compara1 != $Compara2) {
+		$validacion = true;
+	}
+	return $validacion;
+}
+
 // class Validaciones
 // {
 	
