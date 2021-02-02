@@ -155,7 +155,7 @@ $(document).ready(function (){
             if (fecha > $('#inicioLoteNL').val()) {
                 fecha = moment(fecha);
                 fecha2 = moment(fecha2);
-                if (!confirm('Aún faltan '+(fecha.diff(fecha2, 'days'))+' semanas para que el lote anterior deba ser cambiado ¿Está seguro de que desea continuar?')) {
+                if (!confirm('Aún faltan '+(fecha.diff(fecha2, 'days'))+' días para que el lote anterior deba ser cambiado ¿Está seguro de que desea continuar?')) {
                     e.preventDefault();
                     alert('Se canceló el Cambio de Lote');
                 }

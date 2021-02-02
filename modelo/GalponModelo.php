@@ -25,6 +25,11 @@ class GalponModelo{
 		return $this->pdo->obtenerTodos($sql, array('')	);
 	}
 
+	public function seleccionar(){
+		$sql = 'SELECT * FROM Galpones';
+		return $this->pdo->obtenerTodos($sql, array('')	);
+	}
+
 	public function delete($id){
 		$sql = 'DELETE FROM galpones WHERE idGalpon = ?';
 		return $this->pdo->consulta($sql, array($id) );

@@ -1,5 +1,6 @@
 <?php 
 require_once 'helper.php';
+require_once 'controlador/Validaciones.php';
 session_start();
 $controlador = 'Login';
 $metodo      = 'index';

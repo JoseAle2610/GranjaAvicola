@@ -16,9 +16,7 @@
 					<div class="col-auto">
 						<button class="btn btn-info btn-sm text-dark circulo py-0" data-toggle="modal" data-target="#Informacion"><h6 class="p-0"><i class="fas mt-2 fa-info"></i></h6></button>
 						<button class="btn btn-warning text-dark agregarRecogida" data-toggle="modal" data-target="#guardarRecogida">Recogida de hoy<i class="fas fa-plus ml-2"></i></button>
-
 					</div>
-					
 					<!-- <button class="btn btn-info text-dark" data-toggle="modal" data-target="#AgregarResponsable">Agregar Responsable</button> -->
 				</div>
 				<div class="card-body">

@@ -68,5 +68,17 @@
 		<script type="text/javascript" src="ajax/login.js"></script>
 		<!-- CAMBIO AQUIIIIIII -->
 		<script type="text/javascript" src="assets/js/moment.min.js"></script>
+<?php
+if (isset($Galpon)) {
+		if (empty($Galpon)) {
+			echo "<script>
+				$(document).ready(function(){
+		 		$('#Informacion').modal('show');
+				});
+			</script>";
+		}
+	
+}
+?>
 	</body>
 </html>
