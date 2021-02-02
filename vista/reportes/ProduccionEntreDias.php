@@ -12,7 +12,7 @@
 							Reportes / Producción entre fechas
 						</h5>
 					</div>
-						<button class="btn btn-warning text-dark" id="imprimirProduccionDiaria">
+						<button class="btn btn-warning text-dark" id="imprimirReporte">
 							<h5><i class="fas fa-print"></i></h5>
 						</button>
 				</div>
@@ -31,7 +31,7 @@
 											$nuevafecha = date ( 'Y-m-d' , $nuevafecha );
 											// echo $nuevafecha;
 										?>
-										<input type="date" id="fechaDesde" class="form-control" min="2000-01-01" value="<?php echo $nuevafecha;?>" required>
+										<input type="date" id="fechaDesde" class="form-control" min="2000-01-01" max="<?=$fecha?>" value="<?php echo $nuevafecha;?>" required>
 									</div>
 								</div>
 								<div class="col-md-5">
@@ -47,19 +47,43 @@
 								</div>
 							</form>
 						</div>
-						<div class="col-md-10 mb-3">
-							<canvas id="myChart" class="bg-white rounded"></canvas>
-						</div>
+					</div>
+					<div class="row justify-content-center" id="ProduccionEntreDias">
 						<div class="col-12">
-							<table id="tablaProduccionEntreDias" class="table table-striped table-hover table-responsive-lg p-0">
+							<hr>
+							<div class="row py-0">
+								<div class="col-3">
+									<img src="assets/img/Logo-imprimir.png" class="img-fluid" id="imgLogo" style="width: 7em">
+								</div>
+								<div class="col-6 align-self-center">
+									<p class="text-center">
+										<span class="h4">Granja Avicola Las Tunas C.A.</span><br>
+										Reporte de Produccion Entre Fechas <br>
+									</p>
+								</div>
+								<div class="col-3">
+										<p class="text-right">
+											Fecha: 02-02-2021 <br>
+											Hora: 09:00
+										</p>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="col-md-12 mt-3">
+							<canvas id="myChart" class="bg-white rounded mx-auto" style="max-width: 900px"></canvas>
+						</div>
+						<div class="col-12 mt-3" >
+							<!-- <label id="labelTabaProduccion" class="text-white">holas</label> -->
+							<table id="tablaProduccionEntreDias" class="table table-striped table-hover rounded table-responsive-lg p-0">
 								
 							</table>
 						</div>
+					</div>
 						<!-- <div class="col-md-1">
 							<img src="assets/img/huevos1.png" class="img-fluid">
 							<img src="assets/img/Logo.png" class="d-none" id="img">
 						</div> -->
-					</div>
 					<div id="bypassme"></div>
 				</div>
 			</div>

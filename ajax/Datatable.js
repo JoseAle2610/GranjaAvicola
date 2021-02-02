@@ -89,7 +89,7 @@ $(document).ready( function (){
                 let labelsGrafico = [];
                 let datosGrafico = [];
                 let tabla = {};
-                let thead = '<th>Galpones</th>';
+                let thead = `<th>Galpones</th>`;
                 let tbody = '';
                 datos.forEach(dato => {
                 	let nombreGalpon = 'G-'+dato.nombreGalpon;
@@ -118,10 +118,17 @@ $(document).ready( function (){
                 	datosGrafico.push(Object.values(fila).reduce((a, b) => a + b ));
                 });
 
-                let tablaHtml = `<thead class='bg-info text-dark text-center'>
-                					${thead}
+                let tablaHtml = `
+                				<thead colspan='9'>Producción</thead>
+				                <thead class='bg-info text-dark text-center'>
+                					<tr>
+                						<th colspan='9'>Producción</th>
+                					</tr>
+                					<tr>
+                						${thead}
+                					</tr>
 				                </thead>
-				                <tbody>
+				                <tbody class='text-center'>
 				                	${tbody}
 				                </tbody>`;
 				$('#tablaProduccionEntreDias').html(tablaHtml);
