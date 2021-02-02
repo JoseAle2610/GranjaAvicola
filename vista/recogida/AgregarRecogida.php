@@ -84,9 +84,9 @@
 							<th>Medianos</th>
 							<th>Pequeños</th>
 							<th>Picados</th>
-							<th>Debil</th>
+							<th>Débiles</th>
 							<th>Derramados</th>
-							<th>Rusticos</th>
+							<th>Rústicos</th>
 							<th>Pool</th>
 						</thead>
 						<tbody>

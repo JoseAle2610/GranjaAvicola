@@ -16,7 +16,7 @@ class LoginControlador{
 		if (isset($_REQUEST['nombreUsuario'], $_REQUEST['claveUsuario'])) {
 
 			$usuario = $this->usuarioModelo->verificar($_REQUEST['nombreUsuario'], $_REQUEST['claveUsuario']);
-			if (!empty($usuario) && $usuario->nombreUsuario == $_REQUEST['nombreUsuario']) {
+			if (!Novacio($usuario) && !Comparar($usuario->nombreUsuario, $_REQUEST['nombreUsuario'])) {
 				$_SESSION['login'] = true;
 				$_SESSION['nombreUsuario'] = $usuario->nombreUsuario;
 				$_SESSION['claveUsuario'] = $usuario->claveUsuario;
@@ -41,11 +41,11 @@ class LoginControlador{
 	public function CambiarContra(){
 		if (isset($_REQUEST['nombreUsuarioRecuperar'], $_REQUEST['RespuestaPreguntaSeguridad'], $_REQUEST['ContraseñaNueva'], $_REQUEST['RepeticiónContraseña'])) {
 			
-			if ($_REQUEST['ContraseñaNueva'] != $_REQUEST['RepeticiónContraseña']) {
+			if (Comparar($_REQUEST['ContraseñaNueva'],$_REQUEST['RepeticiónContraseña'])) {
 				alerta('danger', 'Las contraseñas no coinciden.');
 			} else {
 				$usuario = $this->usuarioModelo->select("WHERE nombreUsuario = ?", array($_REQUEST['nombreUsuarioRecuperar']));
-				if ($_REQUEST['RespuestaPreguntaSeguridad'] == $usuario[0]->respuesta) {
+				if (!Comparar($_REQUEST['RespuestaPreguntaSeguridad'], $usuario[0]->respuesta)) {
 					$usuario[0]->claveUsuario = $_REQUEST['RepeticiónContraseña'];
 					$usuario = array($usuario[0]->nombreUsuario,
 					$usuario[0]->claveUsuario, $usuario[0]->activo,

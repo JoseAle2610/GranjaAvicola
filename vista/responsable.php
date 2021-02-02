@@ -54,7 +54,7 @@
 								<div class="input-group-prepend">
 									<span class="input-group-text text-white  bg-dark">Apellido</span>
 								</div>
-								<input type="text" name="ApellidoResponsable" id="ApellidoResponsable" class="form-control" pattern="[a-zA-Z ]+" minlength="3" maxlength="40">
+								<input type="text" name="ApellidoResponsable" id="ApellidoResponsable" class="form-control" pattern="[a-zA-Z ]+" required>
 							</div>
 							<!-- PAGINA ACTUAL -->
 							<input type="hidden" name="pagina" value="<?=$_REQUEST['c']?>">

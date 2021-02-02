@@ -14,10 +14,9 @@ function Fechamayor($FechaNueva, $FechaVieja){
 		$Informe = 'El inicio del Lote anterior no puede ser mayor al nuevo.';
 	}
 	return $Informe;
-	// $_REQUEST['inicioLoteVL'] > $_REQUEST['inicioLoteNL']
 }
 
-function String($Strings){
+function SinNumeros($Strings){
 	$validacion = false;
 	foreach ($Strings as $key => $String) {
 		if (preg_match('/\d/', $String)) {
@@ -27,6 +26,33 @@ function String($Strings){
 	return $validacion;
 }
 
+function SinEspecial($Strings){
+	$validacion = false;
+	foreach ($Strings as $key => $String) {
+		if (preg_match('/\W/', $String)) {
+			$validacion = true;
+		}
+	}
+	return $validacion;
+}
+
+function Novacio($Strings){
+	$validacion = false;
+	foreach ($Strings as $key => $String) {
+		if (strlen($String) == 0) {
+			$validacion = true;
+		}
+	}
+	return $validacion;
+}
+
+function Comparar($Compara1, $Compara2){
+	$validacion = false;
+	if ($Compara1 != $Compara2) {
+		$validacion = true;
+	}
+	return $validacion;
+}
 
 // class Validaciones
 // {

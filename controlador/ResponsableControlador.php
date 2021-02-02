@@ -13,8 +13,7 @@ class ResponsableControlador
 
 	public function guardarResponsable() {
 		$activo = isset($_REQUEST['activoResponsable']) ? true : false ;
-		if (isset($_REQUEST['NombreResponsable'], $_REQUEST['ApellidoResponsable'], $_REQUEST['Cedula'], $_REQUEST['Nacionalidad'], $_REQUEST['editar'])) 
-		{
+		if (isset($_REQUEST['NombreResponsable'], $_REQUEST['ApellidoResponsable'], $_REQUEST['Cedula'], $_REQUEST['Nacionalidad'], $_REQUEST['editar'])) {
 			$datos = array(	'nombre' 		=> $_REQUEST['NombreResponsable'],
 							'apellido' 		=> $_REQUEST['ApellidoResponsable'],
 							'nacionalidad' 	=> $_REQUEST['Nacionalidad'],
@@ -23,11 +22,11 @@ class ResponsableControlador
 
 			if (!filter_var($datos->cedula,FILTER_VALIDATE_INT)) {
 			 	alerta('danger', 'La cédula debe ser un número entero.');
-			} else if (String(array($_REQUEST['NombreResponsable'],$_REQUEST['ApellidoResponsable'])) == true) {
+			} else if (SinNumeros(array($_REQUEST['NombreResponsable'],$_REQUEST['ApellidoResponsable'])) == true) {
 			 	alerta('danger', 'El nombre o apellido del Responsable no puede contener números.');
-			} else if(strlen($_REQUEST['NombreResponsable']) == 0 || strlen($_REQUEST['NombreResponsable']) == 0){
+			} else if(Novacio(array($_REQUEST['NombreResponsable'],$_REQUEST['ApellidoResponsable'])) == true){
 				alerta('danger', 'El nombre o apellido del responsable no debe estar vacío.');
-			} else if (preg_match('/\W/', $_REQUEST['NombreResponsable']) || preg_match('/\W/', $_REQUEST['ApellidoResponsable'])) {
+			} else if (SinEspecial(array($_REQUEST['NombreResponsable'],$_REQUEST['ApellidoResponsable'])) == true) {
 			 	alerta('danger', 'El nombre o apellido del Responsable no puede contener caracteres especiales.');
 			} else if($_REQUEST['Cedula'] < 3000000 || $_REQUEST['Cedula'] > 40000000){
 				alerta('danger', 'Ingrese una cédula válida.');
