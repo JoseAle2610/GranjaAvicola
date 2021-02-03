@@ -25,8 +25,8 @@ class GalponModelo{
 		return $this->pdo->obtenerTodos($sql, array('')	);
 	}
 
-	public function seleccionar(){
-		$sql = 'SELECT * FROM Galpones';
+	public function seleccionar($condicion=''){
+		$sql = "SELECT * FROM Galpones $condicion";
 		return $this->pdo->obtenerTodos($sql, array('')	);
 	}
 

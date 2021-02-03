@@ -91,6 +91,7 @@ $(document).ready(function (){
 
     $('#agregarModulo').click(function(){
         AgregarModulo('#numeroModulo', '#tablaModulos tbody', 'puntero')
+        $('#numeroModulo').val('');
     });
 
     $('#editarModulo').click(function(){
@@ -238,6 +239,13 @@ $(document).ready(function (){
                         $('#nombreUsuarioAgregar').prop('disabled', false);
                         $('#activoUsuario').prop('disabled', false);
                     }
+                    if (datos[0].activo == 1) {
+                        let responsableOptions = $('#Cedula_Usuario').html();
+                            responsableOptions += `<option value="${datos[0].ci}" class='responsableInactivo'>
+                                                        ${datos[0].ci} (Inactivo)
+                                                    </option>`;
+                            $('#Cedula_Usuario').html(responsableOptions);
+                    }
                     $('#Cedula_Usuario').val(datos[0].ci);
                     $('#preguntaUsuarioAgregar').val(datos[0].pregunta);
                     $('#idUsuarios').val(datos[0].idUsuarios);
@@ -276,9 +284,7 @@ $(document).ready(function (){
                                     let html = '';
                                    if (datos1 == false) {
                                         html = `<tr>
-                                                    <td></td>
-                                                    <td><p>Vacío</p></td>
-                                                    <td></td>
+                                                    <td colspan='3'><p>Vacío</p></td>
                                                 </tr>`;
                                    } else{
                                         let pos = 0;

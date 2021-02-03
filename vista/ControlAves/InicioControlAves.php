@@ -16,7 +16,7 @@
 						<div class="col-6">
 							<div class="row justify-content-end">
 								<h6 class="text-right d-flex mt-1 col-auto">Lote:<em id="NombreLote"></em></h6>
-									<input class="col-1 mt-2" type="checkbox" name="Active" id="Active">Activo
+									<input class="col-1 mt-2" type="checkbox" name="Active" id="Active" checked disabled>Activo
 							</div>
 						</div>
 					</div>
@@ -35,7 +35,6 @@
 										<span class="input-group-text">Galpón</span>
 									</div>
 <?php
-	$GalponModelo = new GalponModelo();
 	$select = "<select class='form-control' name='Nombre_Galpon' id='Nombre_Galpon'>";
 	foreach ($GalponModelo->select() as $key => $registro) {
 	$select .= "<option value='$registro->id'>$registro->nombre</option>";
@@ -46,13 +45,15 @@
 ?>
 								</div>
 							</div>
-							
 							<div class="col-6 col-md-4 mb-3">
 								<div class="input-group">
 									<div class="input-group-prepend">
 										<sapn class="input-group-text">N° Gallinas</sapn>
 									</div>
-									<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control"  readonly>
+									<input type="number" name="NumeroGallinas" id="NumeroGallinas" class="form-control" readonly 
+<?php if (isset($Galpon)): ?>
+	value=<?php echo "$Galpon->gallinas";?>
+<?php endif ?> >
 								</div>
 							</div>
 							
@@ -95,6 +96,18 @@
 									<th>Gallina restantes</th>
 								</thead>
 								<tbody id="Hola">
+<?php  
+if (isset($Galpon) && $numeroMuertes != 0){
+	echo "<td>$numeroMuertes</td>";
+	$numeroMuertes = $Galpon->gallinas - $numeroMuertes;
+	echo "<td>$Galpon->inicio</td><td>$numeroMuertes</td>";
+} else{
+	echo "<td colspan='3'>Vacío</td>";
+}
+?>
+									<?php if (isset($Galpon)): ?>
+										
+									<?php endif ?>
 									<!-- Llenado por SELECT en consultas.js -> $('#Nombre_Galpon').change(function() -->
 								</tbody>
 							</table>
