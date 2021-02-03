@@ -478,8 +478,13 @@ $(document).ready(function (){
         });
     })
 
+    // $('#membreteReportes').hide();
     $('#imprimirReporte').click(function (){
-        const $elementoParaConvertir = $('#ProduccionEntreDias')[0]; // <-- Aquí puedes elegir cualquier elemento del DOM
+        pdf('ProduccionEntreDias');
+    });
+
+    function pdf(elemento){
+        const $elementoParaConvertir = $(`#${elemento}`)[0]; // <-- Aquí puedes elegir cualquier elemento del DOM
         html2pdf()
             .set({
                 margin: [.7, 1, 1, 1],
@@ -502,50 +507,13 @@ $(document).ready(function (){
             .from($elementoParaConvertir)
             // .setProperties({ title: `Produccion.pdf` })
             .output('bloburl', {filename:`Produccion.pdf`})
-            .then(pdf => window.open(pdf, '_blank'))
+            .then(pdf => {
+                window.open(pdf, '_blank')
+            })
             .catch(err => console.log(err));
-//         var pdf = new jsPDF('p', 'pt', 'letter');
-//         var source = $('#ProduccionEntreDias')[0];
-// //         let fecha = $('#fechaProduccionDiaria').val().split('-');
-// //         fecha = `${fecha[2]}-${fecha[1]}-${fecha[0]}`;
-//         var specialElementHandlers = {
-//             '#bypassme': function(element, renderer){
-//                 return true
-//             }
-//         }
+    }
 
-//         margins = {
-//           top: 350,
-//           bottom: 60,
-//           left: 50,
-//           rigth: 50,
-//           width: 700
-//         };
-//         pdf.setFont("helvetica");
-//         pdf.setFontType("bold");
-//         pdf.setFontSize(12);
-//         pdf.setTextColor(100);
-//         $("#tablaProduccionEntreDias").css("font-size", "12px");
-//         pdf.text(150, 55, `Granja Avicola Las Tunas C.A.\nReporte Producción Entre Fechas\nFecha: `);
-//         pdf.addImage($('#imgLogo')[0], 'png', 30, 20 , 100, 100);
-//         pdf.addImage($('#myChart')[0], 'png', 60, 110 , 450, 225);
-//         pdf.fromHTML(source, margins.left , margins.top
-//             , {
-//                 'width': margins.width // max width of content on PDF
-//                 , 'elementHandlers': specialElementHandlers
-//             },
-//             function (dispose) {
-//                 // pdf.save('Producción '+fecha+'.pdf');
-//                 pdf.setProperties({ title: `Produccion.pdf` });
-//                 window.open(pdf.output('bloburl', {filename:`Produccion.pdf`}), '_blank');
-//                 $("#tablaProduccionEntreDias").removeAttr("style");
-//             },
-//             margins
-//         )
-        
-    });
-
-
+    
 
 
 });
