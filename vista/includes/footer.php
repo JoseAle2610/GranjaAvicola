@@ -62,6 +62,7 @@
 		<!-- CHARTjs core JavaScript -->
 		<script type="text/javascript" src="assets/js/Chart.min.js"></script>
 		<!-- My core JavaScript -->
+		<script type="text/javascript" src="ajax/reportes.js"></script>
 		<script type="text/javascript" src="ajax/Datatable.js"></script>
 		<script type="text/javascript" src="ajax/consultas.js"></script>
 		<script type="text/javascript" src="ajax/recogida.js"></script>

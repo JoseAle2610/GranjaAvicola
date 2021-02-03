@@ -13,7 +13,7 @@
 							Reportes / Producción diaria
 						</h5>
 					</div>
-						<button class="btn btn-warning text-dark" id="imprimirProduccionDiaria">
+						<button class="btn btn-warning text-dark" id="imprimirReporte">
 							<h5><i class="fas fa-print"></i></h5>
 						</button>
 
