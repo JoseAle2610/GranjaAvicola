@@ -91,6 +91,7 @@ $(document).ready(function (){
 
     $('#agregarModulo').click(function(){
         AgregarModulo('#numeroModulo', '#tablaModulos tbody', 'puntero')
+        $('#numeroModulo').val('');
     });
 
     $('#editarModulo').click(function(){
