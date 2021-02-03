@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2020 a las 19:58:29
+-- Tiempo de generación: 03-02-2021 a las 03:13:36
 -- Versión del servidor: 10.1.38-MariaDB
 -- Versión de PHP: 7.3.2
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `granjaavicolalastunas`
+-- Base de datos: `granja`
 --
 
 -- --------------------------------------------------------
@@ -42,9 +42,9 @@ INSERT INTO `categorias` (`idCategoria`, `NombreCategoria`) VALUES
 (2, 'Medianos'),
 (3, 'Pequeños'),
 (4, 'Picados'),
-(5, 'Debil'),
+(5, 'Débiles'),
 (6, 'Derramados'),
-(7, 'Rusticos'),
+(7, 'Rústicos'),
 (8, 'Pool');
 
 -- --------------------------------------------------------
@@ -259,9 +259,9 @@ ALTER TABLE `recogidas`
 -- Indices de la tabla `registros`
 --
 ALTER TABLE `registros`
-  ADD KEY `fk_Registro_GalponenLote_idx` (`idGalpon`),
-  ADD KEY `fk_Registros_GalponenLote_idx` (`idLote`),  
   ADD PRIMARY KEY (`idRegistro`),
+  ADD KEY `fk_Registro_GalponenLote_idx` (`idGalpon`),
+  ADD KEY `fk_Registros_GalponenLote_idx` (`idLote`),
   ADD KEY `fk_Registro_Sectores1_idx` (`idSector`);
 
 --
@@ -317,13 +317,13 @@ ALTER TABLE `galpones`
 -- AUTO_INCREMENT de la tabla `lotes`
 --
 ALTER TABLE `lotes`
-  MODIFY `idLote` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idLote` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `recogidas`
 --
 ALTER TABLE `recogidas`
-  MODIFY `idRecogida` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idRecogida` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `registros`
@@ -341,7 +341,7 @@ ALTER TABLE `sectores`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUsuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
@@ -370,9 +370,9 @@ ALTER TABLE `recogidas`
 -- Filtros para la tabla `registros`
 --
 ALTER TABLE `registros`
+  ADD CONSTRAINT `fk_Registro_GalponenLote` FOREIGN KEY (`idGalpon`) REFERENCES `galponesenlote` (`idGalpon`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_Registro_Sectores1` FOREIGN KEY (`idSector`) REFERENCES `sectores` (`idSector`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Registro_GalponenLote` FOREIGN KEY (`idGalpon`) REFERENCES `galponesEnLote` (`idGalpon`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Registros_GalponenLote` FOREIGN KEY (`idLote`) REFERENCES `galponesEnLote` (`idLote`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_Registros_GalponenLote` FOREIGN KEY (`idLote`) REFERENCES `galponesenlote` (`idLote`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `responsablesderegistro`
