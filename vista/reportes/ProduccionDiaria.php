@@ -20,7 +20,7 @@
 					<!-- <button class="btn btn-info text-dark" data-toggle="modal" data-target="#AgregarResponsable">Agregar Responsable</button> -->
 				</div>
 				<div class="card-body" id="infoProduccionDiaria">
-					<div class="row">
+					<div class="row justify-content-center">
 						
 						<div class="col-md-8" id="ProduccionDiaria">
 							<div class="form-row">
@@ -36,8 +36,36 @@
 									<button id="buscarProduccionDiaria" class="btn btn-info btn-block"><i class="fas fa-search"></i></button>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div class="row justify-content-center bg-white rounded mx-5" id="ProduccionEntreDias">
+						<div class="col-12" id="membreteReportes">
+							<hr>
+							<div class="row py-0">
+								<div class="col-3">
+									<img src="assets/img/Logo-imprimir.png" class="img-fluid" id="imgLogo" style="width: 7em">
+								</div>
+								<div class="col-6 align-self-center">
+									<p class="text-center">
+										<span class="h4">Granja Avicola Las Tunas C.A.</span><br>
+										<span id="tituloReporte"></span>
+									</p>
+								</div>
+								<div class="col-3">
+										<p class="text-right">
+											Fecha: <span id="fechaActualReporte"></span><br>
+											Hora: <span id="horaActualReporte"></span>
+										</p>
+								</div>
+							</div>
+							<hr>
+						</div>
+						<div class="col-md-12 mt-3">
+							<canvas id="myChart" class="bg-white rounded mx-auto" style="max-width: 900px"></canvas>
+						</div>
+						<div class="col-12 mt-3" >
+							<!-- <label id="labelTabaProduccion" class="text-white">holas</label> -->
 							<table class="table table-striped table-hover table-responsive-sm p-0">
-
 								<thead class="bg-info" >
 									<th>Cajas</th>
 									<th>Tipo A</th>
@@ -63,11 +91,8 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="col-md-4">
-							<img src="assets/img/huevos1.png" class="img-fluid">
-							<img src="assets/img/Logo.png" class="d-none" id="img">
-						</div>
 					</div>
+
 					<div id="bypassme"></div>
 				</div>
 			</div>

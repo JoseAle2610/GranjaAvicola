@@ -119,10 +119,9 @@ $(document).ready( function (){
                 });
 
                 let tablaHtml = `
-                				<thead colspan='9'>Producción</thead>
 				                <thead class='bg-info text-dark text-center'>
                 					<tr>
-                						<th colspan='9'>Producción</th>
+                						<th colspan='9'>Detalles de la producción Entre fechas (${fechaDesde} / ${fechaHasta})</th>
                 					</tr>
                 					<tr>
                 						${thead}
@@ -132,12 +131,26 @@ $(document).ready( function (){
 				                	${tbody}
 				                </tbody>`;
 				$('#tablaProduccionEntreDias').html(tablaHtml);
+
+		        let hoy = new Date();
+		        var dia = String(hoy.getDate()).padStart(2, '0');
+        		var mes = String(hoy.getMonth() + 1).padStart(2, '0');
+        		var hora = String(hoy.getHours() + 1).padStart(2, '0');
+        		var min = String(hoy.getMinutes() + 1).padStart(2, '0');
+		        $('#tituloReporte').html(`Producción entre fechas: ${cambiarFormatoFecha(fechaDesde)} / ${cambiarFormatoFecha(fechaHasta)}`);
+		        $('#fechaActualReporte').html(`${dia}-${mes}-${hoy.getFullYear()}`);
+		        $('#horaActualReporte').html(`${hora}:${min}`);
                 barChartData.labels = labelsGrafico;
                 barChartData.datasets[0].data = datosGrafico;
-                barChartOptios.title.text = `Produción entre fechas (${fechaDesde}-${fechaHasta})`;
 
                 window.myBar.update();
             }
         });
     });
+
+	function cambiarFormatoFecha(fecha){
+        fecha = fecha.split('-');
+        return `${fecha[2]}-${fecha[1]}-${fecha[0]}`;
+    }
+
 });

@@ -48,8 +48,8 @@
 							</form>
 						</div>
 					</div>
-					<div class="row justify-content-center" id="ProduccionEntreDias">
-						<div class="col-12">
+					<div class="row justify-content-center bg-white rounded" id="ProduccionEntreDias">
+						<div class="col-12" id="membreteReportes">
 							<hr>
 							<div class="row py-0">
 								<div class="col-3">
@@ -58,13 +58,13 @@
 								<div class="col-6 align-self-center">
 									<p class="text-center">
 										<span class="h4">Granja Avicola Las Tunas C.A.</span><br>
-										Reporte de Produccion Entre Fechas <br>
+										<span id="tituloReporte"></span>
 									</p>
 								</div>
 								<div class="col-3">
 										<p class="text-right">
-											Fecha: 02-02-2021 <br>
-											Hora: 09:00
+											Fecha: <span id="fechaActualReporte"></span><br>
+											Hora: <span id="horaActualReporte"></span>
 										</p>
 								</div>
 							</div>
@@ -75,7 +75,7 @@
 						</div>
 						<div class="col-12 mt-3" >
 							<!-- <label id="labelTabaProduccion" class="text-white">holas</label> -->
-							<table id="tablaProduccionEntreDias" class="table table-striped table-hover rounded table-responsive-lg p-0">
+							<table id="tablaProduccionEntreDias" class="table table-striped table-hover rounded table-responsive-md p-0">
 								
 							</table>
 						</div>
