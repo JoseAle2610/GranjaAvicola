@@ -1,17 +1,42 @@
 $(document).ready( function (){
 
+		var colores = [];
+		function hexToRgbA(hex){
+		    var c;
+	        c= hex.substring(1).split('');
+	        if(c.length== 3){
+	            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+	        }
+	        c= '0x'+c.join('');
+	        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',.5)';
+		}
 
+		function getRandomColor() {
+		    var num=(Math.floor(Math.random()*4)*4).toString(16);
+		    var letters = ['0','F',num];
+		    var color = '#';
+		    
+		    for (var i = 0; i < 3; i++ ) {
+		        let pos=Math.floor(Math.random() * letters.length);
+		        color += letters[pos];
+		        letters.splice(pos,1);
+		    }
+		    
+		    //para evitar que se repitan colores 
+		    if(colores.includes(color))
+		      return getRandomColor();
+		    else
+		      colores.push(color)
+		      
+		    return color;
+		}
 		var barChartData = {
 			labels: [ 'G-1' , 'G-2'],
 			datasets: [{
 				label: 'Galpones',
 				backgroundColor: [
-	                    'rgba(255, 99, 132, .7)',
-	                    'rgba(54, 162, 235, .7)',
-	                    'rgba(255, 206, 86, .7)',
-	                    'rgba(75, 192, 192, .7)',
-	                    'rgba(153, 102, 255, .7)',
-	                    'rgba(255, 159, 64, .7)'
+	                    hexToRgbA(getRandomColor()),
+	                    hexToRgbA(getRandomColor())
 	                ],
 				borderWidth: 1,
 				data: [0, 0]
@@ -62,6 +87,8 @@ $(document).ready( function (){
                 let tabla = {};
                 let thead = `<th>Galpones</th>`;
                 let tbody = '';
+                let coloresGrafico = [];
+            	colores = [];
                 datos.forEach(dato => {
                 	let nombreGalpon = 'G-'+dato.nombreGalpon;
                 	if (!labelsGrafico.includes(nombreGalpon)) {
@@ -87,6 +114,7 @@ $(document).ready( function (){
             		});
             		tbody += `<tr>${tr}</tr>`
                 	datosGrafico.push(Object.values(fila).reduce((a, b) => a + b ));
+                	coloresGrafico.push(hexToRgbA(getRandomColor()));	
                 });
 
                 let tablaHtml = `
@@ -113,6 +141,7 @@ $(document).ready( function (){
 		        $('#horaActualReporte').html(`${hora}:${min}`);
                 barChartData.labels = labelsGrafico;
                 barChartData.datasets[0].data = datosGrafico;
+                barChartData.datasets[0].backgroundColor = coloresGrafico;
 
                 window.myBar.update();
             }
@@ -172,19 +201,32 @@ $(document).ready( function (){
                     }                    
                     console.log(datos);
                     let lines = {};
-                    let labels = {};
+                    let labels = [];
+                    let nuevosDatos = [];
                     Object.values(datos).forEach( dato => {
                     	if (!lines.hasOwnProperty(dato.nombreCategoria)) {
-                    		lines[dato.nombreCategoria] = parseInt(dato.valor);
-                    		labels[dato.nombreCategoria] = dato.nombreCategoria;
-                    	}else{
-                    		lines[dato.nombreCategoria] += parseInt(dato.valor);
+                    		lines[dato.nombreCategoria] = [];
                     	}
+                    	if (!labels.includes('G-'+dato.nombreGalpon)){
+                    		labels.push('G-'+dato.nombreGalpon);
+                    	}
+                    	lines[dato.nombreCategoria].push(dato.valor);
                     });
-                    console.log(Object.values(lines))
-                    barChartData.labels = Object.values(labels);
-                	barChartData.datasets[0].data = Object.values(lines);
-                	barChart.type = 'bar';
+                    Object.entries(lines).forEach(([titulo, y]) => {
+                    	var colorNuevo = hexToRgbA(getRandomColor());
+                    	var nuevoDataset = {
+                    		label: titulo,
+                    		data: y,
+                    		borderColor: colorNuevo,
+                    		backgroundColor: colorNuevo,
+                    		fill: 'false'
+                    	};
+                    	nuevosDatos.push(nuevoDataset);
+                    });
+                    console.log(Object.values(lines));
+                    barChartData.labels = labels;
+                	barChartData.datasets = nuevosDatos;
+                	barChart.type = 'line';
 					window.myBar.update();
                 }
             } 
