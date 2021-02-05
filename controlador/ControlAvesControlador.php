@@ -60,9 +60,3 @@ class ControlAvesControlador
 		header('location:?c=ControlAves');
 	}
 }
-function Sumamuertes($Mortalidad,$numeroMuertes){
-	foreach ($Mortalidad as $key => $value) {
-		$numeroMuertes += $Mortalidad[$key]->numeroMuertes;
-	}
-	return $numeroMuertes;
-}
