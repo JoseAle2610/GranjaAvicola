@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.css">
 		<!-- Datatable css -->
 		<link rel="stylesheet" href="assets/css/Datatable.min.css">
+		<link rel="shortcut icon" href="assets/img/EggL.png">	
 		<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"> -->
 		<!-- MY CSS -->
 		<link rel="stylesheet" href="assets/css/main.css">

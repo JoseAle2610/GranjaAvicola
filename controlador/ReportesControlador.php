@@ -10,7 +10,7 @@ class ReportesControlador
 	}
 
 	public function index(){
-		$pagina = !isset($_REQUEST['p']) ? 'CierreMes':$_REQUEST['p']; 
+		$pagina = !isset($_REQUEST['p']) ? 'ProduccionDiaria':$_REQUEST['p']; 
 		loged();
 		require_once 'vista/includes/header.php';
 		require_once 'vista/includes/menu.php';

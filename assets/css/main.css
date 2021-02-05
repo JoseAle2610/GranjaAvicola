@@ -22,6 +22,8 @@ min-height: 100vh;
 	background-image:url(../img/GallinasPatron.jpg);
 	background-size: 500px;
     height: 100vh;
+    position: fixed;
+min-height: 100vh;
 }
 .bg-orange{
 	background: #f0ad4e;
