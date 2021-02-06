@@ -38,7 +38,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="row justify-content-center bg-white rounded mx-5" id="ProduccionEntreDias">
+					<div class="row justify-content-center bg-white rounded" id="ProduccionEntreDias">
 						<div class="col-12" id="membreteReportes">
 							<hr>
 							<div class="row py-0">
@@ -47,7 +47,7 @@
 								</div>
 								<div class="col-6 align-self-center">
 									<p class="text-center">
-										<span class="h4">Granja Avicola Las Tunas C.A.</span><br>
+										<span class="h4">Granja Avícola Las Tunas C.A.</span><br>
 										<span id="tituloReporte"></span>
 									</p>
 								</div>

@@ -1,42 +1,33 @@
 $(document).ready( function (){
 
 		var colores = [];
-		function hexToRgbA(hex){
-		    var c;
-	        c= hex.substring(1).split('');
-	        if(c.length== 3){
-	            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
-	        }
-	        c= '0x'+c.join('');
-	        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',.5)';
-		}
-
 		function getRandomColor() {
-		    var num=(Math.floor(Math.random()*4)*4).toString(16);
-		    var letters = ['0','F',num];
-		    var color = '#';
-		    
-		    for (var i = 0; i < 3; i++ ) {
-		        let pos=Math.floor(Math.random() * letters.length);
-		        color += letters[pos];
-		        letters.splice(pos,1);
-		    }
-		    
-		    //para evitar que se repitan colores 
-		    if(colores.includes(color))
-		      return getRandomColor();
-		    else
-		      colores.push(color)
-		      
-		    return color;
-		}
+            var num=(Math.floor(Math.random()*4)*4).toString(16);
+            var letters = ['0','F',num];
+            var color = [];
+            for (var i = 0; i < 3; i++ ) {
+                let pos=Math.floor(Math.random() * letters.length);
+                color.push(letters[pos]);
+                color.push(letters[pos]);
+                letters.splice(pos,1);
+            }
+            color= '0x'+color.join('');
+            return 'rgba('+[(color>>16)&255, (color>>8)&255, color&255].join(',')+',.5)';
+            //para evitar que se repitan colores 
+            if(colores.includes(color))
+              return getRandomColor();
+            else
+              colores.push(color)
+            return color;
+        }
+
 		var barChartData = {
 			labels: [ 'G-1' , 'G-2'],
 			datasets: [{
 				label: 'Galpones',
 				backgroundColor: [
-	                    hexToRgbA(getRandomColor()),
-	                    hexToRgbA(getRandomColor())
+	                    getRandomColor(),
+	                    getRandomColor()
 	                ],
 				borderWidth: 1,
 				data: [0, 0]
@@ -88,7 +79,13 @@ $(document).ready( function (){
                 let thead = `<th>Galpones</th>`;
                 let tbody = '';
                 let coloresGrafico = [];
+                let categorias = [];
             	colores = [];
+                datos.forEach(dato => {
+                    if (!categorias.includes(dato.nombreCategoria)) {
+                        categorias.push(dato.nombreCategoria);
+                    }
+                });
                 datos.forEach(dato => {
                 	let nombreGalpon = 'G-'+dato.nombreGalpon;
                 	if (!labelsGrafico.includes(nombreGalpon)) {
@@ -96,16 +93,15 @@ $(document).ready( function (){
                 	}
                 	if (!tabla.hasOwnProperty(nombreGalpon)) {
                 		tabla[nombreGalpon] = {};
+                        categorias.forEach(categoria =>{
+                           tabla[nombreGalpon][categoria] = 0; 
+                        });
                 	}
-                	if (!tabla[nombreGalpon].hasOwnProperty(dato.nombreCategoria)) {
-                		tabla[nombreGalpon][dato.nombreCategoria] = parseInt(dato.valor);
-                	}else{
-                		tabla[nombreGalpon][dato.nombreCategoria] += parseInt(dato.valor);
-                	}
+            		tabla[nombreGalpon][dato.nombreCategoria] += parseInt(dato.valor);
                 });
-
-                Object.entries(tabla).forEach(([i, fila]) =>{
+                Object.entries(tabla).forEach(([i, fila], index ) =>{
         			let tr = `<td>${i}</td>`;
+                    console.log(fila, index + 1);
             		Object.entries(fila).forEach(([j, columna]) => {
             			if (!thead.includes(j)) {
 		                	thead += `<th>${j}</th>`;
@@ -114,7 +110,7 @@ $(document).ready( function (){
             		});
             		tbody += `<tr>${tr}</tr>`
                 	datosGrafico.push(Object.values(fila).reduce((a, b) => a + b ));
-                	coloresGrafico.push(hexToRgbA(getRandomColor()));	
+                	coloresGrafico.push(getRandomColor());	
                 });
 
                 let tablaHtml = `
@@ -131,19 +127,12 @@ $(document).ready( function (){
 				                </tbody>`;
 				$('#tablaProduccionEntreDias').html(tablaHtml);
 
-		        let hoy = new Date();
-		        var dia = String(hoy.getDate()).padStart(2, '0');
-        		var mes = String(hoy.getMonth() + 1).padStart(2, '0');
-        		var hora = String(hoy.getHours() + 1).padStart(2, '0');
-        		var min = String(hoy.getMinutes() + 1).padStart(2, '0');
-		        $('#tituloReporte').html(`Producción entre fechas: ${cambiarFormatoFecha(fechaDesde)} / ${cambiarFormatoFecha(fechaHasta)}`);
-		        $('#fechaActualReporte').html(`${dia}-${mes}-${hoy.getFullYear()}`);
-		        $('#horaActualReporte').html(`${hora}:${min}`);
                 barChartData.labels = labelsGrafico;
                 barChartData.datasets[0].data = datosGrafico;
                 barChartData.datasets[0].backgroundColor = coloresGrafico;
 
                 window.myBar.update();
+                membreteReportes(`Producción entre fechas: ${cambiarFormatoFecha(fechaDesde)} / ${cambiarFormatoFecha(fechaHasta)}`);
             }
         });
     });
@@ -203,6 +192,7 @@ $(document).ready( function (){
                     let lines = {};
                     let labels = [];
                     let nuevosDatos = [];
+                    colores = [];
                     Object.values(datos).forEach( dato => {
                     	if (!lines.hasOwnProperty(dato.nombreCategoria)) {
                     		lines[dato.nombreCategoria] = [];
@@ -213,7 +203,7 @@ $(document).ready( function (){
                     	lines[dato.nombreCategoria].push(dato.valor);
                     });
                     Object.entries(lines).forEach(([titulo, y]) => {
-                    	var colorNuevo = hexToRgbA(getRandomColor());
+                    	var colorNuevo = getRandomColor();
                     	var nuevoDataset = {
                     		label: titulo,
                     		data: y,
@@ -228,6 +218,7 @@ $(document).ready( function (){
                 	barChartData.datasets = nuevosDatos;
                 	barChart.type = 'line';
 					window.myBar.update();
+                    membreteReportes(`Reporte Producción Diaria: ${fecha}`);
                 }
             } 
         })
@@ -275,7 +266,7 @@ $(document).ready( function (){
             success: function (respuesta) {
                 if(!respuesta.error) {
                     let datos = JSON.parse(respuesta);
-                    // console.log(datos);
+                    console.log(datos);
                     let matriz = {};
                     datos.forEach((fila, x) => {
                         let filaMatriz = {};
@@ -291,11 +282,12 @@ $(document).ready( function (){
                         }
                     });//tr td:nth-child(1)
                     console.log(matriz)
+                    membreteReportes(`Reporte formato de distribución`);
                     $('#tablaFormatoDistribucion tbody ').html('');
                     for(const fecha in matriz){
                         // console.log(fecha);
                         let tr = $('#tablaFormatoDistribucion tbody ').html();
-                        let td = `<td>${fecha}</td>`;
+                        let td = `<td>${cambiarFormatoFecha(fecha)}</td>`;
                         let totales = 0;
                         for (var i = 1; i <= 8 ; i++) {
                             if (matriz[fecha].hasOwnProperty(i)) {
@@ -308,8 +300,7 @@ $(document).ready( function (){
                             if ( i == 3) {
                                 td += `<td>${totales}</td>`;
                             } else if (i == 8) {
-                                td += ` <td>${totales}</td>
-                                        <td>${totales}</td>`
+                                td += ` <td>${totales}</td>`
                             }
                         }
                         tr += `<tr>${td}</tr>`;
@@ -358,5 +349,16 @@ $(document).ready( function (){
 	function cambiarFormatoFecha(fecha){
         fecha = fecha.split('-');
         return `${fecha[2]}-${fecha[1]}-${fecha[0]}`;
+    }
+
+    function membreteReportes(titulo){
+        let hoy = new Date();
+        var dia = String(hoy.getDate()).padStart(2, '0');
+        var mes = String(hoy.getMonth() + 1).padStart(2, '0');
+        var hora = String(hoy.getHours() + 1).padStart(2, '0');
+        var min = String(hoy.getMinutes() + 1).padStart(2, '0');
+        $('#tituloReporte').html(titulo);
+        $('#fechaActualReporte').html(`${dia}-${mes}-${hoy.getFullYear()}`);
+        $('#horaActualReporte').html(`${hora}:${min}`);
     }
 });

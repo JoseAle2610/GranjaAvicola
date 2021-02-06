@@ -57,7 +57,7 @@
 								</div>
 								<div class="col-6 align-self-center">
 									<p class="text-center">
-										<span class="h4">Granja Avícola Las Tunas C.A.</span><br>
+										<span class="h4">Granja Avicola Las Tunas C.A.</span><br>
 										<span id="tituloReporte"></span>
 									</p>
 								</div>
