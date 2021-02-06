@@ -52,6 +52,15 @@ function cambiarFormatoFecha($fecha){
 // function table($datos, $cabeza){
 
 // }
+
+
+function Sumamuertes($Mortalidad,$numeroMuertes){
+	foreach ($Mortalidad as $key => $value) {
+		$numeroMuertes += $Mortalidad[$key]->numeroMuertes;
+	}
+	return $numeroMuertes;
+}
+
 function vacio(array $array){
 	$vacio = true;
 	foreach ($array as $valor) {
