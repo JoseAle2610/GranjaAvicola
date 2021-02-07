@@ -7,7 +7,9 @@ class AjaxControlador{
 	public function sectorAnidado(){
 		if (isset($_REQUEST['idGalpon'])) {
 			$SectorModelo = new SectorModelo();
+
 			$condicion = 'WHERE idGalpon = ?';
+			$condicion .= isset($_REQUEST['activo']) ? '':'AND activo = 1';
 			$datos = array ($_REQUEST['idGalpon']);
 			$SectorModelo = $SectorModelo->select($condicion, $datos );
 			$SectorModelo = json_encode($SectorModelo);
