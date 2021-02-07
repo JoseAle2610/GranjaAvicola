@@ -27,7 +27,7 @@
 			foreach ($_SESSION['alerta'] as $key => $alerta) {
 				$alerta = (object)$alerta;
 				?>
-				<div class="alert alert-<?= $alerta->color ?>" id="alerta">
+				<div class="alert alert-<?= $alerta->color ?> animate__animated  animate__backInDown" id="alerta">
 					<?= $alerta->mensaje ?>
 					<button type="button" class="close ml-2" data-dismiss="alert" aria-label="Cerrar">
 						<span aria-hidden="true">&times;</span>

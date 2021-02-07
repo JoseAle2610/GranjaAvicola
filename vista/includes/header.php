@@ -10,7 +10,10 @@
 		<link rel="stylesheet" href="assets/css/bootstrap.css">
 		<!-- Datatable css -->
 		<link rel="stylesheet" href="assets/css/Datatable.min.css">
-		<link rel="shortcut icon" href="assets/img/EggL.png">	
+		<!-- Imagen de la pestaña -->
+		<link rel="shortcut icon" href="assets/img/EggL.png">
+		<!-- Am¿nimate css -->
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 		<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css"> -->
 		<!-- MY CSS -->
 		<link rel="stylesheet" href="assets/css/main.css">

@@ -314,6 +314,6 @@ $(document).ready(function (){
                 } 
             }   
         });
-    }
+    });
 
 });
